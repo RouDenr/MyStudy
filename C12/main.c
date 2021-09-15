@@ -3,5 +3,6 @@
 
 int	main(void)
 {
+	write(1, "\nHello word!\n", 15);
 	return (0);
 }
