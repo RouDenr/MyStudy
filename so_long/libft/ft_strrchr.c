@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 16:52:01 by decordel          #+#    #+#             */
-/*   Updated: 2021/10/30 16:01:08 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/07 00:25:12 by decordel          #+#    #+#             */
+/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
-# include <unistd.h>
-# include <stdlib.h>
+#include <stdlib.h>
 
-char	*get_next_line(int fd);
-char	*addbuf(char *str, char *buf, size_t size);
-char	*bufstart(char *buf, size_t len);
-size_t	ft_strlen(const char *s);
+char	*ft_strrchr(const void *s, int c)
+{
+	const unsigned char	*buf;
+	int					i;
 
-#endif
+	i = 0;
+	buf = s;
+	while (buf[i])
+		i++;
+	while (i >= 0)
+	{
+		if (buf[i] == (unsigned char)c)
+			return ((void *)&buf[i]);
+		if (i == 0 && !buf[i])
+			return (NULL);
+		i--;
+	}
+	return (NULL);
+}
