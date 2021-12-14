@@ -6,12 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:40:25 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Updated: 2021/12/14 17:59:54 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

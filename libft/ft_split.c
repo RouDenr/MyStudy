@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 00:51:17 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:22:58 by decordel         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:53:03 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	split(char	**str, char const *s, char c)
 		{
 			str[i] = malloc(count_chars(s, c) + 1);
 			if (str[i] == NULL)
-				return (split_free(str));
+				return ((int) split_free(str));
 			j = 0;
 			while (*s != c && *s)
 				str[i][j++] = *(s++);

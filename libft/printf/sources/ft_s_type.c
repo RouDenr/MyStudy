@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_s_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/10 21:28:28 by decordel          #+#    #+#             */
+/*   Updated: 2021/11/01 20:17:42 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+size_t	ft_s_type(char *s, int fd)
 {
-	t_list	*head;
-	t_list	*next;
+	size_t	i;
 
-	head = *lst;
-	if (lst)
+	i = 0;
+	if (s == NULL)
 	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
+		return (ft_s_type("(null)", 1));
 	}
-	*lst = NULL;
+	while (s[i])
+		write(fd, &s[i++], 1);
+	return (i);
 }

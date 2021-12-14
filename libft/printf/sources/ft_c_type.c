@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/10 21:21:20 by decordel          #+#    #+#             */
+/*   Updated: 2021/10/26 17:55:03 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+size_t	ft_c_type(char c, int fd)
 {
-	t_list	*head;
-	t_list	*next;
-
-	head = *lst;
-	if (lst)
-	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
-	}
-	*lst = NULL;
+	write(fd, &c, 1);
+	return (1);
 }

@@ -6,12 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:00:22 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Updated: 2021/12/14 17:53:59 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
 static t_list	*lstnew(void *content)
 {
