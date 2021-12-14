@@ -6,11 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:26:14 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/09 14:03:20 by                  ###   ########.fr       */
+/*   Updated: 2021/12/14 17:59:28 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 #include <stdlib.h>
 
 void	ft_lstadd_back(t_list **lst, t_list *newl)

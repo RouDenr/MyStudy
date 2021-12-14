@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_u_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/10 21:48:37 by decordel          #+#    #+#             */
+/*   Updated: 2021/11/01 20:17:57 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_u_type(unsigned int n, int fd, size_t *counter)
 {
-	t_list	*head;
-	t_list	*next;
+	char	c;
 
-	head = *lst;
-	if (lst)
+	c = n % 10 + '0';
+	if (n / 10 == 0)
 	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
+		write(fd, &c, 1);
+		(*counter)++;
+		return ;
 	}
-	*lst = NULL;
+	ft_u_type(n / 10, fd, counter);
+	write(fd, &c, 1);
+	(*counter)++;
 }
