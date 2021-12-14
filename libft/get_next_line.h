@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/14 16:52:01 by decordel          #+#    #+#             */
+/*   Updated: 2021/10/30 16:01:08 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+# include <unistd.h>
+# include <stdlib.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*head;
-	t_list	*next;
+char	*get_next_line(int fd);
+char	*addbuf(char *str, char *buf, size_t size);
+char	*bufstart(char *buf, size_t len);
+size_t	ft_strlen(const char *s);
 
-	head = *lst;
-	if (lst)
-	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
-	}
-	*lst = NULL;
-}
+#endif

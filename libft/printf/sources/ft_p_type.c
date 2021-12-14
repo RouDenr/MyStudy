@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_p_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/25 23:12:42 by decordel          #+#    #+#             */
+/*   Updated: 2021/11/01 17:09:50 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+static size_t	x_type(unsigned long n, const char *b, int z, size_t *counter)
 {
-	t_list	*head;
-	t_list	*next;
-
-	head = *lst;
-	if (lst)
+	if (z && !n)
 	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
+		write(1, &b[n & 15], 1);
+		(*counter)++;
 	}
-	*lst = NULL;
+	if (n)
+	{
+		x_type(n >> 4, b, 0, counter);
+		write(1, &b[n & 15], 1);
+		(*counter)++;
+	}
+	return (*counter);
+}
+
+size_t	ft_p_type(long n)
+{
+	size_t	i;
+
+	i = 2;
+	write(1, "0x", 2);
+	x_type(n, "0123456789abcdef", 1, &i);
+	return (i);
 }

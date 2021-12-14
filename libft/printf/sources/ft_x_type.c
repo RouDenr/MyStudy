@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_x_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/25 22:19:46 by decordel          #+#    #+#             */
+/*   Updated: 2021/11/01 17:04:14 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_x_type(unsigned int n, const char *base, int z, size_t *counter)
 {
-	t_list	*head;
-	t_list	*next;
-
-	head = *lst;
-	if (lst)
+	if (z && !n)
 	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
+		write(1, &base[n & 15], 1);
+		(*counter)++;
 	}
-	*lst = NULL;
+	if (n)
+	{
+		ft_x_type(n >> 4, base, 0, counter);
+		write(1, &base[n & 15], 1);
+		(*counter)++;
+	}
 }

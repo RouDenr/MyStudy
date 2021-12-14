@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 10:40:48 by decordel          #+#    #+#              #
-#    Updated: 2021/12/14 00:13:16 by decordel         ###   ########.fr        #
+#    Updated: 2021/12/14 17:47:40 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,15 @@ SRCS	=	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 			ft_strnstr.c	ft_strrchr.c	ft_strtrim.c	ft_substr.c\
 			ft_lstnew.c		ft_lstadd_back.c	ft_lstadd_front.c\
 			ft_lstclear.c	ft_lstdelone.c		ft_lstiter.c\
-			ft_lstlast.c	ft_lstmap.c			ft_lstsize.c
+			ft_lstlast.c	ft_lstmap.c			ft_lstsize.c\
+			get_next_line.c	get_next_line_utils.c\
+			printf/ft_printf.c\
+				printf/sources/ft_x_type.c\
+				printf/sources/ft_u_type.c\
+				printf/sources/ft_s_type.c\
+				printf/sources/ft_c_type.c\
+				printf/sources/ft_d_type.c\
+				printf/sources/ft_p_type.c
 
 OBJS	=	${SRCS:%.c=%.o}
 
