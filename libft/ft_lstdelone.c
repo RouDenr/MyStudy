@@ -6,11 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 00:05:45 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Updated: 2021/12/14 17:59:13 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 #include <stdlib.h>
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))

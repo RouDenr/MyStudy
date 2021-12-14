@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_d_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:59:17 by decordel         ###   ########.fr       */
+/*   Created: 2021/10/10 21:48:37 by decordel          #+#    #+#             */
+/*   Updated: 2021/10/26 17:59:22 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_d_type(int n, int fd, size_t *counter)
 {
-	t_list	*head;
-	t_list	*next;
+	char	c;
 
-	head = *lst;
-	if (lst)
+	if (n == -2147483647 - 1)
 	{
-		while (head)
-		{
-			next = head->next;
-			del(head->content);
-			free(head);
-			head = next;
-		}
+		write(fd, "-2147483648", 11);
+		*counter += 11;
+		return ;
 	}
-	*lst = NULL;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		(*counter)++;
+		n = -n;
+	}
+	c = n % 10 + '0';
+	if (n / 10 == 0)
+	{
+		write(fd, &c, 1);
+		(*counter)++;
+		return ;
+	}
+	ft_d_type(n / 10, fd, counter);
+	write(fd, &c, 1);
+	(*counter)++;
 }
