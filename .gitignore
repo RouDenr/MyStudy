@@ -3,4 +3,4 @@
 *.a
 *.out
 .DS_Store
-so_long/.gitignore
+push_swap/.git
