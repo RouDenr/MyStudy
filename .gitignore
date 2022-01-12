@@ -2,5 +2,6 @@
 *.o
 *.a
 *.out
+*test*
 .DS_Store
 push_swap/.git
