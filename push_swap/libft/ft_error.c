@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/13 17:48:03 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/12 23:16:40 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/14 20:13:49 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_lstclear(t_list **lst)
+void	ft_put_err(char *str)
 {
-	t_list	*head;
-	t_list	*next;
-
-	head = *lst;
-	if (lst)
-	{
-		while (head)
-		{
-			next = head->next;
-			free(head);
-			head = next;
-		}
-	}
-	*lst = NULL;
+	ft_putstr_fd("\033[1;31m", 2);
+	ft_putendl_fd(str, 2);
+	ft_putstr_fd("\033[0;0m", 2);
+	exit(1);
 }

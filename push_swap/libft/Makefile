@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 10:40:48 by decordel          #+#    #+#              #
-#    Updated: 2021/12/14 17:47:40 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/13 17:41:16 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 			ft_lstnew.c		ft_lstadd_back.c	ft_lstadd_front.c\
 			ft_lstclear.c	ft_lstdelone.c		ft_lstiter.c\
 			ft_lstlast.c	ft_lstmap.c			ft_lstsize.c\
+			ft_error.c\
 			get_next_line.c	get_next_line_utils.c\
 			printf/ft_printf.c\
 				printf/sources/ft_x_type.c\
@@ -34,7 +35,7 @@ SRCS	=	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 
 OBJS	=	${SRCS:%.c=%.o}
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-g -Wall -Wextra -Werror
 
 all		:	${NAME}
 

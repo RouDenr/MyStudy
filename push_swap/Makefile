@@ -6,30 +6,34 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 18:18:03 by decordel          #+#    #+#              #
-#    Updated: 2021/12/14 18:30:30 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/14 21:49:41 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
-SRCS	= main.c
+SRCS	= main.c\
+			src/stack_com.c	src/valid.c\
+			src/push.c		src/swap.c		src/rotate.c	src/reverse.c
 
-OBJS	= ${SRCS:%.c=%.o}
+OBJS	= ${SRCS:.c=.o}
 
-INCS		= inc/push_swap.h inc/libft.h
+INCS		= inc/push_swap.h
 
 LIB		= libft/libft.a
 
-FLAGS	= -g -Wall -Wextra -Wextra
+CC		= gcc
+
+FLAGS	= -g -Wall -Wextra -Werror
 LFLAGS	= -L libft/ -lft
 
 all		: ${NAME}
 
-${NAME}	: ${INCS} ${LIB} ${OBJS}
-	gcc ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
+${NAME}	: ${INCS} ${OBJS} ${LIB}
+	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
 
-%.o		: ${INCS} %.c
-	gcc ${FLAGS} -c $< -o $@
+%.o		: %.c ${INCS}
+	${CC} ${FLAGS} -c $< -o $@
 
 ${LIB}	:
 	make all -C libft/
@@ -44,4 +48,26 @@ fclean	: clean
 
 re		: fclean all
 
-.PHONY	: all clean fclean re
+#! debug ---------------------------------
+MESS	= fix
+
+ARGS	= "2 5 4" 6 8 103 12 14 21
+
+git		:
+	git add .
+	git commit -m "${MESS}"
+	git push
+
+do		:
+	make all
+	./push_swap ${ARGS}
+
+leaks	:
+	make all
+	leaks -atExit -- ./push_swap ${ARGS}
+
+debug	:
+	make all
+	lldb -- ./push_swap ${ARGS}
+#! debug ---------------------------------
+.PHONY	: all clean fclean re git lib debug

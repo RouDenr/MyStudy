@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 00:47:36 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 00:10:11 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/14 22:32:52 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	do_next_frame(t_mlx *mlx)
 {
 	draw_space(mlx, &mlx->map);
+	get_animation(&mlx->map, mlx);
+	enemy_goes(mlx->map.data);
 	draw_map(mlx, &mlx->map);
+	draw_num(mlx, mlx->map.img_num, mlx->steps);
 	return (1);
 }
 

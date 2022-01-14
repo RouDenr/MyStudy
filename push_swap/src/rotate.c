@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/13 17:48:03 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/12 18:31:58 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/13 18:26:49 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "../inc/push_swap.h"
 
-void	ft_lstclear(t_list **lst)
+void	rotate(t_stack **stack)
 {
-	t_list	*head;
-	t_list	*next;
+	t_stack	*head;
+	t_stack	*last;
 
-	head = *lst;
-	if (lst)
-	{
-		while (head)
-		{
-			next = head->next;
-			free(head);
-			head = next;
-		}
-	}
-	*lst = NULL;
+	head = *stack;
+	*stack = head->next;
+	last = ft_stclast(head);
+	last->next = head;
+	head->next = NULL;
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	rotate(a);
+	rotate(b);
 }
