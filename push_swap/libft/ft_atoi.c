@@ -6,9 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:44:33 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Updated: 2022/01/14 21:29:26 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static	int	ft_isspace(char s)
 {
@@ -40,9 +42,9 @@ int	ft_atoi(const char *str)
 	{
 		n = (n * 10) + (str[i++] - '0');
 		if (n * sign > 2147483647)
-			return (-1);
+			ft_put_err("Error\n some arguments are bigger than an integer");
 		if (n * sign < -2147483648)
-			return (0);
+			ft_put_err("Error\n some arguments are lower than an integer");
 	}
 	return (n * sign);
 }

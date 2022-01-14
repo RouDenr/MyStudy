@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/03 22:18:43 by decordel          #+#    #+#              #
-#    Updated: 2021/12/14 01:07:40 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/14 22:33:30 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,6 @@ NAME_B		= so_long_bonus
 SRCS		=	main.c\
 				src/map.c	src/check_map.c	src/err.c\
 				src/win.c	src/draw.c		src/key_hooks.c\
-				src/animation.c		src/enemy.c
-
-SRCS_B		=	main.c\
-				src/map.c			src/check_map_b.c	src/err.c\
-				src/win_bonus.c		src/draw.c			src/key_hooks_b.c\
 				src/animation.c		src/enemy.c
 
 INCLUDES	= inc/so_long.h inc/libft.h inc/mlx.h
@@ -43,15 +38,10 @@ ${NAME}		: ${LIBFT} ${LIBMLX} ${INCLUDES} ${OBJS}
 	gcc ${FLAGS} -Imlx -c $< -o $@
 
 ${LIBFT}		:
-	make all -C libft/
+	@make all -C libft/
 
 ${LIBMLX}		:
-	make all -C minilibx_opengl/
-#
-bonus			: ${NAME_B}
-
-${NAME_B}		: ${LIBFT} ${LIBMLX} ${INCLUDES} ${OBJS_B}
-	gcc ${FLAGS} ${LFLAGS} ${OBJS_B} -o ${NAME_B}
+	@make all -C minilibx_opengl/
 
 clean		:
 	rm -rf ${OBJS}

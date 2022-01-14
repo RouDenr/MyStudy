@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/13 17:48:03 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/12 18:31:55 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/13 18:56:52 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "../inc/push_swap.h"
 
-void	ft_lstclear(t_list **lst)
+void	push(t_stack **in, t_stack **out)
 {
-	t_list	*head;
-	t_list	*next;
+	t_stack	*tmp;
 
-	head = *lst;
-	if (lst)
+	tmp = *in;
+	*in = tmp->next;
+	if (*out == NULL)
 	{
-		while (head)
-		{
-			next = head->next;
-			free(head);
-			head = next;
-		}
+		tmp->next = NULL;
+		*out = tmp;
+		return ;
 	}
-	*lst = NULL;
+	tmp->next = *out;
+	*out = tmp;
 }

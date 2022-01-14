@@ -6,13 +6,13 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:28:28 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Updated: 2022/01/12 18:54:56 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	if (!s)
 		return ;

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   valid.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 00:17:13 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/13 17:48:03 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/14 19:54:19 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/14 21:20:47 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "../inc/push_swap.h"
 
-void	ft_lstclear(t_list **lst)
+void	check_num_in_args(char **argv)
 {
-	t_list	*head;
-	t_list	*next;
-
-	head = *lst;
-	if (lst)
+	argv++;
+	while (*argv)
 	{
-		while (head)
+		while (**argv)
 		{
-			next = head->next;
-			free(head);
-			head = next;
+			if (!ft_isdigit(**argv) && **argv != ' ' && **argv != '-')
+				ft_put_err("Error\nnot int in args");
+			(*argv)++;
 		}
+		argv++;
 	}
-	*lst = NULL;
+}
+
+int	find_dup(t_stack *stack, int n)
+{
+	if (stack->next == NULL)
+		return (0);
+	return (n == stack->next->n || find_dup(stack->next, n)
+		|| find_dup(stack->next, stack->next->n));
 }
