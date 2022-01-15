@@ -6,15 +6,16 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 18:18:03 by decordel          #+#    #+#              #
-#    Updated: 2022/01/14 21:49:41 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/15 22:17:52 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
 SRCS	= main.c\
-			src/stack_com.c	src/valid.c\
-			src/push.c		src/swap.c		src/rotate.c	src/reverse.c
+			src/stack_com.c		src/stack_info.c	src/valid.c\
+			src/push.c			src/swap.c			src/rotate.c	src/reverse.c\
+			src/sort.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -51,7 +52,7 @@ re		: fclean all
 #! debug ---------------------------------
 MESS	= fix
 
-ARGS	= "2 5 4" 6 8 103 12 14 21
+ARGS	= 2 1 0
 
 git		:
 	git add .
