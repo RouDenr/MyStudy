@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:52 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/13 18:41:32 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/15 22:23:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,29 @@ void	rrr(t_stack **a, t_stack **b)
 {
 	reverse(a);
 	reverse(b);
+}
+
+void	do_reverse(t_data *data, t_stack *stack)
+{
+	if (stack == data->a)
+	{
+		reverse(&(data->a));
+		do_com(data, "rra");
+	}
+	else if (stack == data->b)
+	{
+		reverse(&(data->b));
+		do_com(data, "rrb");
+	}
+	else
+	{
+		rrr(&(data->a), &(data->a));
+		do_com(data, "rrr");
+	}
+}
+
+void	reverse_to_top(t_data *data, t_stack *top, t_stack *stack)
+{
+	while (stack != top)
+		do_reverse(data, top);
 }
