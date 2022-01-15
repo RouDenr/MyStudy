@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/14 21:43:37 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/15 21:34:59 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_stacks(t_data *data)
 
 	tmp_a = data->a;
 	tmp_b = data->b;
-	ft_putstr_fd("\033[1;32m[-------------------------------|\n", 1);
+	ft_putstr_fd("\n\033[1;32m[-------------------------------|\n", 1);
 	ft_putstr_fd("|\t\033[1;31mA\033[1;32m\t|\t\033[1;34mB\033[1;32m\t|\n", 1);
 	ft_putstr_fd("| \033[1;31mn\t| index\033[1;32m\t", 1);
 	ft_putstr_fd("| \033[1;34mn\t| index\033[1;32m\t|\n", 1);
@@ -70,11 +70,13 @@ void	init_a(t_data *data, char **argv)
 		}
 		split_free(tmp_arg);
 	}
+	sort_index(data->a);
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	// t_stack	*a;
 
 	if (argc == 1)
 		return (0);
@@ -85,10 +87,14 @@ int	main(int argc, char **argv)
 	check_num_in_args(argv);
 	if (find_dup(data.a, data.a->n))
 		ft_put_err("Error\ndup");
-	// print_stacks(&data);
-	push(&data.a, &data.b);
-	push(&data.a, &data.b);
-	// print_stacks(&data);
+	print_stacks(&data);
+	// push(&(data.a), &(data.b));
+	sorting(&data);
+	// a = ft_stack_which_min_index(data.a);
+	// ft_putnbr_fd(a->n, 1);
+	print_stacks(&data);
+	ft_putnbr_fd(data.count_oper, 1);
+	ft_putchar_fd('\n', 1);
 	ft_stackclear(&(data.a));
 	ft_stackclear(&(data.b));
 	return (0);
