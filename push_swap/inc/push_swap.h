@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:31:23 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 22:53:13 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/16 21:49:51 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ t_stack	*ft_stack_which_index(t_stack *stack, int index);
 t_stack	*ft_stack_which_min_index(t_stack *stack);
 void	print_stacks(t_data *data);
 void	check_num_in_args(char **argv);
-int		check_sort(t_data *data);
+int		check_sort_data(t_data *data);
+int		check_sort_stack(t_stack *stack);
 void	sort_index(t_stack *stack);
 int		ft_stccount(t_stack *stack);
 void	sorting(t_data *data);
+void	sort_a(t_data *data);
 void	do_com(t_data *data, char *com);
-int	is_first_part_stack(t_stack *stack, t_stack *n);
+int		is_first_part_stack(t_stack *stack, t_stack *n);
+void	ft_push_to_top(t_data *data, t_stack *stack, t_stack *n);
 
 #endif

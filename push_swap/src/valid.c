@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 19:54:19 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 20:09:59 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/16 21:38:42 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	find_dup(t_stack *stack, int n)
 		|| find_dup(stack->next, stack->next->n));
 }
 
-int	check_sort(t_data *data)
+int	check_sort_data(t_data *data)
 {
 	t_stack	*tmp_a;
 
@@ -80,6 +80,20 @@ int	check_sort(t_data *data)
 		if (tmp_a->n > tmp_a->next->n)
 			return (0);
 		tmp_a = tmp_a->next;
+	}
+	return (1);
+}
+
+int	check_sort_stack(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp && tmp->next)
+	{
+		if (tmp->n > tmp->next->n)
+			return (0);
+		tmp = tmp->next;
 	}
 	return (1);
 }
