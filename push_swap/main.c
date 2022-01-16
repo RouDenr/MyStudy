@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 21:34:59 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:08:48 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ int	main(int argc, char **argv)
 	data.count_oper = 0;
 	init_a(&data, argv);
 	check_num_in_args(argv);
-	if (find_dup(data.a, data.a->n))
-		ft_put_err("Error\ndup");
 	print_stacks(&data);
+	// if (find_dup(data.a, data.a->n))
+		// ft_put_err("Error\ndup");
 	// push(&(data.a), &(data.b));
 	sorting(&data);
 	// a = ft_stack_which_min_index(data.a);
