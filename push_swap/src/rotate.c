@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:58 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 22:23:55 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:07:09 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ void	do_rotate(t_data *data, t_stack *stack)
 
 void	rotate_to_top(t_data *data, t_stack *top, t_stack *stack)
 {
-	while (stack != top)
-		do_reverse(data, top);
+	if (data->a == top)
+	{
+		while (stack != data->a)
+			do_rotate(data, data->a);
+		do_push(data, data->b);
+	}
+	else if (data->b == top)
+	{
+		while (stack != data->b)
+			do_rotate(data, data->b);
+		do_push(data, data->a);
+	}
 }
