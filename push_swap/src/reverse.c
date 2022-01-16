@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:52 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 22:23:02 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:07:18 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ void	do_reverse(t_data *data, t_stack *stack)
 
 void	reverse_to_top(t_data *data, t_stack *top, t_stack *stack)
 {
-	while (stack != top)
-		do_reverse(data, top);
+	if (data->a == top)
+	{
+		while (stack != data->a)
+			do_reverse(data, data->a);
+		do_push(data, data->b);
+	}
+	else if (data->b == top)
+	{
+		while (stack != data->b)
+			do_reverse(data, data->b);
+		do_push(data, data->a);
+	}
 }
