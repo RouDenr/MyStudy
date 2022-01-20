@@ -6,11 +6,23 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:57:30 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/16 21:47:43 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:17:26 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+t_stack	*ft_stclast(t_stack *lst)
+{
+	t_stack	*tmp;
+
+	tmp = lst;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
 
 t_stack	*new_stack(int n, size_t i)
 {
@@ -23,18 +35,6 @@ t_stack	*new_stack(int n, size_t i)
 	new->n = n;
 	new->next = NULL;
 	return (new);
-}
-
-t_stack	*ft_stclast(t_stack *lst)
-{
-	t_stack	*tmp;
-
-	tmp = lst;
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
 }
 
 void	ft_stackadd_back(t_stack **lst, t_stack *newl)
