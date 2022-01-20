@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/16 22:08:48 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/20 06:04:22 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ static void	print_content(t_stack *stack)
 	ft_putstr_fd("\t|", 1);
 	if (stack)
 		ft_putnbr_fd(stack->index, 1);
+}
+
+void	do_com(t_data *data, char *com)
+{
+	(void) com;
+	ft_putendl_fd(com, 1);
+	data->count_oper++;
+	// print_stacks(data);
+	// read(0, NULL, 1);
 }
 
 void	print_stacks(t_data *data)
@@ -85,16 +94,12 @@ int	main(int argc, char **argv)
 	data.count_oper = 0;
 	init_a(&data, argv);
 	check_num_in_args(argv);
-	print_stacks(&data);
-	// if (find_dup(data.a, data.a->n))
-		// ft_put_err("Error\ndup");
-	// push(&(data.a), &(data.b));
+	// print_stacks(&data);
+	if (find_dup(data.a))
+		ft_put_err("Error\ndup");
 	sorting(&data);
-	// a = ft_stack_which_min_index(data.a);
-	// ft_putnbr_fd(a->n, 1);
-	print_stacks(&data);
-	ft_putnbr_fd(data.count_oper, 1);
-	ft_putchar_fd('\n', 1);
+	// print_stacks(&data);
+	// ft_putnbr_fd(data.count_oper, 1);
 	ft_stackclear(&(data.a));
 	ft_stackclear(&(data.b));
 	return (0);
