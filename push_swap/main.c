@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 06:04:22 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/21 21:31:10 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	do_com(t_data *data, char *com)
 	ft_putendl_fd(com, 1);
 	data->count_oper++;
 	// print_stacks(data);
-	// read(0, NULL, 1);
 }
 
 void	print_stacks(t_data *data)
@@ -56,6 +55,7 @@ void	print_stacks(t_data *data)
 			tmp_b = tmp_b->next;
 	}
 	ft_putstr_fd("\033[1;32m-------------------------------]\033[0m\n\n", 1);
+	read(0, NULL, 1);
 }
 
 void	init_a(t_data *data, char **argv)
@@ -92,6 +92,7 @@ int	main(int argc, char **argv)
 	data.a = NULL;
 	data.b = NULL;
 	data.count_oper = 0;
+	// read(0, NULL, 1);
 	init_a(&data, argv);
 	check_num_in_args(argv);
 	// print_stacks(&data);
