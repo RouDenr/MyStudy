@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:53:24 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/14 20:16:05 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:36:03 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include "get_next_line.h"
+# include "bonus/bonus.h"
 # include "printf/includes/ft_printf.h"
 
 typedef struct s_list
