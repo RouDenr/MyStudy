@@ -3,5 +3,5 @@
 *.a
 *.out
 *test*
-.DS_Store
+*.DS_Store
 push_swap/.git
