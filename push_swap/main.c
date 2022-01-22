@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:39:24 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/23 02:44:31 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	print_stacks(t_data *data)
 			tmp_b = tmp_b->next;
 	}
 	ft_putstr_fd("\033[1;32m-------------------------------]\033[0m\n\n", 1);
+	ft_putnbr_fd(data->count_oper, 1);
 	read(0, NULL, 1);
 }
 
@@ -93,12 +94,9 @@ int	main(int argc, char **argv)
 	data.count_oper = 0;
 	init_a(&data, argv);
 	check_num_in_args(argv);
-	// print_stacks(&data);
 	if (find_dup(data.a))
 		ft_put_err("Error\ndup");
 	sorting(&data);
-	// print_stacks(&data);
-	// ft_putnbr_fd(data.count_oper, 1);
 	ft_stackclear(&(data.a));
 	ft_stackclear(&(data.b));
 	return (0);

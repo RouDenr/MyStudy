@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 23:13:54 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:49:47 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/23 02:55:59 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	count_bef(t_stack *head, t_stack *stack)
 
 	n = 0;
 	while (head != stack)
+	{
 		n++;
+		head = head->next;
+	}
 	return (n);
 }
 
@@ -42,7 +45,16 @@ t_stack	*node_after_from_a(t_stack *a, t_stack *node)
 	max = a;
 	while (a)
 	{
-		if (a->index < node->index && a->index > max->index)
+		if (a->index > node->index)
+		{
+			max = a;
+			break ;
+		}
+		a = a->next;
+	}
+	while (a)
+	{
+		if (a->index > node->index && a->index < max->index)
 			max = a;
 		a = a->next;
 	}
@@ -59,15 +71,15 @@ t_stack	*check_com(t_data *data, t_stack *tmp_b, int *min_com, int *to_rotate)
 	if (tmp_com < *min_com)
 	{
 		*min_com = tmp_com;
-		return (tmp_b);
 		*to_rotate = 0;
+		return (tmp_b);
 	}
 	tmp_com = ft_max(count_bef(data->a, tmp_a), count_bef(data->b, tmp_b));
-	if (tmp_com < min_com)
+	if (tmp_com < *min_com)
 	{
 		*min_com = tmp_com;
-		return (tmp_b);
 		*to_rotate = 1;
+		return (tmp_b);
 	}
 	return (NULL);
 }
@@ -75,18 +87,19 @@ t_stack	*check_com(t_data *data, t_stack *tmp_b, int *min_com, int *to_rotate)
 t_stack	*node_which_min_com(t_data *data, int *to_rotate)
 {
 	int		min_com;
-	int		tmp_com;
+	// int		tmp_com;
 	t_stack	*min_node;
 	t_stack	*tmp_b;
-	t_stack	*tmp_a;
+	t_stack	*tmp;
 
 	tmp_b = data->b;
 	min_com = ft_stccount(data->b);
 	min_node = data->b;
 	while (tmp_b)
 	{
-		if (check_com(data, tmp_b, &min_com, to_rotate))
-			min_node = check_com(data, tmp_b, &min_com, to_rotate);
+		tmp = check_com(data, tmp_b, &min_com, to_rotate);
+		if (tmp)
+			min_node = tmp_b;
 		tmp_b = tmp_b->next;
 	}
 	return (min_node);

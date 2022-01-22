@@ -6,14 +6,14 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/01/23 00:18:06 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/23 00:24:01 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= a.out
 
 SRCS		=	main.c\
-					src/
+					src/${NAME}.c
 
 OBJS		= ${SRCS:%.c=%.o}
 
@@ -90,5 +90,8 @@ start_project	:
 	cp .gitignore ${NAME}
 	mkdir ${NAME}/inc
 	mkdir ${NAME}/src
+	touch ${NAME}/main.c
+	touch ${NAME}/inc/${NAME}.h
+	touch ${NAME}/src/${NAME}.c
 
 .PHONY	: all clean fclean re git do sh leaks debug norm

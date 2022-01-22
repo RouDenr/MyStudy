@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:58 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/16 22:07:09 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/23 02:30:34 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	do_rotate(t_data *data, t_stack *stack)
 	}
 	else
 	{
-		rr(&(data->a), &(data->a));
+		rr(&(data->a), &(data->b));
 		do_com(data, "rr");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:31:23 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:47:38 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/23 02:07:18 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_stack	*new_stack(int n, size_t i);
 t_stack	*ft_stclast(t_stack *lst);
 t_stack	*middle_steck(t_stack *stack);
 t_stack	*middle_index_steck(t_stack *stack);
+t_stack	*node_which_min_com(t_data *data, int *to_rotate);
+t_stack	*node_after_from_a(t_stack *a, t_stack *node);
 t_stack	*ft_stack_index(t_stack *stack, int index);
 t_stack	*ft_stack_which_min_index(t_stack *stack);
 t_stack	*ft_stack_which_max_index(t_stack *stack);
