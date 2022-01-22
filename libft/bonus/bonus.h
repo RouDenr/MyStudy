@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math.c                                          :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 23:24:55 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:40:15 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/21 23:33:51 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/22 23:29:36 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_abs(int n)
-{
-	if (n > 0)
-		return (n);
-	else
-		return (-n);
-}
+#ifndef BONUS_H
+# define BONUS_H
 
-int	ft_max(int a, int b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
-}
+int		ft_abs(int n);
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+void	ft_put_err(char *str);
 
-int	ft_min(int a, int b)
-{
-	if (a <= b)
-		return (a);
-	else
-		return (b);
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 19:50:29 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 06:27:05 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:50:22 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,6 @@ int	check_resort_stack(t_stack *stack)
 		if (tmp->n < tmp->next->n)
 			return (0);
 		tmp = tmp->next;
-	}
-	return (1);
-}
-
-int	end_sort(t_stack *stack)
-{
-	stack = ft_stack_which_index(stack, 1);
-	if (!stack)
-		return (0);
-	while (stack->next)
-	{
-		if (stack->index != stack->next->index - 1)
-			return (0);
-		stack = stack->next;
 	}
 	return (1);
 }
