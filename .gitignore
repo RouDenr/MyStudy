@@ -5,3 +5,5 @@
 *test*
 */.DS_Store
 push_swap/.git
+!test*sh
+!test*py

@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/21 21:31:10 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:39:24 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,12 @@ void	init_a(t_data *data, char **argv)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	// t_stack	*a;
 
 	if (argc == 1)
 		return (0);
 	data.a = NULL;
 	data.b = NULL;
 	data.count_oper = 0;
-	// read(0, NULL, 1);
 	init_a(&data, argv);
 	check_num_in_args(argv);
 	// print_stacks(&data);

@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:31:23 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 06:27:24 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:47:38 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ t_stack	*new_stack(int n, size_t i);
 t_stack	*ft_stclast(t_stack *lst);
 t_stack	*middle_steck(t_stack *stack);
 t_stack	*middle_index_steck(t_stack *stack);
-t_stack	*ft_stack_which_index(t_stack *stack, int index);
+t_stack	*ft_stack_index(t_stack *stack, int index);
 t_stack	*ft_stack_which_min_index(t_stack *stack);
 t_stack	*ft_stack_which_max_index(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
 void	ft_stackadd_back(t_stack **lst, t_stack *newl);
-void	ft_push_to_top(t_data *data, t_stack *stack, t_stack *n);
+void	ft_push_top(t_data *data, t_stack *stack, t_stack *n);
 void	print_stacks(t_data *data);
 void	sort_index(t_stack *stack);
 void	sorting(t_data *data);

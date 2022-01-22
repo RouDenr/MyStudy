@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 18:18:03 by decordel          #+#    #+#              #
-#    Updated: 2022/01/21 21:45:10 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/22 23:37:58 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,5 +76,9 @@ leaks	:
 debug	:
 	make all
 	lldb -- ./push_swap ${ARGS}
+
+norm	:
+	norminette | grep Er
+	
 #! debug ---------------------------------
-.PHONY	: all clean fclean re git lib debug
+.PHONY	: all clean fclean re git do sh leaks debug
