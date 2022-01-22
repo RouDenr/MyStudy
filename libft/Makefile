@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 10:40:48 by decordel          #+#    #+#              #
-#    Updated: 2021/12/14 17:47:40 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/23 00:04:41 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS	=	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 				printf/sources/ft_c_type.c\
 				printf/sources/ft_d_type.c\
 				printf/sources/ft_p_type.c
+			bonus/ft_error.c bonus/ft_math.c
 
 OBJS	=	${SRCS:%.c=%.o}
 
