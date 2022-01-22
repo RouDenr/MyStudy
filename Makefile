@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/01/22 23:56:51 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/23 00:18:06 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,4 +78,17 @@ norm	:
 	norminette | grep Er
 
 #! debug ---------------------------------
+
+URL = ""
+
+#git clone ${URL} ${NAME}
+
+start_project	:
+	mkdir ${NAME}
+	cp -r libft ${NAME}/
+	cp Makefile ${NAME}/
+	cp .gitignore ${NAME}
+	mkdir ${NAME}/inc
+	mkdir ${NAME}/src
+
 .PHONY	: all clean fclean re git do sh leaks debug norm
