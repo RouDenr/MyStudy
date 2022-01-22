@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:27:22 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 06:01:55 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:47:38 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ t_stack	*middle_index_steck(t_stack *stack)
 
 	i = ft_stack_which_min_index(stack)->index;
 	j = ft_stack_which_max_index(stack)->index;
-	size = ft_stccount(stack) / 2  + 1;
-	tmp = ft_stack_which_index(stack, i);
+	size = ft_stccount(stack) / 2 + 1;
+	tmp = ft_stack_index(stack, i);
 	while (size)
 	{
-		tmp = ft_stack_which_index(stack, ++i);
+		tmp = ft_stack_index(stack, ++i);
 		if (tmp)
 			size--;
 	}
 	return (tmp);
 }
 
-t_stack	*ft_stack_which_index(t_stack *stack, int index)
+t_stack	*ft_stack_index(t_stack *stack, int index)
 {
 	while (stack && stack->index != index)
 		stack = stack->next;

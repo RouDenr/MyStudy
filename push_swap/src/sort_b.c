@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 06:13:21 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 06:27:27 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:47:17 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	sort_less_five_b(t_data *data, int n)
 		else if (count == 3)
 			sort_three_b(data, data->b);
 		else
-			ft_push_to_top(data, data->b, ft_stack_which_max_index(data->b));
+			ft_push_top(data, data->b, ft_stack_which_max_index(data->b));
 	}
 	while (data->b)
 	{
 		do_push(data, data->a);
 	}
-	while (n-- )
+	while (n--)
 		if (!check_sort_data(data))
 			do_rotate(data, data->a);
 }
