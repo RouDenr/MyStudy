@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:52 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:48:18 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/23 02:30:43 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	do_reverse(t_data *data, t_stack *stack)
 	}
 	else
 	{
-		rrr(&(data->a), &(data->a));
+		rrr(&(data->a), &(data->b));
 		do_com(data, "rrr");
 	}
 }
