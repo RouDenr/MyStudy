@@ -4,6 +4,6 @@
 *.out
 *test*
 */.DS_Store
-*/.git
+push_swap/.git
 !test*sh
 !test*py
