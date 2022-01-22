@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 22:47:05 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/21 22:41:30 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:48:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ void	sorting(t_data *data)
 			do_rotate(data, data->a);
 		count = ft_stccount(data->a);
 	}
-	
 }

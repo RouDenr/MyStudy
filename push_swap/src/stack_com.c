@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:57:30 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/20 03:17:26 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:47:17 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_stackclear(t_stack **stack)
 	*stack = NULL;
 }
 
-void	ft_push_to_top(t_data *data, t_stack *stack, t_stack *n)
+void	ft_push_top(t_data *data, t_stack *stack, t_stack *n)
 {
 	if (is_first_part_stack(stack, n))
 		rotate_to_top(data, stack, n);

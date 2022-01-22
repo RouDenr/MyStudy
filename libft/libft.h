@@ -6,15 +6,18 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:53:24 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:56:58 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:26:27 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define RED_ERR "\033[1;31m"
+# define DEF "\033[0;0m"
 # include <stdlib.h>
 # include "get_next_line.h"
 # include "printf/includes/ft_printf.h"
+# include "bonus/bonus.h"
 
 typedef struct s_list
 {
