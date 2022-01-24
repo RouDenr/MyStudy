@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 19:50:29 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:50:22 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:23:01 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,25 @@ int	check_sort_stack(t_stack *stack)
 	return (1);
 }
 
-int	check_resort_stack(t_stack *stack)
+t_stack	*node_after_from_a(t_stack *a, t_stack *node)
 {
-	t_stack	*tmp;
+	t_stack	*max;
 
-	tmp = stack;
-	while (tmp && tmp->next)
+	max = a;
+	while (a)
 	{
-		if (tmp->n < tmp->next->n)
-			return (0);
-		tmp = tmp->next;
+		if (a->index > node->index)
+		{
+			max = a;
+			break ;
+		}
+		a = a->next;
 	}
-	return (1);
+	while (a)
+	{
+		if (a->index > node->index && a->index < max->index)
+			max = a;
+		a = a->next;
+	}
+	return (max);
 }
