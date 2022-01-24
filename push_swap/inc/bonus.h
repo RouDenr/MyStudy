@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 23:16:40 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/24 21:29:39 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/24 21:44:24 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/24 21:45:45 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef BONUS_H
+# define BONUS_H
+# include "push_swap.h"
 
-void	ft_put_err(char *str)
-{
-	ft_putendl_fd(str, 2);
-	exit(1);
-}
+void	read_gnl(t_data *data);
+
+#endif

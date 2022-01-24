@@ -6,18 +6,26 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 18:18:03 by decordel          #+#    #+#              #
-#    Updated: 2022/01/23 02:57:33 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/24 21:55:27 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
+NAME_B	= checker
+
 SRCS	= main.c\
 			src/stack_com.c		src/stack_info.c	src/get_note.c	src/valid.c\
 			src/push.c			src/swap.c			src/rotate.c	src/reverse.c\
-			src/sort.c			src/sort_a.c	src/sort_b.c		src/node_info.c
+			src/sort.c			src/sort_a.c		src/node_info.c
+
+SRCS_B	= bonus/main_bonus.c	bonus/do_com_bonus.c\
+			src/stack_com.c		src/stack_info.c	src/get_note.c	src/valid.c\
+			src/push.c			src/swap.c			src/rotate.c	src/reverse.c\
+			src/sort.c			src/sort_a.c		src/node_info.c
 
 OBJS	= ${SRCS:.c=.o}
+OBJS_B	= ${SRCS_B:.c=.o}
 
 INCS		= inc/push_swap.h
 
@@ -32,6 +40,11 @@ all		: ${NAME}
 
 ${NAME}	: ${INCS} ${OBJS} ${LIB}
 	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
+
+bonus	: ${NAME_B}
+
+${NAME_B}	: ${INCS} ${OBJS_B} ${LIB}
+	${CC} ${FLAGS} ${LFLAGS} ${OBJS_B} -o ${NAME_B}
 
 %.o		: %.c ${INCS}
 	${CC} ${FLAGS} -c $< -o $@
@@ -48,13 +61,13 @@ fclean	: clean
 	@make fclean -C libft/
 
 re		: fclean all
-
 #! debug ---------------------------------
+
 MESS	= fix
 
-ARGS	= 31 11 8 5 37 47 7 14 10 23 22 45 20 26 43 46 32 41 24 3 44 38 25 6 0 19 1 18 48 9 36 17 49 28 16 42 39 34 15 13 2 12 33 35 4 30 40 27 29 21
+ARGS	= 10 3 41 15 40 43 8 24 34 5 7 33 42 16 49 23 38 45 32 29 30 27 9 26 14 4 37 46 44 6 13 48 25 47 22 35 12 11 21 39 2 0 17 19 18 1 28 31 20 36
 
-N		= 500 10
+S	= 100 1000
 
 git		:
 	git add .
@@ -63,22 +76,23 @@ git		:
 
 do		:
 	make all
-	./push_swap ${ARGS}
+	./${NAME} ${ARGS}
 
 sh		:
 	make all
-	./test.sh ${N}
+	./test.sh ${S}
 
 leaks	:
 	make all
-	leaks -atExit -- ./push_swap ${ARGS}
+	leaks -atExit -- ./${NAME} ${ARGS}
 
 debug	:
 	make all
-	lldb -- ./push_swap ${ARGS}
+	lldb -- ./${NAME} ${ARGS}
 
 norm	:
 	norminette | grep Er
 
 #! debug ---------------------------------
-.PHONY	: all clean fclean re git do sh leaks debug
+
+.PHONY	: all clean fclean re

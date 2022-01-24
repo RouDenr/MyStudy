@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:52 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/23 02:30:43 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:57:23 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	reverse(t_stack **stack)
 	t_stack	*head;
 	t_stack	*last;
 
+	if (!*stack)
+		return ;
 	head = *stack;
 	last = head;
 	while (last->next->next)

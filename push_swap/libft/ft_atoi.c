@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 11:44:33 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/14 21:29:26 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:31:13 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	ft_atoi(const char *str)
 	{
 		n = (n * 10) + (str[i++] - '0');
 		if (n * sign > 2147483647)
-			ft_put_err("Error\n some arguments are bigger than an integer");
+			ft_put_err("Error");
 		if (n * sign < -2147483648)
-			ft_put_err("Error\n some arguments are lower than an integer");
+			ft_put_err("Error");
 	}
 	return (n * sign);
 }

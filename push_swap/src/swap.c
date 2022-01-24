@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:32:01 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 21:50:11 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:58:30 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap(t_stack **stack)
 {
 	t_stack	*head;
 
+	if (!*stack)
+		return ;
 	head = *stack;
 	*stack = head->next;
 	head->next = (*stack)->next;
