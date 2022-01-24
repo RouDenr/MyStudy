@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:31:55 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/15 21:49:48 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:58:15 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	push(t_stack **in, t_stack **out)
 {
 	t_stack	*tmp;
 
+	if (!*in)
+		return ;
 	tmp = *in;
 	*in = tmp->next;
 	if (*out == NULL)

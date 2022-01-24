@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/24 22:10:44 by decordel         ###   ########.fr       */
+/*   Created: 2022/01/24 21:27:59 by decordel          #+#    #+#             */
+/*   Updated: 2022/01/24 22:16:32 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../inc/push_swap.h"
+#include "../inc/bonus.h"
 
 static void	print_content(t_stack *stack)
 {
@@ -23,7 +24,7 @@ static void	print_content(t_stack *stack)
 
 void	do_com(t_data *data, char *com)
 {
-	ft_putendl_fd(com, 1);
+	(void) com;
 	data->count_oper++;
 	// print_stacks(data);
 }
@@ -94,10 +95,7 @@ int	main(int argc, char **argv)
 	check_num_in_args(argv);
 	if (find_dup(data.a))
 		ft_put_err("Error");
-	if (ft_stccount(data.a) <= 5)
-		sort_less_five_a(&data);
-	else
-		sorting(&data);
+	read_gnl(&data);
 	ft_stackclear(&(data.a));
 	ft_stackclear(&(data.b));
 	return (0);
