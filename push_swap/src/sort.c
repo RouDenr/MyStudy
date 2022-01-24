@@ -6,19 +6,17 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 22:47:05 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/23 02:57:16 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:20:23 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void rotate_sort(t_data *data, t_stack *node_b)
+void	rotate_sort(t_data *data, t_stack *node_b)
 {
 	t_stack	*node_a;
 
 	node_a = node_after_from_a(data->a, node_b);
-	// ft_printf("%d - a %d - b\n", node_a->index, node_b->index);
-	// print_stacks(data);
 	while (node_b != data->b || node_a != data->a)
 	{
 		if (node_b != data->b && node_a != data->a)
@@ -31,11 +29,10 @@ void rotate_sort(t_data *data, t_stack *node_b)
 	do_push(data, data->a);
 }
 
-void reverse_sort(t_data *data, t_stack *node_b)
+void	reverse_sort(t_data *data, t_stack *node_b)
 {
 	t_stack	*node_a;
 
-	// print_stacks(data);
 	node_a = node_after_from_a(data->a, node_b);
 	while (node_b != data->b || node_a != data->a)
 	{
@@ -49,30 +46,50 @@ void reverse_sort(t_data *data, t_stack *node_b)
 	do_push(data, data->a);
 }
 
+void	mix_sort(t_data *data, t_stack *node_b, t_sort *rotate)
+{
+	t_stack	*node_a;
+
+	node_a = node_after_from_a(data->a, node_b);
+	if (rotate->a)
+		while (node_a != data->a)
+			do_rotate(data, data->a);
+	else
+		while (node_a != data->a)
+			do_reverse(data, data->a);
+	if (rotate->b)
+		while (node_b != data->b)
+			do_rotate(data, data->b);
+	else
+		while (node_b != data->b)
+			do_reverse(data, data->b);
+	do_push(data, data->a);
+}
+
 void	sort_min_com(t_data *data)
 {
 	t_stack	*node;
-	int		to_rotate;
+	t_sort	rotate;
 
-	to_rotate = 1;
+	rotate.a = 0;
+	rotate.b = 0;
 	while (data->b)
 	{
-		// print_stacks(data);
-		node = node_which_min_com(data, &to_rotate);
-		if (to_rotate)
+		node = node_which_min_com(data, &rotate);
+		if (rotate.a && rotate.b)
 			rotate_sort(data, node);
-		else
+		else if (!rotate.a && !rotate.b)
 			reverse_sort(data, node);
+		else
+			mix_sort(data, node, &rotate);
 	}
 	node = ft_stack_index(data->a, 1);
-	while (!check_sort_data(data))
-	{
-		// print_stacks(data);
-		if (!is_first_part_stack(data->a, node))
+	if (!is_first_part_stack(data->a, node))
+		while (!check_sort_data(data))
 			do_reverse(data, data->a);
-		else
+	else
+		while (!check_sort_data(data))
 			do_rotate(data, data->a);
-	}
 }
 
 void	sorting(t_data *data)
@@ -82,19 +99,16 @@ void	sorting(t_data *data)
 	t_stack	*mid;
 	int		count;
 
+	count = ft_stccount(data->a);
 	min = ft_stack_which_min_index(data->a);
 	max = ft_stack_which_max_index(data->a);
 	mid = middle_index_steck(data->a);
-	// print_stacks(data);
-	count = ft_stccount(data->a);
-	if (count <= 5)
-		sort_less_five_a(data, count);
 	while (count != 2)
 	{
 		if (data->a != min && data->a != max)
 		{
 			do_push(data, data->b);
-			if (data->b->index < mid->index)
+			if (data->b->index > mid->index)
 				do_rotate(data, data->b);
 		}
 		else

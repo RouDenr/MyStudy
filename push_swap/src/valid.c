@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 19:54:19 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:47:38 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:31:33 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_num_in_args(char **argv)
 		while (**argv)
 		{
 			if (!ft_isdigit(**argv) && **argv != ' ' && **argv != '-')
-				ft_put_err("Error\nnot int in args");
+				ft_put_err("Error");
 			(*argv)++;
 		}
 		argv++;
