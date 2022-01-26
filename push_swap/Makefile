@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 18:18:03 by decordel          #+#    #+#              #
-#    Updated: 2022/01/24 21:55:27 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/25 13:52:28 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIB		= libft/libft.a
 
 CC		= gcc
 
-FLAGS	= -g -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 LFLAGS	= -L libft/ -lft
 
 all		: ${NAME}
@@ -61,38 +61,5 @@ fclean	: clean
 	@make fclean -C libft/
 
 re		: fclean all
-#! debug ---------------------------------
-
-MESS	= fix
-
-ARGS	= 10 3 41 15 40 43 8 24 34 5 7 33 42 16 49 23 38 45 32 29 30 27 9 26 14 4 37 46 44 6 13 48 25 47 22 35 12 11 21 39 2 0 17 19 18 1 28 31 20 36
-
-S	= 100 1000
-
-git		:
-	git add .
-	git commit -m "${MESS}"
-	git push
-
-do		:
-	make all
-	./${NAME} ${ARGS}
-
-sh		:
-	make all
-	./test.sh ${S}
-
-leaks	:
-	make all
-	leaks -atExit -- ./${NAME} ${ARGS}
-
-debug	:
-	make all
-	lldb -- ./${NAME} ${ARGS}
-
-norm	:
-	norminette | grep Er
-
-#! debug ---------------------------------
 
 .PHONY	: all clean fclean re

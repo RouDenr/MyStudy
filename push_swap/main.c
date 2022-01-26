@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:44:18 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/24 22:10:44 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/25 13:27:47 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	do_com(t_data *data, char *com)
 {
 	ft_putendl_fd(com, 1);
 	data->count_oper++;
-	// print_stacks(data);
 }
 
 void	print_stacks(t_data *data)
@@ -94,10 +93,13 @@ int	main(int argc, char **argv)
 	check_num_in_args(argv);
 	if (find_dup(data.a))
 		ft_put_err("Error");
-	if (ft_stccount(data.a) <= 5)
-		sort_less_five_a(&data);
-	else
-		sorting(&data);
+	if (!check_sort_data(&data))
+	{
+		if (ft_stccount(data.a) <= 5)
+			sort_less_five_a(&data);
+		else
+			sorting(&data);
+	}
 	ft_stackclear(&(data.a));
 	ft_stackclear(&(data.b));
 	return (0);
