@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:42:56 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/24 22:16:29 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:47:00 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	read_gnl(t_data *data)
 		free(str);
 		str = get_next_line(0);
 	}
-	// print_stacks(data);
 	if (check_sort_data(data))
 		ft_putendl_fd("OK", 1);
 	else
