@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:27:59 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/24 22:16:32 by decordel         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:46:52 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	do_com(t_data *data, char *com)
 {
 	(void) com;
 	data->count_oper++;
-	// print_stacks(data);
 }
 
 void	print_stacks(t_data *data)
