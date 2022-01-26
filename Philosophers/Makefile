@@ -6,11 +6,11 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/01/26 16:17:23 by decordel         ###   ########.fr        #
+#    Updated: 2022/01/26 16:20:17 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= a.out
+NAME	= philosophers
 
 SRCS		=	main.c\
 					src/${NAME}.c
@@ -78,18 +78,5 @@ norm	:
 	norminette | grep Er
 
 #! debug ---------------------------------
-
-URL = ""
-
-start_project	:
-	git clone ${URL} ${NAME}
-	cp -r libft ${NAME}/
-	cp Makefile ${NAME}/
-	cp .gitignore ${NAME}
-	mkdir ${NAME}/inc
-	mkdir ${NAME}/src
-	touch ${NAME}/main.c
-	touch ${NAME}/inc/${NAME}.h
-	touch ${NAME}/src/${NAME}.c
 
 .PHONY	: all clean fclean re git do sh leaks debug norm
