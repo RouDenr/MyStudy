@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:30:08 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/29 14:36:09 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:29:19 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ t_philo_info	*get_philo(t_data *data, t_philo *philo)
 t_philo	*new_philo(void)
 {
 	t_philo		*new;
+	static int	n = 1;
 
 	new = (t_philo *)malloc(sizeof (t_philo));
 	if (!new)
 		return (NULL);
+	new->n_p = n++;
 	new->fork_free = 1;
 	new->time_eat = 0;
 	new->time_die = 0;
