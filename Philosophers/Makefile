@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/02/03 01:35:03 by decordel         ###   ########.fr        #
+#    Updated: 2022/02/03 02:33:22 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= 5 50 30 50 5
+ARGS	= 5 5000 3000 5000 5
 
 git		:
 	git add .

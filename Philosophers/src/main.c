@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:27:42 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/03 02:15:25 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:31:52 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	philo_init(t_data *data)
 			}
 		philo = philo->next;
 	}
+	return (1);
 }
 
 int	philo_join(t_data *data)
@@ -62,6 +63,7 @@ int	philo_join(t_data *data)
 			}
 		philo = philo->next;
 	}
+	return (1);
 }
 
 int	main(int argc, const char **argv)
@@ -69,11 +71,13 @@ int	main(int argc, const char **argv)
 	t_data	data;
 
 	if (!valid(argc, argv))
-		return (0);
+		return (1);
 	data_init(&data, argv);
-	philo_init(&data);
+	if (!philo_init(&data))
+		return (2);
 	// print_philos(&data);
-	philo_join(&data);
+	if (!philo_join(&data))
+		return (3);
 	ft_philoclear(&(data.first_philo));
 	return (0);
 }
