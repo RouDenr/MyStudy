@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/29 15:02:26 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:18:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	take_forks(t_data *data, t_philo *philo)
 			print_philos(data);
 			pthread_mutex_unlock(&(data->mutex));
 			usleep(data->n_time_eat * 1000);
+			printf("philo sleep...\n");
+			usleep(data->n_time_sleep * 1000);
 			philo->fork_free = 1;
 			philo->next->fork_free = 1;
 		}
@@ -43,6 +45,8 @@ int	take_forks(t_data *data, t_philo *philo)
 			print_philos(data);
 			pthread_mutex_unlock(&(data->mutex));
 			usleep(data->n_time_eat * 1000);
+			printf("philo sleep...\n");
+			usleep(data->n_time_sleep * 1000);
 			philo->fork_free = 1;
 			data->first_philo->fork_free = 1;
 		}
@@ -59,7 +63,6 @@ void	*born_philo(void *tmp)
 	data = ((t_philo_info *)tmp)->data;
 	philo = ((t_philo_info *)tmp)->philo;
 	free(tmp);
-	// printf("Hello philo! %p\n", philo);
 	while (1)
 	{
 		if (forks_free(data, philo))
