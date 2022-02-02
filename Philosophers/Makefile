@@ -6,44 +6,45 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/01/26 16:20:17 by decordel         ###   ########.fr        #
+#    Updated: 2022/02/03 01:35:03 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= philosophers
+NAME	= philo
 
-SRCS		=	main.c\
-					src/${NAME}.c
+S		= src/
+O		= obj/
 
-OBJS		= ${SRCS:%.c=%.o}
+SRCS		=	$Smain.c\
+					$S${NAME}.c	$S${NAME}_activity.c\
+					$Sft_atoi.c	$Svalid.c		$Sdebug.c
+
+OBJS		= ${SRCS:$S%.c=$O%.o}
 
 INCS		= inc/${NAME}.h
 
-LIBFT		= libft/libft.a
-
 CC		= gcc
 
-FLAGS	= -g -Wall -Wextra -Werror
-LFLAGS	= -L libft/ -lft
+FLAGS	= -g -Wall -Wextra
+#-Werror
 
 all		: ${NAME}
 
-${NAME}	: ${INCS} ${OBJS} ${LIB}
-	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
+${NAME}	: ${INCS} ${O} ${OBJS}
+	${CC} -lpthread ${FLAGS} ${OBJS} -o ${NAME}
 
-%.o		: %.c ${INCS}
+${O}	:
+	mkdir obj
+
+$O%.o		: $S%.c ${INCS}
 	${CC} ${FLAGS} -c $< -o $@
 
-${LIB}	:
-	@make all -C libft/
-
 clean	:
-	@rm -rf ${OBJS}
-	@make clean -C libft/
+	@rm -rf ${O}
 
-fclean	: clean
+fclean	:
 	rm -rf ${NAME}
-	@make fclean -C libft/
+	rm -rf ${O}
 
 re		: fclean all
 
@@ -51,7 +52,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= ""
+ARGS	= 5 50 30 50 5
 
 git		:
 	git add .

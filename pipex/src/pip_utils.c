@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:44:39 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/06 16:13:12 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/02 00:44:07 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,12 @@ void	read_gnl(char *lim, t_pip pip)
 	str = get_next_line(0);
 	while (str)
 	{
-		if (!ft_strncmp(lim, str, ft_strlen(lim) + 1))
+		if (!ft_strncmp(lim, str, ft_strlen(lim)))
 			exit(0);
 		ft_putstr_fd(str, pip.fd[1]);
 		free(str);
 		ft_putstr_fd("heredoc> ", 1);
 		str = get_next_line(0);
 	}
+	exit(0);
 }
