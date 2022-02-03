@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:27:42 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/03 22:10:16 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/04 00:27:58 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	data_init(t_data *data, const char **argv)
 
 	pthread_mutex_init(&(data->mutex), NULL);
 	data->num_philo = ft_atoi(argv[1]);
-	data->n_time_eat = ft_atoi(argv[2]);
-	data->n_time_die = ft_atoi(argv[3]);
+	data->n_time_die = ft_atoi(argv[2]);
+	data->n_time_eat = ft_atoi(argv[3]);
 	data->n_time_sleep = ft_atoi(argv[4]);
 	if (argv[5])
 		data->n_num_philo_eat = ft_atoi(argv[5]);
@@ -90,5 +90,6 @@ int	main(int argc, const char **argv)
 	if (!philo_join(&data))
 		return (3);
 	ft_philoclear(&(data.first_philo));
+	pthread_mutex_destroy(&(data.mutex));
 	return (0);
 }
