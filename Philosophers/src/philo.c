@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:30:08 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/03 02:29:19 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/03 21:00:07 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ t_philo	*new_philo(void)
 		return (NULL);
 	new->n_p = n++;
 	new->fork_free = 1;
-	new->time_eat = 0;
+	new->count_eat = 0;
 	new->time_die = 0;
-	new->time_sleep = 0;
 	new->next = NULL;
 	return (new);
 }
