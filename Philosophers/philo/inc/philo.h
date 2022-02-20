@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:20:37 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/03 21:46:57 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:09:38 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ typedef struct s_philo
 {
 	pthread_t		tid;
 	int				n_p;
+	pthread_mutex_t	mutex;
 	int				fork_free;
 	int				count_eat;
-	int				time_die;
+	int				last_eat;
 	struct s_philo	*next;
 
 }					t_philo;
