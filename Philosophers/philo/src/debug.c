@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 20:46:26 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/28 20:58:11 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:09:38 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_philos(t_data *data)
 	while (tmp)
 	{
 		printf("|\033[1;34m%d\033[1;32m\t|\033[1;31m%d\033[1;32m\t|\n",
-			tmp->fork_free, tmp->time_die);
+			tmp->fork_free, tmp->last_eat);
 		if (tmp)
 			tmp = tmp->next;
 	}
