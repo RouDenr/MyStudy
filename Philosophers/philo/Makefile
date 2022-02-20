@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/02/04 00:53:33 by decordel         ###   ########.fr        #
+#    Updated: 2022/02/20 21:20:46 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ INCS		= inc/${NAME}.h
 
 CC		= gcc
 
-FLAGS	= -g -Wall -Wextra
-#-Werror
+FLAGS	= -g -Wall -Wextra -Werror
 
 all		: ${NAME}
 
@@ -53,7 +52,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= 6 700 300 250 5
+ARGS	= 21 500 100 100 3
 
 git		:
 	git add .
@@ -63,6 +62,10 @@ git		:
 do		:
 	make all
 	./${NAME} ${ARGS}
+
+time	:
+	make all
+	time ./${NAME} ${ARGS}
 
 sh		:
 	make all
