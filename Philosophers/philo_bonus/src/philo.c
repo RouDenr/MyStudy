@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:30:08 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:28:39 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 01:00:22 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_philo	*new_philo(void)
 	new->count_eat = 0;
 	new->last_eat = 0;
 	new->fork_free = 1;
-	pthread_mutex_init(&(new->fork), NULL);
 	new->next = NULL;
 	return (new);
 }
@@ -73,7 +72,6 @@ void	ft_philoclear(t_philo **stack)
 		while (head)
 		{
 			next = head->next;
-			pthread_mutex_destroy(&(head->fork));
 			free(head);
 			head = next;
 		}
