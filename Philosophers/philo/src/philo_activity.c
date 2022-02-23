@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/20 21:21:54 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:53:23 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	take_forks(t_data *data, t_philo *philo, t_philo *philo_r)
 	{
 		philo->fork_free = 1;
 		pthread_mutex_unlock(&(philo->mutex));
-		// pthread_mutex_unlock(&(data->mutex));
+		pthread_mutex_unlock(&(data->mutex));
 	}
 	return (0);
 }
