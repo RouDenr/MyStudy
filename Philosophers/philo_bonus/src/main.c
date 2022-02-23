@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:27:42 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:28:27 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 01:13:35 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ int	philo_init(t_data *data)
 	philo = data->first_philo;
 	while (philo)
 	{
-		usleep(100);
-		if (pthread_create(&(philo->tid), NULL, &born_philo,
-				get_philo(data, philo)) != 0)
-		{
-			printf("Pthread create error");
-			return (0);
-		}
+		philo->pid = fork();
+		if (philo->pid)
+			born_philo(data, philo);
+		else if (philo->pid < 0)
+			ft_put_err("Fork err");
 		philo = philo->next;
 	}
 	if (pthread_create(&(data->tid), NULL, &monitoring,
