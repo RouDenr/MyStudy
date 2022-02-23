@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/02/24 00:29:34 by decordel         ###   ########.fr        #
+#    Updated: 2022/02/24 01:14:57 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ O		= obj/
 
 SRCS		=	$Smain.c\
 					$Sphilo.c	$Sphilo_activity.c\
-					$Sft_atoi.c	$Svalid.c\
+					$Sft_atoi.c	$Svalid.c	$Sft_error.c\
 					$Stime.c	$Smonitoring.c
 
 OBJS		= ${SRCS:$S%.c=$O%.o}
