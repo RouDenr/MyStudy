@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:08:04 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/23 22:58:09 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:22:36 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	all_philo_ate(t_data *data)
 	philo = data->first_philo;
 	while (philo)
 	{
-		if (philo->count_eat < data->n_num_philo_eat || data->n_num_philo_eat < 0)
+		if (philo->count_eat < data->n_num_philo_eat
+			|| data->n_num_philo_eat < 0)
 			return (0);
 		philo = philo->next;
 	}
@@ -71,6 +72,7 @@ void	*monitoring(void *tmp)
 	t_data	*data;
 
 	data = (t_data *)tmp;
+	data->n_time_sleep--;
 	while (!all_philo_ate(data) && all_philo_alive(data))
 		;
 	return (data);
