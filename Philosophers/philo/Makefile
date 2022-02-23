@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/02/22 18:12:58 by decordel         ###   ########.fr        #
+#    Updated: 2022/02/23 23:28:19 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ O		= obj/
 
 SRCS		=	$Smain.c\
 					$S${NAME}.c	$S${NAME}_activity.c\
-					$Sft_atoi.c	$Svalid.c	$Sdebug.c\
+					$Sft_atoi.c	$Svalid.c\
 					$Stime.c	$Smonitoring.c
 
 OBJS		= ${SRCS:$S%.c=$O%.o}
@@ -52,7 +52,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= 4 410 200 100 10
+ARGS	= 4 410 200 200 7
 
 git		:
 	git add .
