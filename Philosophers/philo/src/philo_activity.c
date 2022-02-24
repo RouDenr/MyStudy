@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 17:05:38 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:06:31 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_mess(int n_philo, char *mess, t_data *data)
 {
 	if (data->n_num_philo_eat)
-		printf("%d %d%s", time_now(data), n_philo, mess);
+		printf("%llu %d%s", time_now(data), n_philo, mess);
 }
 
 void	philo_eat(t_data *data, t_philo *philo)

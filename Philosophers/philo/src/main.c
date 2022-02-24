@@ -6,13 +6,13 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:27:42 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 17:14:10 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:09:55 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	data_init(t_data *data, const char **argv)
+int	data_init(t_data *data, const char **argv)
 {
 	int	i;
 
@@ -23,12 +23,15 @@ void	data_init(t_data *data, const char **argv)
 	if (argv[5])
 		data->n_num_philo_eat = ft_atoi(argv[5]);
 	else
-		data->n_num_philo_eat = -1;
+		data->n_num_philo_eat = -5;
+	if (!data_valid(data))
+		return (0);
 	data->time = get_time();
 	data->first_philo = NULL;
 	i = 0;
 	while (i++ < data->num_philo)
 		ft_lstadd_back(&(data->first_philo), new_philo());
+	return (1);
 }
 
 int	philo_init(t_data *data)
@@ -38,7 +41,7 @@ int	philo_init(t_data *data)
 	philo = data->first_philo;
 	while (philo)
 	{
-		// usleep(100);
+		usleep(100);
 		if (pthread_create(&(philo->tid), NULL, &born_philo,
 				get_philo(data, philo)) != 0)
 		{
@@ -60,7 +63,6 @@ int	philo_join(t_data *data)
 {
 	if (pthread_join(data->tid, NULL) != 0)
 	{
-		printf("Pthread join error\n");
 		return (0);
 	}
 	return (1);
@@ -72,11 +74,12 @@ int	main(int argc, const char **argv)
 
 	if (!valid(argc, argv))
 		return (1);
-	data_init(&data, argv);
-	if (!philo_init(&data))
+	if (!data_init(&data, argv))
 		return (2);
-	if (!philo_join(&data))
+	if (!philo_init(&data))
 		return (3);
+	if (!philo_join(&data))
+		return (4);
 	ft_philoclear(&(data.first_philo));
 	return (0);
 }

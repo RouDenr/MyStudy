@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 01:27:42 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 01:13:35 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:30:47 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	data_init(t_data *data, const char **argv)
 		data->n_num_philo_eat = ft_atoi(argv[5]);
 	else
 		data->n_num_philo_eat = -1;
+	if (!data_valid(data))
+		ft_put_err("Not valid args");
 	data->time = get_time();
 	data->first_philo = NULL;
 	i = 0;
