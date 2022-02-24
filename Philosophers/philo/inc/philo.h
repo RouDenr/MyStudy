@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:20:37 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 16:58:34 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:07:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_philo_info
 }	t_philo_info;
 
 int						valid(int c, const char**v);
+int						data_valid(t_data *data);
 int						ft_atoi(const char *str);
 void					ft_putnbr_fd(int n, int fd);
 void					ft_putendl_fd(char *s, int fd);
@@ -58,7 +59,7 @@ void					ft_philoclear(t_philo **stack);
 t_philo_info			*get_philo(t_data *data, t_philo *philo);
 void					*born_philo(void *tmp);
 unsigned long long		get_time(void);
-int						time_now(t_data *data);
+unsigned long long		time_now(t_data *data);
 void					ft_usleep(unsigned long long time);
 void					*monitoring(void *tmp);
 int						philo_detach(t_data *data);

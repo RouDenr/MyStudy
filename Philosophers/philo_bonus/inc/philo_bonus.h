@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:20:37 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 01:12:02 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:29:45 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_philo_info
 }	t_philo_info;
 
 int						valid(int c, const char**v);
+int						data_valid(t_data *data);
 int						ft_atoi(const char *str);
 t_philo					*new_philo(void);
 void					ft_put_err(char *str);

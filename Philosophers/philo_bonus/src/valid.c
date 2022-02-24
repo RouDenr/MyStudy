@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:25:07 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:28:43 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:28:11 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ int	ft_isdigit(int c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
+}
+
+int	data_valid(t_data *data)
+{
+	(void) data;
+	if (data->num_philo == -1)
+		return (0);
+	if (data->n_time_die == -1)
+		return (0);
+	if (data->n_time_eat == -1)
+		return (0);
+	if (data->n_time_sleep== -1)
+		return (0);
+	if (data->n_num_philo_eat == -1)
+		return (0);
+	return (1);
 }
 
 int	valid(int c, const char **v)
