@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 20:26:34 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:08:12 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:05:45 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,18 @@ int	time_now(t_data *data)
 {
 	return (get_time() - data->time);
 }
+
+void	ft_usleep(unsigned long long time)
+{
+	unsigned long long start;
+
+	start = get_time();
+	while (time > get_time() - start)
+		usleep(100);
+}
+
+// int main(int argc, char const *argv[])
+// {
+// 	ft_usleep(10000);
+// 	return 0;
+// }
