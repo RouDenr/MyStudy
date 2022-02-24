@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:20:37 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:08:25 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:58:34 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_philo_info			*get_philo(t_data *data, t_philo *philo);
 void					*born_philo(void *tmp);
 unsigned long long		get_time(void);
 int						time_now(t_data *data);
+void					ft_usleep(unsigned long long time);
 void					*monitoring(void *tmp);
 int						philo_detach(t_data *data);
 
