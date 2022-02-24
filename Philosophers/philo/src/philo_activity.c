@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 00:08:06 by decordel         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:05:38 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	philo_eat(t_data *data, t_philo *philo)
 {
 	put_mess(philo->n_p, " is eating\n", data);
 	philo->last_eat = time_now(data);
-	usleep(data->n_time_eat * 1000);
+	ft_usleep(data->n_time_eat);
 	pthread_mutex_unlock(philo->fork_r);
 	pthread_mutex_unlock(&(philo->fork));
 	philo->count_eat++;
 	put_mess(philo->n_p, " is sleeping\n", data);
-	usleep(data->n_time_sleep * 1000);
+	ft_usleep(data->n_time_sleep);
 	put_mess(philo->n_p, " is thinking\n", data);
 }
 
