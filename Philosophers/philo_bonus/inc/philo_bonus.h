@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:20:37 by decordel          #+#    #+#             */
-/*   Updated: 2022/03/01 02:03:45 by decordel         ###   ########.fr       */
+/*   Updated: 2022/03/01 21:21:03 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 
 typedef struct s_philo
 {
-	int				n_p;
-	pid_t			pid;
-	pthread_t		tid;
-	int				fork_free;
-	int				count_eat;
-	int				last_eat;
-	struct s_philo	*next;
+	int					n_p;
+	pid_t				pid;
+	pthread_t			tid;
+	int					fork_free;
+	int					count_eat;
+	unsigned long long	last_eat;
+	struct s_philo		*next;
 
 }					t_philo;
 
@@ -45,9 +45,9 @@ typedef struct s_data
 	pthread_t				tid_die;
 	pthread_t				tid_ate;
 	int						num_philo;
-	int						n_time_eat;
-	int						n_time_die;
-	int						n_time_sleep;
+	long long				n_time_eat;
+	long long				n_time_die;
+	long long				n_time_sleep;
 	int						n_num_philo_eat;
 	unsigned long long		time;
 	t_fork					*sems;
