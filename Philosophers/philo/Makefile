@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/02/24 18:10:24 by decordel         ###   ########.fr        #
+#    Updated: 2022/03/02 15:56:15 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ INCS		= inc/${NAME}.h
 
 CC		= gcc
 
-FLAGS	= -g -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 
 all		: ${NAME}
 
@@ -67,10 +67,6 @@ time	:
 	make all
 	time ./${NAME} ${ARGS}
 
-sh		:
-	make all
-	./test.sh ${ARGS}
-
 leaks	:
 	make all
 	leaks -atExit -- ./${NAME} ${ARGS}
@@ -84,4 +80,4 @@ norm	:
 
 #! debug ---------------------------------
 
-.PHONY	: all clean fclean re git do sh leaks debug norm
+.PHONY	: all clean fclean re git do leaks debug norm time
