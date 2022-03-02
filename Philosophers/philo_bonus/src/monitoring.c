@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:08:04 by decordel          #+#    #+#             */
-/*   Updated: 2022/03/01 02:31:49 by decordel         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:50:45 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	kill_philos(t_data *data)
 		kill(philo->pid, SIGKILL);
 		philo = philo->next;
 	}
-
 }
 
 void	*die_monitoring(void *tmp)

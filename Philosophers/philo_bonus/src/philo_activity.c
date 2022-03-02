@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/03/01 21:51:24 by decordel         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:51:55 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	put_mess(int n_philo, char *mess, t_data *data)
 {
 	if (data->n_num_philo_eat)
-		printf("");
 		printf("%llu %d %s", time_now(data), n_philo, mess);
-		(void) n_philo;
-		(void) mess;
 }
 
 void	*die_this_monitoring(void *tmp)
@@ -33,6 +30,7 @@ void	*die_this_monitoring(void *tmp)
 		ft_usleep(10);
 	printf("\033[38;05;196m%llu %d IS DEAD\033[0m\n",
 		time_now(data), philo->n_p);
+	data->n_num_philo_eat = 0;
 	sem_post(data->sems->all_alive);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:25:07 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 18:28:11 by decordel         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:52:08 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	data_valid(t_data *data)
 		return (0);
 	if (data->n_time_eat == -1)
 		return (0);
-	if (data->n_time_sleep== -1)
+	if (data->n_time_sleep == -1)
 		return (0);
 	if (data->n_num_philo_eat == -1)
 		return (0);
