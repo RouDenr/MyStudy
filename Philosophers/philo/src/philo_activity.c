@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:22:16 by decordel          #+#    #+#             */
-/*   Updated: 2022/02/24 18:06:31 by decordel         ###   ########.fr       */
+/*   Updated: 2022/03/04 19:43:31 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ void	philo_eat(t_data *data, t_philo *philo)
 
 int	take_forks(t_data *data, t_philo *philo)
 {
+	// pthread_mutex_lock(&(data->mutex));
 	pthread_mutex_lock(&(philo->fork));
 	put_mess(philo->n_p, " has taken a fork\n", data);
 	pthread_mutex_lock(philo->fork_r);
 	put_mess(philo->n_p, " has taken a fork\n", data);
+	// pthread_mutex_unlock(&(data->mutex));
 	philo_eat(data, philo);
 	return (0);
 }
