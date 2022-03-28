@@ -1,9 +1,0 @@
-*.o
-*.a
-*.out
-*test*
-*cmake*
-.vs*
-.idea
-push_swap
-*.dSYM

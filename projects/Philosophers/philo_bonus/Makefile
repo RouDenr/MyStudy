@@ -6,44 +6,45 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/03/28 17:50:00 by decordel         ###   ########.fr        #
+#    Updated: 2022/03/04 23:44:08 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= a.out
+NAME	= philo_bonus
 
-SRCS		=	main.c\
-					src/${NAME}.c
+S		= src/
+O		= obj/
 
-OBJS		= ${SRCS:%.c=%.o}
+SRCS		=	$Smain.c\
+					$Sphilo.c	$Sphilo_activity.c $Sforks.c\
+					$Sft_atoi.c	$Svalid.c	$Sft_error.c\
+					$Stime.c	$Smonitoring.c
+
+OBJS		= ${SRCS:$S%.c=$O%.o}
 
 INCS		= inc/${NAME}.h
 
-LIBFT		= libft/libft.a
-
 CC		= gcc
 
-FLAGS	= -g -Wall -Wextra -Werror
-LFLAGS	= -L libft/ -lft
+FLAGS	= -Wall -Wextra -Werror
 
 all		: ${NAME}
 
-${NAME}	: ${INCS} ${OBJS} ${LIB}
-	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
+${NAME}	: ${INCS} ${O} ${OBJS}
+	${CC} -lpthread ${FLAGS} ${OBJS} -o ${NAME}
 
-%.o		: %.c ${INCS}
+${O}	:
+	mkdir obj
+
+$O%.o		: $S%.c ${INCS}
 	${CC} ${FLAGS} -c $< -o $@
 
-${LIB}	:
-	@make all -C libft/
-
 clean	:
-	@rm -rf ${OBJS}
-	@make clean -C libft/
+	@rm -rf ${O}
 
-fclean	: clean
+fclean	:
 	rm -rf ${NAME}
-	@make fclean -C libft/
+	rm -rf ${O}
 
 re		: fclean all
 
@@ -51,7 +52,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= ""
+ARGS	= 200 410 200 200
 
 git		:
 	git add .
@@ -62,9 +63,9 @@ do		:
 	make all
 	./${NAME} ${ARGS}
 
-sh		:
+time	:
 	make all
-	./test.sh ${ARGS}
+	time ./${NAME} ${ARGS}
 
 leaks	:
 	make all
@@ -79,19 +80,4 @@ norm	:
 
 #! debug ---------------------------------
 
-URL = ""
-
-FOLDER_NAME = projects/${NAME}
-
-start_project	:
-	git clone ${URL} ${FOLDER_NAME}
-	cp -r libft ${FOLDER_NAME}/
-	cp Makefile ${FOLDER_NAME}/
-	cp .gitignore ${FOLDER_NAME}
-	mkdir ${FOLDER_NAME}/inc
-	mkdir ${FOLDER_NAME}/src
-	touch ${FOLDER_NAME}/main.c
-	touch ${FOLDER_NAME}/inc/${NAME}.h
-	touch ${FOLDER_NAME}/src/${NAME}.c
-
-.PHONY	: all clean fclean re git do sh leaks debug norm
+.PHONY	: all clean fclean re git do leaks debug norm time
