@@ -3,7 +3,7 @@
 *.a
 *.out
 *test*
-*/.DS_Store
+*.DS_Store
 */.git
 !test*sh
 !test*py
