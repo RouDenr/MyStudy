@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 23:16:40 by decordel          #+#    #+#             */
-/*   Updated: 2022/04/03 21:38:22 by decordel         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:33:44 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	ft_put_err(char *str)
 {
-	ft_putstr_fd(RED_ERR, 2);
-	ft_putendl_fd(str, 2);
-	ft_putstr_fd(DEF, 2);
+	// ft_putstr_fd(RED_ERR, 2);
+	ft_putstr_fd("minishell: ", 1);
+	ft_putendl_fd(str, 1);
+	// ft_putstr_fd(DEF, 2);
 	exit(1);
 }
 
