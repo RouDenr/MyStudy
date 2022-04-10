@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:15:59 by decordel          #+#    #+#             */
-/*   Updated: 2022/04/04 19:34:52 by decordel         ###   ########.fr       */
+/*   Updated: 2022/04/10 22:22:59 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*path_command(char *cmd, char **envp)
 		path = ft_strjoin(paths[i], temp_cmp);
 		if (!path)
 			break ;
-		if (access(path, F_OK) == 0)
+		if (access(path, 0) == 0)
 		{
 			path_com_free(paths, temp_cmp);
 			return (path);
@@ -57,12 +57,22 @@ char	*path_command(char *cmd, char **envp)
 	return (NULL);
 }
 
-static void	cmd_do(char *str, char **envp)
+void	ft_exit(char *arg)
 {
-	char	**cmd;
+	int	i;
+
+	if (arg)
+		i = ft_atoi(arg);
+	else
+		i = 0;
+	printf("exit\n");
+	exit(i);
+}
+
+static void	cmd_do(char **cmd, char **envp)
+{
 	char	*path;
 
-	cmd = ft_split(str, ' ');
 	if (access(*cmd, F_OK) == 0)
 		path = *cmd;
 	else
@@ -79,11 +89,15 @@ void	ft_exec(char *str, char **envp)
 {
 	// int	pip_fd[2];
 	int	pid;
+	char	**cmd;
 
+	cmd = ft_split(str, ' ');
+	if (!ft_strncmp(*cmd, "exit",5))
+		ft_exit(cmd[1]);
 	pid = fork();
 	if (pid < 0)
 		ft_put_err("fork failed");
 	else if (!pid)
-		cmd_do(str, envp);
+		cmd_do(cmd, envp);
 	waitpid(pid, NULL, 0);
 }
