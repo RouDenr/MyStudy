@@ -7,4 +7,5 @@
 projects*/.git
 !test*sh
 !test*py
+minishell
 Tin
