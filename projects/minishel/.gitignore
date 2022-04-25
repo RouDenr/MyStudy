@@ -1,9 +1,0 @@
-.vscode
-minishell
-*.o
-*.a
-*.out
-*test*
-*.DS_Store
-!test*sh
-!test*py
