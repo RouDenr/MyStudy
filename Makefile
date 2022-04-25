@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/03/28 17:50:00 by decordel         ###   ########.fr        #
+#    Updated: 2022/04/03 21:21:45 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,8 +84,9 @@ URL = ""
 FOLDER_NAME = projects/${NAME}
 
 start_project	:
-	git clone ${URL} ${FOLDER_NAME}
-	cp -r libft ${FOLDER_NAME}/
+#git clone ${URL} ${FOLDER_NAME}
+	mkdir ${FOLDER_NAME}
+	cp -r projects/libft ${FOLDER_NAME}/
 	cp Makefile ${FOLDER_NAME}/
 	cp .gitignore ${FOLDER_NAME}
 	mkdir ${FOLDER_NAME}/inc

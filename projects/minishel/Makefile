@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/04/04 19:45:57 by decordel         ###   ########.fr        #
+#    Updated: 2022/04/19 19:54:26 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ NAME	= minishell
 S		= src/
 O		= obj/
 
-SRCS		=	$S${NAME}.c	$Spars.c $Sexe.c
+LIBFT	= libft/libft.a
+
+SRCS		=	$S${NAME}.c	$Spars.c $Sexe.c\
+				$Sft_cmd.c	$Sft_sig.c
 
 OBJS		= ${SRCS:$S%.c=$O%.o}
 
@@ -23,12 +26,12 @@ INCS		= inc/${NAME}.h
 
 CC		= gcc
 
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 LFLAGS		= -L libft/ -lft -lreadline -ltermcap -L/Users/${USER}/.brew/opt/readline/lib/
 
 all		: ${NAME}
 
-${NAME}	: ${INCS} ${O} ${OBJS}
+${NAME}	: ${INCS} ${LIBFT} ${O} ${OBJS}
 	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
 
 ${O}	:
@@ -37,12 +40,17 @@ ${O}	:
 $O%.o		: $S%.c ${INCS}
 	${CC} ${FLAGS} -c $< -o $@
 
+${LIBFT}	:
+	make -C libft/
+
 clean	:
 	@rm -rf ${O}
+	@make clean -C libft/
 
 fclean	:
 	rm -rf ${NAME}
 	rm -rf ${O}
+	@make fclean -C libft/
 
 re		: fclean all
 
@@ -65,10 +73,6 @@ do_unset		:
 	make all
 	unset PATH
 	./${NAME} ${ARGS}
-
-#sh		:
-#	make all
-#	./test.sh ${ARGS}
 
 leaks	:
 	make all
