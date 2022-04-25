@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:15:59 by decordel          #+#    #+#             */
-/*   Updated: 2022/04/10 22:22:59 by decordel         ###   ########.fr       */
+/*   Updated: 2022/04/10 22:37:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,13 @@ char	*path_command(char *cmd, char **envp)
 	return (NULL);
 }
 
-void	ft_exit(char *arg)
+int is_ft_cmd(char **cmd, char **envp)
 {
-	int	i;
-
-	if (arg)
-		i = ft_atoi(arg);
-	else
-		i = 0;
-	printf("exit\n");
-	exit(i);
+	if (!ft_strncmp(*cmd, "exit",5))
+		ft_exit(cmd[1]);
+	if (!ft_strncmp(*cmd, "env",4))
+		ft_env(envp);
+	return (0);
 }
 
 static void	cmd_do(char **cmd, char **envp)
@@ -92,8 +89,8 @@ void	ft_exec(char *str, char **envp)
 	char	**cmd;
 
 	cmd = ft_split(str, ' ');
-	if (!ft_strncmp(*cmd, "exit",5))
-		ft_exit(cmd[1]);
+	if (is_ft_cmd(cmd, envp))
+		return ;
 	pid = fork();
 	if (pid < 0)
 		ft_put_err("fork failed");
