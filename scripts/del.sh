@@ -2,7 +2,6 @@
 find ~/ -name ".DS_Store" -print -delete 2> /dev/null
 find ~/ -name "**.42_cache_bak**" -print -delete 2> /dev/null
 rm -rf ~/.zcompdump*
-rm -rf .Trash/*
 rm -rf ~/Library/Application\ Support/Slack/Service\ Worker/CacheStorage/
 rm -rf ~/Library/Caches/*
 rm -rf ~/Library/42_cache
@@ -38,5 +37,5 @@ rm -rf ~/Library/Application\ Support/Code/Service\ Worker/CacheStorage/
 rm -rf ~/Library/Application\ Support/Code/Service\ Worker/ScriptCache/
 rm -rf ~/Library/Application\ Support/Code/User/workspaceStorage/
 rm -rf ~/.Trash/
-#brew cleanup && echo "clean complete"
+brew cleanup && echo "clean complete"
 echo "clean complete"
