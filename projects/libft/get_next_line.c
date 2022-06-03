@@ -6,10 +6,11 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 16:52:04 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 18:00:11 by decordel         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:25:21 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "get_next_line.h"
 
 void	checkfd(int fd, char **buf)

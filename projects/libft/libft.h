@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:53:24 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/22 23:26:27 by decordel         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:11:32 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define DEF "\033[0;0m"
 # include <stdlib.h>
 # include "get_next_line.h"
-# include "printf/includes/ft_printf.h"
 # include "bonus/bonus.h"
 
 typedef struct s_list
@@ -36,11 +35,15 @@ char	*ft_itoa(int n);
 void	ft_lstadd_back(t_list **lst, t_list *newl);
 void	ft_lstadd_front(t_list **lst, t_list *newl);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdel_content(t_list **lst, char *cont, size_t size);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
+t_list	*ft_lstfind(t_list *lst, void *content, size_t size);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
+void	ft_lstsort(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void*(*f)(void *), void(*del)(void *));
 t_list	*ft_lstnew(void *content);
+t_list	*ft_lstdup(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -60,6 +63,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
+size_t	ft_strlen_to_chr(const char *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strnendcmp(const char *s1, const char *s2, size_t n);
