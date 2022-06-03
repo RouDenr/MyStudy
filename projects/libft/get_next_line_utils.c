@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 16:52:07 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 18:00:16 by decordel         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:24:45 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,4 @@ char	*bufstart(char *buf, size_t len)
 		return (start);
 	free(start);
 	return (NULL);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }

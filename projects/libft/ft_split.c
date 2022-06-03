@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 00:51:17 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/14 17:53:03 by decordel         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:12:24 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ char	*split_free(char **paths)
 
 	if (paths)
 	{
-		i = -1;
-		while (paths[++i])
-			free(paths[i]);
-		free(paths[i]);
+		i = 0;
+		while (paths[i])
+			free(paths[i++]);
 		free(paths);
 	}
 	return (NULL);
