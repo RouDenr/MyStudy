@@ -5,60 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 00:22:03 by decordel          #+#    #+#             */
-/*   Updated: 2021/12/08 00:09:03 by                  ###   ########.fr       */
+/*   Created: 2021/10/11 15:17:58 by decordel          #+#    #+#             */
+/*   Updated: 2022/04/25 19:26:17 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static int	isset(char c, char const *set)
-{
-	while (*set)
-		if (*(set++) == c)
-			return (1);
-	return (0);
-}
-
-static char	*find_end(char const *s, char const *set)
-{
-	if (!*s)
-		return ((char *)s);
-	while (*s)
-		s++;
-	s--;
-	while (isset(*s, set))
-		s--;
-	return ((char *)s);
-}
-
-static size_t	count_chars(char const *s, char *end)
-{
-	size_t	i;
-
-	i = 0;
-	while (s++ != end && s[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	char	*ptr;
 	size_t	i;
-	char	*str;
-	char	*endstr;
+	size_t	y;
 
-	if (!s1 || !set)
-		return (NULL);
 	i = 0;
-	while (isset(*s1, set))
+	if (!s1)
+		return (0);
+	while (*s1)
+	{
+		if (ft_strchr(set, *s1) == 0)
+			break ;
 		s1++;
-	endstr = find_end(s1, set);
-	str = malloc(count_chars(s1, endstr) + 2);
-	if (str == NULL)
-		return (NULL);
-	while (s1 <= endstr)
-		str[i++] = *(s1++);
-	str[i] = '\0';
-	return (str);
+	}
+	y = ft_strlen((char *)s1);
+	while (y--)
+	{
+		if (ft_strrchr(set, s1[y]) == 0)
+			break ;
+	}
+	ptr = ft_substr((char *)s1, 0, y + 1);
+	return (ptr);
 }
