@@ -6,16 +6,21 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/04/03 21:21:45 by decordel         ###   ########.fr        #
+#    Updated: 2022/06/06 16:41:55 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= a.out
 
+S			=	logic_src/
+O			=	obj
+D			=	deps
+I			=	incs/
+
 SRCS		=	main.c\
 					src/${NAME}.c
 
-OBJS		= ${SRCS:%.c=%.o}
+OBJS		= ${SRCS:$S%.c=$O/%.o}
 
 INCS		= inc/${NAME}.h
 
@@ -31,7 +36,11 @@ all		: ${NAME}
 ${NAME}	: ${INCS} ${OBJS} ${LIB}
 	${CC} ${FLAGS} ${LFLAGS} ${OBJS} -o ${NAME}
 
-%.o		: %.c ${INCS}
+# Building objective files (*.o)
+$O			:
+	@mkdir $@
+
+$O/%.o		: $S%.c ${INCS} | $O
 	${CC} ${FLAGS} -c $< -o $@
 
 ${LIB}	:
