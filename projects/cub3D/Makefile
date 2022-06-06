@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/06/06 20:45:50 by decordel         ###   ########.fr        #
+#    Updated: 2022/06/06 23:21:04 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ O			=	obj
 D			=	deps
 I			=	incs/
 
-SRCS		=	$S${NAME}.c
+SRCS		=	$S${NAME}.c	$Scheck_map.c $Smap.c
 
 OBJS		= ${SRCS:$S%.c=$O/%.o}
 
