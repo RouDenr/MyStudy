@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 23:16:40 by decordel          #+#    #+#             */
-/*   Updated: 2022/05/20 21:45:19 by decordel         ###   ########.fr       */
+/*   Updated: 2022/06/06 21:47:55 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ void	ft_put_err(char *str)
 	ft_putendl_fd(str, 2);
 	ft_putstr_fd(DEF, 2);
 	exit(1);
+}
+
+void	*check_calloc(size_t count, size_t size)
+{
+	void	*mem;
+
+	mem = ft_calloc(count, size);
+	if (!mem)
+		ft_put_err("malloc err");
+	return (mem);
 }
 
 void	ft_debug_print(char *str)

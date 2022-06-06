@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:51:44 by decordel          #+#    #+#             */
-/*   Updated: 2022/06/06 18:25:14 by decordel         ###   ########.fr       */
+/*   Updated: 2022/06/06 23:26:02 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
+	init_map(argv[1], &mlx);
 	mlx.init = mlx_init();
 	mlx.win = mlx_new_window(mlx.init, 500, 500, "cub3d");
 	mlx_hook(mlx.win, 17, 0L, (int (*)(int))exit, &mlx);
