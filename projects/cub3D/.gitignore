@@ -7,6 +7,5 @@
 projects*/.git
 !test*sh
 !test*py
-minishell
-Tin
-projects/cub3D/cub3d
+*.dylib
+cub3d
