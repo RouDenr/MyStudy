@@ -1,0 +1,11 @@
+.vscode
+*.o
+*.a
+*.out
+*test*
+*.DS_Store
+projects*/.git
+!test*sh
+!test*py
+*.dylib
+cub3d
