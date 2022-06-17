@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 21:26:23 by decordel          #+#    #+#             */
-/*   Updated: 2022/06/06 21:43:47 by decordel         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:05:28 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ void	find_pl(t_player *player, char **data)
 		j = 0;
 		while (data[i][++j])
 		{
-			if (data[i][j] == 'P')
+			if (data[i][j] == 'W' || data[i][j] == 'E'
+				|| data[i][j] == 'S' || data[i][j] == 'N')
 			{
 				player->x = j;
 				player->y = i;
+				player->start_dir = data[i][j];
 				if (find)
 					ft_put_err("больше одного игрока на карте");
 				find = 1;
