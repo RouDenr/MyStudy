@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/06/06 23:21:04 by decordel         ###   ########.fr        #
+#    Updated: 2022/06/09 13:35:05 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,15 @@ O			=	obj
 D			=	deps
 I			=	incs/
 
-SRCS		=	$S${NAME}.c	$Scheck_map.c $Smap.c
+SRCS		=	$S${NAME}.c	$Scheck_map.c $Smap.c\
+				$Sdraw.c
 
 OBJS		= ${SRCS:$S%.c=$O/%.o}
 
 INCS		= inc/${NAME}.h
 
 LIBFT		= libft/libft.a
-MLXLIB		= ../libmlx.dylib
+MLXLIB		= libmlx.dylib
 
 CC		= gcc
 
@@ -63,7 +64,7 @@ re		: fclean all
 
 MESS	= fix
 
-ARGS	= ""
+ARGS	= "maps/test.cub"
 
 git		:
 	git add .
