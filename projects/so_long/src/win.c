@@ -6,7 +6,7 @@
 /*   By: decordel <decordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 00:47:36 by decordel          #+#    #+#             */
-/*   Updated: 2022/01/14 22:32:52 by decordel         ###   ########.fr       */
+/*   Updated: 2022/06/06 21:31:31 by decordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@ int	do_next_frame(t_mlx *mlx)
 	draw_map(mlx, &mlx->map);
 	draw_num(mlx, mlx->map.img_num, mlx->steps);
 	return (1);
-}
-
-void static	num_init(t_mlx *mlx)
-{
-	int		x;
-	int		y;
-	int		i;
-	char	path[14];
-
-	i = 0;
-	ft_strlcpy(path, "img/num/0.xpm", 14);
-	while (i < 10)
-	{
-		path[8] = i + '0';
-		mlx->map.img_num[i] = mlx_xpm_file_to_image(mlx->init, path,
-				&x, &y);
-		i++;
-	}
 }
 
 void	image_init(t_mlx *mlx)
@@ -61,26 +43,7 @@ void	image_init(t_mlx *mlx)
 	num_init(mlx);
 }
 
-static void	find_pl(t_map *map, char **data)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	while (data[++i])
-	{
-		j = 0;
-		while (data[i][++j])
-		{
-			if (data[i][j] == 'P')
-			{
-				map->p_x = j;
-				map->p_y = i;
-				return ;
-			}
-		}
-	}
-}
 
 void	win_init(t_mlx *mlx)
 {
