@@ -1,3 +1,6 @@
 [submodule "projects/minishell"]
 	path = projects/minishell
 	url = git@github.com:BoutPure/minishell.git
+[submodule "projects/cub3D"]
+	path = projects/cub3D
+	url = git@github.com:RouDenr/Cub3D.git
