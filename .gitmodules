@@ -1,3 +1,0 @@
-[submodule "git@github.com:BoutPure/minishell.git"]
-	path = git@github.com:BoutPure/minishell.git
-	url = ./
