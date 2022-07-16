@@ -4,3 +4,6 @@
 [submodule "projects/cub3D"]
 	path = projects/cub3D
 	url = git@github.com:RouDenr/Cub3D.git
+[submodule "projects/CPP"]
+	path = projects/CPP
+	url = git@github.com:RouDenr/CPP.git
