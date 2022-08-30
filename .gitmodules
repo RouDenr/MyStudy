@@ -10,3 +10,6 @@
 [submodule "projects/ft_containers"]
 	path = projects/ft_containers
 	url = git@github.com:RouDenr/ft_containers.git
+[submodule "projects/projects/ft_containers"]
+	path = projects/projects/ft_containers
+	url = git@github.com:RouDenr/ft_containers.git
