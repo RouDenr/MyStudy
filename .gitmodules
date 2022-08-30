@@ -7,3 +7,6 @@
 [submodule "projects/CPP"]
 	path = projects/CPP
 	url = git@github.com:RouDenr/CPP.git
+[submodule "projects/ft_containers"]
+	path = projects/ft_containers
+	url = git@github.com:RouDenr/ft_containers.git
