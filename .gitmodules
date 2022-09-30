@@ -10,3 +10,9 @@
 [submodule "projects/ft_containers"]
 	path = projects/ft_containers
 	url = git@github.com:RouDenr/ft_containers.git
+[submodule "projects/ft_irc"]
+	path = projects/ft_irc
+	url = git@github.com:RouDenr/ft_irc.git
+[submodule "projects/Inception"]
+	path = projects/Inception
+	url = git@github.com:RouDenr/Inception.git
