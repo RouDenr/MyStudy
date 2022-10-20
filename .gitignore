@@ -8,5 +8,6 @@
 projects*/.git
 !test*sh
 !test*py
+testgit.sh
 Tin
 projects/cub3D/cub3d
