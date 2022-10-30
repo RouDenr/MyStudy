@@ -16,3 +16,6 @@
 [submodule "projects/Inception"]
 	path = projects/Inception
 	url = git@github.com:RouDenr/Inception.git
+[submodule "projects/libasm"]
+	path = projects/libasm
+	url = git@github.com:RouDenr/libasm.git
