@@ -37,19 +37,19 @@ TEST(MedianOfTwoSortedArrays, Case2) {
     vector<int> nums1 = {1, 4, 8, 17};
     vector<int> nums2 = {5, 19};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.50000);
+    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 6.50000);
 }
 TEST(MedianOfTwoSortedArrays, Case3) {
-    vector<int> nums1 = {1, 2};
+    vector<int> nums1 = {};
     vector<int> nums2 = {3, 4};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.50000);
+    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 3.50000);
 }
 TEST(MedianOfTwoSortedArrays, Case4) {
     vector<int> nums1 = {1, 2};
-    vector<int> nums2 = {3, 4};
+    vector<int> nums2 = {};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.50000);
+    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 1.50000);
 }
 
 int main(int argc, char *argv[]) {
