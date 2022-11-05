@@ -19,3 +19,9 @@
 [submodule "projects/libasm"]
 	path = projects/libasm
 	url = git@github.com:RouDenr/libasm.git
+[submodule "projects/dr-quine"]
+	path = projects/dr-quine
+	url = git@github.com:RouDenr/dr-quine.git
+[submodule "projects/malloc"]
+	path = projects/malloc
+	url = git@github.com:RouDenr/malloc.git

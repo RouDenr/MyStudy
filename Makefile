@@ -6,7 +6,7 @@
 #    By: decordel <decordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 17:26:21 by decordel          #+#    #+#              #
-#    Updated: 2022/06/06 16:41:55 by decordel         ###   ########.fr        #
+#    Updated: 2022/11/05 04:28:24 by decordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,19 @@ fclean	: clean
 
 re		: fclean all
 
+git_sub ?=  $(shell bash -c 'read -p "$$(echo git : ) " git_sub; echo $$git_sub')
+name_sub ?=  $(shell bash -c 'read -p "$$(echo name : ) " name_sub; echo $$name_sub')
+
+add_submodule	:
+	git submodule add ${git_sub} projects/${name_sub}
+
+
+path-to-submodule =  $(shell bash -c 'read -p "$$(echo submodule : ) " submodule; echo $$submodule')
+rm_submodule	:
+
+# git rm projects/${path-to-submodule}
+# rm -rf .git/modules/projects/${path-to-submodule}
+# git config --remove-section submodule.projects/${path-to-submodule}/.
 #! debug ---------------------------------
 
 MESS	= fix
