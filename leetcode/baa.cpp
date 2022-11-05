@@ -21,36 +21,51 @@ TEST(HelloTest, Basic) {
     EXPECT_EQ(test.lengthOfLongestSubstring(test6), 3);
 }
 
-TEST(MedianOfTwoSortedArrays, BasicAssertions) {
-    vector<int> nums1 = {1, 3};
-    vector<int> nums2 = {2};
+// TEST(MedianOfTwoSortedArrays, BasicAssertions) {
+//     vector<int> nums1 = {1, 3};
+//     vector<int> nums2 = {2};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.00000);
-}
-TEST(MedianOfTwoSortedArrays, Case1) {
-    vector<int> nums1 = {1, 2};
-    vector<int> nums2 = {3, 4};
+//     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.00000);
+// }
+// TEST(MedianOfTwoSortedArrays, Case1) {
+//     vector<int> nums1 = {1, 2};
+//     vector<int> nums2 = {3, 4};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.50000);
-}
-TEST(MedianOfTwoSortedArrays, Case2) {
-    vector<int> nums1 = {1, 4, 8, 17};
-    vector<int> nums2 = {5, 19};
+//     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 2.50000);
+// }
+// TEST(MedianOfTwoSortedArrays, Case2) {
+//     vector<int> nums1 = {1, 4, 8, 17};
+//     vector<int> nums2 = {5, 19};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 6.50000);
-}
-TEST(MedianOfTwoSortedArrays, Case3) {
-    vector<int> nums1 = {};
-    vector<int> nums2 = {3, 4};
+//     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 6.50000);
+// }
+// TEST(MedianOfTwoSortedArrays, Case3) {
+//     vector<int> nums1 = {};
+//     vector<int> nums2 = {3, 4};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 3.50000);
-}
-TEST(MedianOfTwoSortedArrays, Case4) {
-    vector<int> nums1 = {1, 2};
-    vector<int> nums2 = {};
+//     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 3.50000);
+// }
+// TEST(MedianOfTwoSortedArrays, Case4) {
+//     vector<int> nums1 = {1, 2};
+//     vector<int> nums2 = {};
 
-    EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 1.50000);
+//     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 1.50000);
+// }
+
+TEST(LongestPalindrome, Case1) {
+    string a = "aba";
+    string b = "bab";
+
+    auto result = test.longestPalindrome("babad");
+    EXPECT_TRUE(result == b || result == a);
 }
+TEST(LongestPalindrome, Case2) {
+    string a = "bb";
+
+    auto result = test.longestPalindrome("cbbd");
+    EXPECT_TRUE(result == a);
+}
+
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);
