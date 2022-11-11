@@ -1,13 +1,13 @@
 CC = g++
 
 # TESTS_FLAGS	= -fprofile-arcs -ftest-coverage
-TESTS_FLAGS	= -lgtest
+TESTS_FLAGS	= -lgtest -g
 
 TEST_NAME	= test
 
 BUILD	= build
 
-SRCS	= matrix.cpp baa.cpp
+SRCS	= solution.cpp gtests.cpp
 
 
 EXE		= ${BUILD}/${TEST_NAME}.out
@@ -22,3 +22,5 @@ ${TEST_NAME}	: ${SRCS} ${BUILD}
 	./${EXE}
 
 
+lldb	:
+	lldb -- ./${EXE}

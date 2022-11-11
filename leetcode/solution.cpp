@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <cstdint>
 #include <set>
 #include <vector>
@@ -26,7 +27,7 @@ public:
             // if (nums[i] > target) continue;
             for (int j = i + 1; j < nums.size(); ++j) {
                 // if (nums[j] > target) continue;
-                if (nums[j] + nums[i] == target) return vector({i, j});
+                if (nums[j] + nums[i] == target) return vector<int>({i, j});
             }
         }
         return vector<int>();
@@ -126,11 +127,36 @@ public:
 
 
 
+    static bool is_palindrome(string::const_iterator begin,
+                            string::const_iterator end) {
+        if (*begin) {
+            while (begin != end) {
+                if (*begin != *end)
+                    return false;
+                if (++begin == end--)
+                    break;
+            }
+        }
+        return true;
+    }
 
 
     string longestPalindrome(string s) {
-        
-        return 0;
+        auto size = s.size();
+        // auto print = [](const char& p) { cout << p; };
+
+        while (size != 1) {
+            for (auto i = s.begin(); i + size - 1 != s.end(); ++i) {
+                // for_each(i, i + size, print);
+                // cout << '\n';
+                if (is_palindrome(i, i + size - 1)) {
+                    return string(i, i + size);
+                }
+            }
+            --size;
+        }
+
+        return string(s.begin(), s.begin() + 1);
     }
 
 };
