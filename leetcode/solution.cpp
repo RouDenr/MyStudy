@@ -159,7 +159,50 @@ public:
         return string(s.begin(), s.begin() + 1);
     }
 
+
+
+
+
+    static string mergeStrings(const vector<string> &strings) {
+        string result;
+        for (auto const &i : strings) {
+            result += i;
+        }
+        return result;
+    }
+
+    // Zigzag Conversion
+    string convert(string s, int numRows) {
+        if (s.size() < numRows || numRows == 1)
+            return s;
+        string result;
+        vector<string> rows(numRows, "");
+        // rows.reserve(numRows);
+
+        int indexRow = 0;
+        short dir = 1;
+        for (auto i = s.begin(); i != s.end(); ++i) {
+            rows[indexRow] += *i;
+            if ((indexRow == numRows - 1 && dir > 0)
+                || (indexRow == 0 && dir < 0))
+                dir = -dir;
+            indexRow += dir;
+        }
+        return mergeStrings(rows);
+    }
+
 };
+
+
+
+
+
+
+
+
+
+
+
 
 // int main () {
 //     Solution s;

@@ -53,66 +53,95 @@ Solution test;
 // }
 
 
-TEST(is_palindrome, Case1) {
-    string str = "abba";
+// TEST(is_palindrome, Case1) {
+//     string str = "abba";
 
-    EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+//     EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+// }
+// TEST(is_palindrome, Case2) {
+//     string str = "ababa";
+
+//     EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+// }
+// TEST(is_palindrome, Case3) {
+//     string str = "a";
+
+//     EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+// }
+// TEST(is_palindrome, Empty) {
+//     string str = "";
+
+//     EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+// }
+// TEST(is_palindrome, Case4) {
+//     string str = "ba";
+
+//     EXPECT_TRUE(!(Solution::is_palindrome(str.begin(), str.end() - 1)));
+// }
+// TEST(is_palindrome, Case5) {
+//     string str = "baa";
+
+//     EXPECT_TRUE(!(Solution::is_palindrome(str.begin(), str.end() - 1)));
+// }
+
+
+// TEST(LongestPalindrome, Case1) {
+//     string a = "aba";
+//     string b = "bab";
+
+//     auto result = test.longestPalindrome("babad");
+//     EXPECT_TRUE(result == b || result == a);
+// }
+// TEST(LongestPalindrome, Case2) {
+//     string a = "bb";
+
+//     auto result = test.longestPalindrome("cbbd");
+//     EXPECT_TRUE(result == a);
+// }
+// TEST(LongestPalindrome, Case3) {
+//     string a = "bb";
+
+//     auto result = test.longestPalindrome("bb");
+//     // cout << result << endl;
+//     EXPECT_TRUE(result == a);
+// }
+// TEST(LongestPalindrome, Case4) {
+//     string a = "b";
+
+//     auto result = test.longestPalindrome("bc");
+//     // cout << result << endl;
+//     EXPECT_TRUE(result == a || result == "c");
+// }
+
+
+TEST(ZigzagConversion, Case1) {
+    string s = "PAYPALISHIRING";
+    string expect = "PINALSIGYAHRPI";
+    int numRows = 4;
+
+    EXPECT_EQ(test.convert(s, numRows), expect);
 }
-TEST(is_palindrome, Case2) {
-    string str = "ababa";
+TEST(ZigzagConversion, Case2) {
+    string s = "PAYPALISHIRING";
+    string expect = "PAHNAPLSIIGYIR";
+    int numRows = 3;
 
-    EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+    EXPECT_EQ(test.convert(s, numRows), expect);
 }
-TEST(is_palindrome, Case3) {
-    string str = "a";
+TEST(ZigzagConversion, Case3) {
+    string s = "A";
+    int numRows = 1;
+    string expect = "A";
 
-    EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+    EXPECT_EQ(test.convert(s, numRows), expect);
 }
-TEST(is_palindrome, Empty) {
-    string str = "";
+TEST(ZigzagConversion, Case4) {
+    string s = "AB";
+    int numRows = 1;
+    string expect = "AB";
 
-    EXPECT_TRUE(Solution::is_palindrome(str.begin(), str.end() - 1));
+    EXPECT_EQ(test.convert(s, numRows), expect);
 }
-TEST(is_palindrome, Case4) {
-    string str = "ba";
-
-    EXPECT_TRUE(!(Solution::is_palindrome(str.begin(), str.end() - 1)));
-}
-TEST(is_palindrome, Case5) {
-    string str = "baa";
-
-    EXPECT_TRUE(!(Solution::is_palindrome(str.begin(), str.end() - 1)));
-}
-
-
-TEST(LongestPalindrome, Case1) {
-    string a = "aba";
-    string b = "bab";
-
-    auto result = test.longestPalindrome("babad");
-    EXPECT_TRUE(result == b || result == a);
-}
-TEST(LongestPalindrome, Case2) {
-    string a = "bb";
-
-    auto result = test.longestPalindrome("cbbd");
-    EXPECT_TRUE(result == a);
-}
-TEST(LongestPalindrome, Case3) {
-    string a = "bb";
-
-    auto result = test.longestPalindrome("bb");
-    // cout << result << endl;
-    EXPECT_TRUE(result == a);
-}
-TEST(LongestPalindrome, Case4) {
-    string a = "b";
-
-    auto result = test.longestPalindrome("bc");
-    // cout << result << endl;
-    EXPECT_TRUE(result == a || result == "c");
-}
-
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);

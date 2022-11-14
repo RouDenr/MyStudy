@@ -19,6 +19,8 @@ ${BUILD}	:
 
 ${TEST_NAME}	: ${SRCS} ${BUILD}
 	${CC} ${SRCS} ${TESTS_FLAGS} -o ${EXE}
+
+run	: all
 	./${EXE}
 
 
