@@ -114,33 +114,52 @@ Solution test;
 // }
 
 
-TEST(ZigzagConversion, Case1) {
-    string s = "PAYPALISHIRING";
-    string expect = "PINALSIGYAHRPI";
-    int numRows = 4;
+// TEST(ZigzagConversion, Case1) {
+//     string s = "PAYPALISHIRING";
+//     string expect = "PINALSIGYAHRPI";
+//     int numRows = 4;
 
-    EXPECT_EQ(test.convert(s, numRows), expect);
+//     EXPECT_EQ(test.convert(s, numRows), expect);
+// }
+// TEST(ZigzagConversion, Case2) {
+//     string s = "PAYPALISHIRING";
+//     string expect = "PAHNAPLSIIGYIR";
+//     int numRows = 3;
+
+//     EXPECT_EQ(test.convert(s, numRows), expect);
+// }
+// TEST(ZigzagConversion, Case3) {
+//     string s = "A";
+//     int numRows = 1;
+//     string expect = "A";
+
+//     EXPECT_EQ(test.convert(s, numRows), expect);
+// }
+// TEST(ZigzagConversion, Case4) {
+//     string s = "AB";
+//     int numRows = 1;
+//     string expect = "AB";
+
+//     EXPECT_EQ(test.convert(s, numRows), expect);
+// }
+
+TEST(ReverseInteger, Case1) {
+    int x = 123;
+    int expect = 321;
+
+    EXPECT_EQ(test.reverse(x), expect);
 }
-TEST(ZigzagConversion, Case2) {
-    string s = "PAYPALISHIRING";
-    string expect = "PAHNAPLSIIGYIR";
-    int numRows = 3;
+TEST(ReverseInteger, Case2) {
+    int x = -123;
+    int expect = -321;
 
-    EXPECT_EQ(test.convert(s, numRows), expect);
+    EXPECT_EQ(test.reverse(x), expect);
 }
-TEST(ZigzagConversion, Case3) {
-    string s = "A";
-    int numRows = 1;
-    string expect = "A";
+TEST(ReverseInteger, Case3) {
+    int x = 120;
+    int expect = 21;
 
-    EXPECT_EQ(test.convert(s, numRows), expect);
-}
-TEST(ZigzagConversion, Case4) {
-    string s = "AB";
-    int numRows = 1;
-    string expect = "AB";
-
-    EXPECT_EQ(test.convert(s, numRows), expect);
+    EXPECT_EQ(test.reverse(x), expect);
 }
 
 int main(int argc, char *argv[]) {

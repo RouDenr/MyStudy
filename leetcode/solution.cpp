@@ -191,6 +191,26 @@ public:
         return mergeStrings(rows);
     }
 
+    // Reverse Integer
+    int reverse(int x) {
+        if (x == INT32_MIN)
+            return 0;
+        long result = 0;
+        bool isNegativ = x < 0;
+        if (isNegativ)
+            x = -x;
+
+        while (x != 0) {
+            result = result * 10 + x % 10;
+            if (isNegativ && result > (long)INT32_MAX + 1)
+                return 0;
+            else if (result > (long)INT32_MAX)
+                return 0;
+            x /= 10;
+        }
+        return isNegativ ? -result : result;
+    }
+
 };
 
 
