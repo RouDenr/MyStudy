@@ -1,27 +1,22 @@
-#include <iostream>
-#include <string>
 #include <algorithm>
 #include <cstdint>
+#include <iostream>
 #include <set>
+#include <string>
 #include <vector>
-#include <cstdint>
 
 using namespace std;
 
-
 struct ListNode {
     int val;
-    ListNode *next;
+    ListNode* next;
     ListNode() : val(0), next(nullptr) {}
     explicit ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-
 class Solution {
-public:
-
-
+   public:
     vector<int> twoSum(vector<int>& nums, int target) {
         for (int i = 0; i < nums.size() - 1; ++i) {
             // if (nums[i] > target) continue;
@@ -33,8 +28,7 @@ public:
         return vector<int>();
     }
 
-
-    static void add_node(ListNode* &node, int sum) {
+    static void add_node(ListNode*& node, int sum) {
         ListNode* tmp = new ListNode(sum);
         node->next = tmp;
         node = node->next;
@@ -55,25 +49,21 @@ public:
             }
             add_node(tail, tmp_sum % 10);
             plus_next = tmp_sum / 10;
-            if (l1->next)
-                l1 = l1->next;
-            if (l2->next)
-                l2 = l2->next;
+            if (l1->next) l1 = l1->next;
+            if (l2->next) l2 = l2->next;
         }
-        if (plus_next)
-            add_node(tail, plus_next);
+        if (plus_next) add_node(tail, plus_next);
         return head;
     }
 
     template <typename T>
-    static bool setContains(const set<T> &set, const T &key) {
+    static bool setContains(const set<T>& set, const T& key) {
         auto fi = set.find(key);
         return fi != set.end();
     }
 
     int lengthOfLongestSubstring(string s) {
-        if (s.size() <= 1)
-            return s.size();
+        if (s.size() <= 1) return s.size();
         set<char> substr;
         uint16_t max_size = 1;
 
@@ -93,15 +83,12 @@ public:
         return max_size;
     }
 
-
-
-
     static double medianSortedArray(const vector<int>& nums) {
         if (nums.size() % 2 != 0) {
             return nums[nums.size() / 2];
         } else {
             auto t = nums.size() / 2;
-            return (nums[t] + nums[t-1]) / 2.0;
+            return (nums[t] + nums[t - 1]) / 2.0;
         }
     }
 
@@ -123,23 +110,16 @@ public:
         return medianSortedArray(nums1);
     }
 
-
-
-
-
     static bool is_palindrome(string::const_iterator begin,
-                            string::const_iterator end) {
+                              string::const_iterator end) {
         if (*begin) {
             while (begin != end) {
-                if (*begin != *end)
-                    return false;
-                if (++begin == end--)
-                    break;
+                if (*begin != *end) return false;
+                if (++begin == end--) break;
             }
         }
         return true;
     }
-
 
     string longestPalindrome(string s) {
         auto size = s.size();
@@ -159,13 +139,9 @@ public:
         return string(s.begin(), s.begin() + 1);
     }
 
-
-
-
-
-    static string mergeStrings(const vector<string> &strings) {
+    static string mergeStrings(const vector<string>& strings) {
         string result;
-        for (auto const &i : strings) {
+        for (auto const& i : strings) {
             result += i;
         }
         return result;
@@ -173,8 +149,7 @@ public:
 
     // Zigzag Conversion
     string convert(string s, int numRows) {
-        if (s.size() < numRows || numRows == 1)
-            return s;
+        if (s.size() < numRows || numRows == 1) return s;
         string result;
         vector<string> rows(numRows, "");
         // rows.reserve(numRows);
@@ -183,8 +158,8 @@ public:
         short dir = 1;
         for (auto i = s.begin(); i != s.end(); ++i) {
             rows[indexRow] += *i;
-            if ((indexRow == numRows - 1 && dir > 0)
-                || (indexRow == 0 && dir < 0))
+            if ((indexRow == numRows - 1 && dir > 0) ||
+                (indexRow == 0 && dir < 0))
                 dir = -dir;
             indexRow += dir;
         }
@@ -193,12 +168,10 @@ public:
 
     // Reverse Integer
     int reverse(int x) {
-        if (x == INT32_MIN)
-            return 0;
+        if (x == INT32_MIN) return 0;
         long result = 0;
         bool isNegativ = x < 0;
-        if (isNegativ)
-            x = -x;
+        if (isNegativ) x = -x;
 
         while (x != 0) {
             result = result * 10 + x % 10;
@@ -211,18 +184,27 @@ public:
         return isNegativ ? -result : result;
     }
 
+    int myAtoi(string s) {
+        typename string::size_type i = 0;
+        long result = 0;
+
+        while (isspace(s[i])) i++;
+        bool isNegativ;
+        if ((isNegativ = s[i] == '-') || s[i] == '+') ++i;
+
+        while (isdigit(s[i])) {
+            result = (result * 10) + (s[i] - '0');
+            if (isNegativ) {
+                if (-result < INT32_MIN) return INT32_MIN;
+            } else if (result > INT32_MAX) {
+                return INT32_MAX;
+            }
+            ++i;
+        }
+        result = isNegativ ? -result : result;
+        return result;
+    }
 };
-
-
-
-
-
-
-
-
-
-
-
 
 // int main () {
 //     Solution s;

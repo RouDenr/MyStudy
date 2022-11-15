@@ -143,23 +143,53 @@ Solution test;
 //     EXPECT_EQ(test.convert(s, numRows), expect);
 // }
 
-TEST(ReverseInteger, Case1) {
-    int x = 123;
-    int expect = 321;
+// TEST(ReverseInteger, Case1) {
+//     int x = 123;
+//     int expect = 321;
 
-    EXPECT_EQ(test.reverse(x), expect);
+//     EXPECT_EQ(test.reverse(x), expect);
+// }
+// TEST(ReverseInteger, Case2) {
+//     int x = -123;
+//     int expect = -321;
+
+//     EXPECT_EQ(test.reverse(x), expect);
+// }
+// TEST(ReverseInteger, Case3) {
+//     int x = 120;
+//     int expect = 21;
+
+//     EXPECT_EQ(test.reverse(x), expect);
+TEST(myAtoi, Case1) {
+    string s = "42";
+    int expect = 42;
+    int result = test.myAtoi(s);
+    EXPECT_EQ(result, expect);
 }
-TEST(ReverseInteger, Case2) {
-    int x = -123;
-    int expect = -321;
-
-    EXPECT_EQ(test.reverse(x), expect);
+TEST(myAtoi, Case1Space) {
+    string s = "     42";
+    int expect = 42;
+    int result = test.myAtoi(s);
+    EXPECT_EQ(result, expect);
 }
-TEST(ReverseInteger, Case3) {
-    int x = 120;
-    int expect = 21;
+TEST(myAtoi, Case2) {
+    string s = "-42";
+    int expect = -42;
 
-    EXPECT_EQ(test.reverse(x), expect);
+    int result = test.myAtoi(s);
+    EXPECT_EQ(result, expect);
+}
+TEST(myAtoi, Case3) {
+    string s = "2147483647";
+    int expect = INT32_MAX;
+
+    EXPECT_EQ(test.myAtoi(s), expect);
+}
+TEST(myAtoi, Case4) {
+    string s = "-2147483648";
+    int expect = INT32_MIN;
+
+    EXPECT_EQ(test.myAtoi(s), expect);
 }
 
 int main(int argc, char *argv[]) {
