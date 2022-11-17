@@ -204,6 +204,22 @@ class Solution {
         result = isNegativ ? -result : result;
         return result;
     }
+
+
+    bool isPalindrome(int x) {
+        if (x < 0) return false;
+
+        string strbuf = to_string(x);
+        auto it = strbuf.begin();
+        auto jt = strbuf.end() - 1;
+        for (size_t i = 1; i <= strbuf.size() / 2; ++i) {
+            if (*it != *jt)
+                return false;
+            ++it;
+            --jt;
+        }
+        return true;
+    }
 };
 
 // int main () {

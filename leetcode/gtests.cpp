@@ -160,36 +160,66 @@ Solution test;
 //     int expect = 21;
 
 //     EXPECT_EQ(test.reverse(x), expect);
-TEST(myAtoi, Case1) {
-    string s = "42";
-    int expect = 42;
-    int result = test.myAtoi(s);
-    EXPECT_EQ(result, expect);
-}
-TEST(myAtoi, Case1Space) {
-    string s = "     42";
-    int expect = 42;
-    int result = test.myAtoi(s);
-    EXPECT_EQ(result, expect);
-}
-TEST(myAtoi, Case2) {
-    string s = "-42";
-    int expect = -42;
+// TEST(myAtoi, Case1) {
+//     string s = "42";
+//     int expect = 42;
+//     int result = test.myAtoi(s);
+//     EXPECT_EQ(result, expect);
+// }
+// TEST(myAtoi, Case1Space) {
+//     string s = "     42";
+//     int expect = 42;
+//     int result = test.myAtoi(s);
+//     EXPECT_EQ(result, expect);
+// }
+// TEST(myAtoi, Case2) {
+//     string s = "-42";
+//     int expect = -42;
 
-    int result = test.myAtoi(s);
-    EXPECT_EQ(result, expect);
-}
-TEST(myAtoi, Case3) {
-    string s = "2147483647";
-    int expect = INT32_MAX;
+//     int result = test.myAtoi(s);
+//     EXPECT_EQ(result, expect);
+// }
+// TEST(myAtoi, Case3) {
+//     string s = "2147483647";
+//     int expect = INT32_MAX;
 
-    EXPECT_EQ(test.myAtoi(s), expect);
-}
-TEST(myAtoi, Case4) {
-    string s = "-2147483648";
-    int expect = INT32_MIN;
+//     EXPECT_EQ(test.myAtoi(s), expect);
+// }
+// TEST(myAtoi, Case4) {
+//     string s = "-2147483648";
+//     int expect = INT32_MIN;
 
-    EXPECT_EQ(test.myAtoi(s), expect);
+//     EXPECT_EQ(test.myAtoi(s), expect);
+// }
+TEST(isPalindrome, CaseTrue1) {
+    int x = 121;
+    bool expect = true;
+
+    EXPECT_EQ(test.isPalindrome(x), expect);
+}
+TEST(isPalindrome, CaseTrue2) {
+    int x = 1001;
+    bool expect = true;
+
+    EXPECT_EQ(test.isPalindrome(x), expect);
+}
+TEST(isPalindrome, CaseFalse1) {
+    int x = -121;
+    bool expect = false;
+
+    EXPECT_EQ(test.isPalindrome(x), expect);
+}
+TEST(isPalindrome, CaseFalse2) {
+    int x = 10;
+    bool expect = false;
+
+    EXPECT_EQ(test.isPalindrome(x), expect);
+}
+TEST(isPalindrome, CaseFalse3) {
+    int x = 1021;
+    bool expect = false;
+
+    EXPECT_EQ(test.isPalindrome(x), expect);
 }
 
 int main(int argc, char *argv[]) {
