@@ -383,22 +383,51 @@ Solution test;
 //     EXPECT_EQ(test.search(nums, target), index_expect);
 // }
 
+// TEST(firstBadVersion, CaseDef) {
+//     int n = 5;
+//     test.bad = 4;
 
-TEST(firstBadVersion, CaseDef) {
-    int n = 5;
-    test.bad = 4;
+//     EXPECT_EQ(test.firstBadVersion(n), test.bad);
+// }
 
-    EXPECT_EQ(test.firstBadVersion(n), test.bad);
+// TEST(firstBadVersion, CaseFirst) {
+//     int n = 1;
+//     test.bad = 1;
+
+//     EXPECT_EQ(test.firstBadVersion(n), test.bad);
+// }
+
+TEST(SearchInsertPosition, Case1) {
+    vector<int> nums = {1, 3, 5, 6};
+    int target = 5;
+    int index_expect = 2;
+
+    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
 }
 
-TEST(firstBadVersion, CaseFirst) {
-    int n = 1;
-    test.bad = 1;
+TEST(SearchInsertPosition, Case2) {
+    vector<int> nums = {1, 3, 5, 6};
+    int target = 7;
+    int index_expect = 4;
 
-    EXPECT_EQ(test.firstBadVersion(n), test.bad);
+    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
 }
 
+TEST(SearchInsertPosition, Case3) {
+    vector<int> nums = {1, 3, 5, 6};
+    int target = 2;
+    int index_expect = 1;
 
+    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+}
+
+TEST(SearchInsertPosition, Case4) {
+    vector<int> nums = {1, 3, 5, 6};
+    int target = 0;
+    int index_expect = 0;
+
+    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+}
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);

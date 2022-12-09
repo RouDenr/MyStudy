@@ -316,8 +316,8 @@ class Solution {
         return result;
     }
 
-    int bad = 0;
 
+    int bad = 0;
     bool isBadVersion(int version) {
         return version >= bad;
     }
@@ -325,5 +325,28 @@ class Solution {
     int firstBadVersion(int n) {
         if (!isBadVersion(n)) return n + 1;
         return firstBadVersion(n - 1);
+    }
+
+
+    int searchInsert(vector<int>& nums, int target) {
+        // auto nums_begin = nums.begin(), nums_end = nums.end() - 1;
+        long nums_begin = 0l, nums_end = nums.size() - 1;
+        int result = -1;
+
+        while (nums_begin <= nums_end) {
+            auto mid_index = nums_begin + (nums_end - nums_begin) / 2;
+            auto mid_val = nums[mid_index];
+
+            if (mid_val < target) {
+                nums_begin = mid_index + 1;
+            } else if (mid_val > target) {
+                nums_end = mid_index - 1;
+            } else {
+                result = mid_index;
+                break;
+            }
+            result = nums_begin;
+        }
+        return result;
     }
 };
