@@ -315,4 +315,15 @@ class Solution {
         }
         return result;
     }
+
+    int bad = 0;
+
+    bool isBadVersion(int version) {
+        return version >= bad;
+    }
+
+    int firstBadVersion(int n) {
+        if (!isBadVersion(n)) return n + 1;
+        return firstBadVersion(n - 1);
+    }
 };

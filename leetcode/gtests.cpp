@@ -321,67 +321,84 @@ Solution test;
 //     EXPECT_EQ(test.longestCommonPrefix(strs), expect);
 // }
 
-TEST(BinarySearch, CaseDef) {
-    vector<int> nums = {-1, 0, 3, 5, 9, 12};
-    int target = 9;
-    int index_expect = 4;
+// TEST(BinarySearch, CaseDef) {
+//     vector<int> nums = {-1, 0, 3, 5, 9, 12};
+//     int target = 9;
+//     int index_expect = 4;
 
-    EXPECT_EQ(test.search(nums, target), index_expect);
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+// TEST(BinarySearch, CaseNotFound) {
+//     vector<int> nums = {-1, 0, 3, 5, 9, 12};
+//     int target = 2;
+//     int index_expect = -1;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+// TEST(BinarySearch, CaseEmptyArg) {
+//     vector<int> nums = {};
+//     int target = 2;
+//     int index_expect = -1;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+// TEST(BinarySearch, CaseExtremeLeft) {
+//     vector<int> nums = {7, 44, 234, 344, 1777};
+//     int target = 7;
+//     int index_expect = 0;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+// TEST(BinarySearch, CaseExtremeRight) {
+//     vector<int> nums = {7, 44, 234, 344, 1777};
+//     int target = 1777;
+//     int index_expect = 4;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+// TEST(BinarySearch, CaseMiddle) {
+//     vector<int> nums = {7, 44, 234, 344, 1777};
+//     int target = 234;
+//     int index_expect = 2;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+// TEST(BinarySearch, CaseMiddleLeft) {
+//     vector<int> nums = {7, 44, 234, 300, 344, 1777};
+//     int target = 234;
+//     int index_expect = 2;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+// TEST(BinarySearch, CaseMiddleRight) {
+//     vector<int> nums = {7, 44, 234, 300, 344, 1777};
+//     int target = 300;
+//     int index_expect = 3;
+
+//     EXPECT_EQ(test.search(nums, target), index_expect);
+// }
+
+
+TEST(firstBadVersion, CaseDef) {
+    int n = 5;
+    test.bad = 4;
+
+    EXPECT_EQ(test.firstBadVersion(n), test.bad);
 }
 
-TEST(BinarySearch, CaseNotFound) {
-    vector<int> nums = {-1, 0, 3, 5, 9, 12};
-    int target = 2;
-    int index_expect = -1;
+TEST(firstBadVersion, CaseFirst) {
+    int n = 1;
+    test.bad = 1;
 
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
-TEST(BinarySearch, CaseEmptyArg) {
-    vector<int> nums = {};
-    int target = 2;
-    int index_expect = -1;
-
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
-TEST(BinarySearch, CaseExtremeLeft) {
-    vector<int> nums = {7, 44, 234, 344, 1777};
-    int target = 7;
-    int index_expect = 0;
-
-    EXPECT_EQ(test.search(nums, target), index_expect);
+    EXPECT_EQ(test.firstBadVersion(n), test.bad);
 }
 
-TEST(BinarySearch, CaseExtremeRight) {
-    vector<int> nums = {7, 44, 234, 344, 1777};
-    int target = 1777;
-    int index_expect = 4;
 
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
-
-TEST(BinarySearch, CaseMiddle) {
-    vector<int> nums = {7, 44, 234, 344, 1777};
-    int target = 234;
-    int index_expect = 2;
-
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
-
-TEST(BinarySearch, CaseMiddleLeft) {
-    vector<int> nums = {7, 44, 234, 300, 344, 1777};
-    int target = 234;
-    int index_expect = 2;
-
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
-
-TEST(BinarySearch, CaseMiddleRight) {
-    vector<int> nums = {7, 44, 234, 300, 344, 1777};
-    int target = 300;
-    int index_expect = 3;
-
-    EXPECT_EQ(test.search(nums, target), index_expect);
-}
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);
