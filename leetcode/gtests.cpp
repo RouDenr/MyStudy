@@ -1,5 +1,6 @@
 // Copyright decordel 2022
 #include <gtest/gtest.h>
+
 #include <vector>
 
 #include "solution.cpp"
@@ -52,7 +53,6 @@ Solution test;
 //     EXPECT_DOUBLE_EQ(test.findMedianSortedArrays(nums1, nums2), 1.50000);
 // }
 
-
 // TEST(is_palindrome, Case1) {
 //     string str = "abba";
 
@@ -84,7 +84,6 @@ Solution test;
 //     EXPECT_TRUE(!(Solution::is_palindrome(str.begin(), str.end() - 1)));
 // }
 
-
 // TEST(LongestPalindrome, Case1) {
 //     string a = "aba";
 //     string b = "bab";
@@ -112,7 +111,6 @@ Solution test;
 //     // cout << result << endl;
 //     EXPECT_TRUE(result == a || result == "c");
 // }
-
 
 // TEST(ZigzagConversion, Case1) {
 //     string s = "PAYPALISHIRING";
@@ -288,6 +286,40 @@ Solution test;
 // }
 // ! ISMATCH
 
+TEST(longestCommonPrefix, Case1) {
+    vector<string> strs = {"flower", "flow", "flight"};
+    string expect = "fl";
+
+    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+}
+
+TEST(longestCommonPrefix, CaseEmptyRes) {
+    vector<string> strs = {"dog", "racecar", "car"};
+    string expect = "";
+
+    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+}
+
+TEST(longestCommonPrefix, CaseEmptyArg) {
+    vector<string> strs = {"", "dog", "car"};
+    string expect = "";
+
+    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+}
+
+TEST(longestCommonPrefix, CaseOneArg) {
+    vector<string> strs = {"a"};
+    string expect = "a";
+
+    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+}
+// TEST(isMatch, CaseFalse2) {
+//     string s = "mississippi";
+//     string p = "mis*is*p*.";
+//     bool expect = false;
+
+//     EXPECT_EQ(test.isMatch(s, p), expect);
+// }
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);

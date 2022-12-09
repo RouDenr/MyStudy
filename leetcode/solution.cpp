@@ -263,11 +263,31 @@ class Solution {
         }
         return i_target == s.end();
     }
-};
 
-
-public:
     string longestCommonPrefix(vector<string>& strs) {
-        
+        string result;
+
+        if (strs.size() != 0) {
+            auto fw_size = strs.at(0).size();
+            if (fw_size != 0) {
+                result.reserve(fw_size);
+                for (size_t i = 0; i < fw_size; ++i) {
+                    char let = strs.at(0).at(i);
+                    bool is_common_prefix = true;
+                    for (auto&& j : strs) {
+                        if (j.size() <= i || j.at(i) != let) {
+                            is_common_prefix = false;
+                            break;
+                        }
+                    }
+                    if (is_common_prefix) {
+                        result.append(1, let);
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
     }
 };
