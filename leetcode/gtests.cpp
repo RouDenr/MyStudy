@@ -284,35 +284,6 @@ Solution test;
 
 //     EXPECT_EQ(test.isMatch(s, p), expect);
 // }
-// ! ISMATCH
-
-TEST(longestCommonPrefix, Case1) {
-    vector<string> strs = {"flower", "flow", "flight"};
-    string expect = "fl";
-
-    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
-}
-
-TEST(longestCommonPrefix, CaseEmptyRes) {
-    vector<string> strs = {"dog", "racecar", "car"};
-    string expect = "";
-
-    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
-}
-
-TEST(longestCommonPrefix, CaseEmptyArg) {
-    vector<string> strs = {"", "dog", "car"};
-    string expect = "";
-
-    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
-}
-
-TEST(longestCommonPrefix, CaseOneArg) {
-    vector<string> strs = {"a"};
-    string expect = "a";
-
-    EXPECT_EQ(test.longestCommonPrefix(strs), expect);
-}
 // TEST(isMatch, CaseFalse2) {
 //     string s = "mississippi";
 //     string p = "mis*is*p*.";
@@ -320,6 +291,97 @@ TEST(longestCommonPrefix, CaseOneArg) {
 
 //     EXPECT_EQ(test.isMatch(s, p), expect);
 // }
+// ! ISMATCH end>
+
+// TEST(longestCommonPrefix, Case1) {
+//     vector<string> strs = {"flower", "flow", "flight"};
+//     string expect = "fl";
+
+//     EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+// }
+
+// TEST(longestCommonPrefix, CaseEmptyRes) {
+//     vector<string> strs = {"dog", "racecar", "car"};
+//     string expect = "";
+
+//     EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+// }
+
+// TEST(longestCommonPrefix, CaseEmptyArg) {
+//     vector<string> strs = {"", "dog", "car"};
+//     string expect = "";
+
+//     EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+// }
+
+// TEST(longestCommonPrefix, CaseOneArg) {
+//     vector<string> strs = {"a"};
+//     string expect = "a";
+
+//     EXPECT_EQ(test.longestCommonPrefix(strs), expect);
+// }
+
+TEST(BinarySearch, CaseDef) {
+    vector<int> nums = {-1, 0, 3, 5, 9, 12};
+    int target = 9;
+    int index_expect = 4;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+
+TEST(BinarySearch, CaseNotFound) {
+    vector<int> nums = {-1, 0, 3, 5, 9, 12};
+    int target = 2;
+    int index_expect = -1;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+TEST(BinarySearch, CaseEmptyArg) {
+    vector<int> nums = {};
+    int target = 2;
+    int index_expect = -1;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+TEST(BinarySearch, CaseExtremeLeft) {
+    vector<int> nums = {7, 44, 234, 344, 1777};
+    int target = 7;
+    int index_expect = 0;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+
+TEST(BinarySearch, CaseExtremeRight) {
+    vector<int> nums = {7, 44, 234, 344, 1777};
+    int target = 1777;
+    int index_expect = 4;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+
+TEST(BinarySearch, CaseMiddle) {
+    vector<int> nums = {7, 44, 234, 344, 1777};
+    int target = 234;
+    int index_expect = 2;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+
+TEST(BinarySearch, CaseMiddleLeft) {
+    vector<int> nums = {7, 44, 234, 300, 344, 1777};
+    int target = 234;
+    int index_expect = 2;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
+
+TEST(BinarySearch, CaseMiddleRight) {
+    vector<int> nums = {7, 44, 234, 300, 344, 1777};
+    int target = 300;
+    int index_expect = 3;
+
+    EXPECT_EQ(test.search(nums, target), index_expect);
+}
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);
