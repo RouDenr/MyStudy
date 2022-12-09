@@ -205,7 +205,6 @@ class Solution {
         return result;
     }
 
-
     bool isPalindrome(int x) {
         if (x < 0) return false;
 
@@ -213,12 +212,56 @@ class Solution {
         auto it = strbuf.begin();
         auto jt = strbuf.end() - 1;
         for (size_t i = 1; i <= strbuf.size() / 2; ++i) {
-            if (*it != *jt)
-                return false;
+            if (*it != *jt) return false;
             ++it;
             --jt;
         }
         return true;
+    }
+
+    bool move_all_to_next_pattern(string::iterator& i_pattern,
+                                  string::iterator& i_target,
+                                  string::iterator s_end) {
+        short points = 0;
+        while (*i_pattern == '*' || *i_pattern == '.') {
+            if (*i_pattern == '.') ++points;
+            ++i_pattern;
+        }
+        while (i_target != s_end && *i_target != *i_pattern) {
+            ++i_target;
+            if (points != 0) --points;
+        }
+        if (points != 0) return false;
+        --i_pattern;
+        return true;
+    }
+
+    // ! NOT RESOLVED
+    bool isMatch(string s, string p) {
+        auto i_target = s.begin();
+
+        for (auto i_pattern = p.begin(); i_pattern != p.end(); ++i_pattern) {
+            if (i_target == s.end()) return false;
+
+            if (*i_pattern == '.') {
+                ++i_target;
+            } else if (*i_pattern == '*') {
+                auto target_char = *(i_pattern - 1);
+                if (target_char != '.') {
+                    while (*i_target == target_char) ++i_target;
+                } else if (!move_all_to_next_pattern(i_pattern, i_target,
+                                                     s.end())) {
+                    return false;
+                }
+            } else {
+                if (*i_target != *i_pattern) {
+                    if (*(i_pattern + 1) != '*') return false;
+                } else {
+                    ++i_target;
+                }
+            }
+        }
+        return i_target == s.end();
     }
 };
 

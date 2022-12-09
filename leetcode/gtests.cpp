@@ -191,35 +191,106 @@ Solution test;
 
 //     EXPECT_EQ(test.myAtoi(s), expect);
 // }
-TEST(isPalindrome, CaseTrue1) {
-    int x = 121;
+// TEST(isPalindrome, CaseTrue1) {
+//     int x = 121;
+//     bool expect = true;
+
+//     EXPECT_EQ(test.isPalindrome(x), expect);
+// }
+// TEST(isPalindrome, CaseTrue2) {
+//     int x = 1001;
+//     bool expect = true;
+
+//     EXPECT_EQ(test.isPalindrome(x), expect);
+// }
+// TEST(isPalindrome, CaseFalse1) {
+//     int x = -121;
+//     bool expect = false;
+
+//     EXPECT_EQ(test.isPalindrome(x), expect);
+// }
+// TEST(isPalindrome, CaseFalse2) {
+//     int x = 10;
+//     bool expect = false;
+
+//     EXPECT_EQ(test.isPalindrome(x), expect);
+// }
+// TEST(isPalindrome, CaseFalse3) {
+//     int x = 1021;
+//     bool expect = false;
+
+//     EXPECT_EQ(test.isPalindrome(x), expect);
+// }
+
+TEST(isMatch, CaseTrue1) {
+    string s = "aa";
+    string p = "a*";
     bool expect = true;
 
-    EXPECT_EQ(test.isPalindrome(x), expect);
+    EXPECT_EQ(test.isMatch(s, p), expect);
 }
-TEST(isPalindrome, CaseTrue2) {
-    int x = 1001;
+TEST(isMatch, CaseTrue2) {
+    string s = "ab";
+    string p = ".*";
     bool expect = true;
 
-    EXPECT_EQ(test.isPalindrome(x), expect);
+    EXPECT_EQ(test.isMatch(s, p), expect);
 }
-TEST(isPalindrome, CaseFalse1) {
-    int x = -121;
+TEST(isMatch, CaseTrue3) {
+    string s = "ab";
+    string p = "ab";
+    bool expect = true;
+
+    EXPECT_EQ(test.isMatch(s, p), expect);
+}
+TEST(isMatch, CaseTrue4) {
+    string s = "aab";
+    string p = "c*a*b";
+    bool expect = true;
+
+    EXPECT_EQ(test.isMatch(s, p), expect);
+}
+TEST(isMatch, CaseTrue5) {
+    string s = "aaa";
+    string p = "a*a";
+    bool expect = true;
+
+    EXPECT_EQ(test.isMatch(s, p), expect);
+}
+// TEST(isMatch, CaseTrue4) {
+//     string s = "afasdb";
+//     string p = "a*b";
+//     bool expect = true;
+
+//     EXPECT_EQ(test.isMatch(s, p), expect);
+// }
+TEST(isMatch, PointTrueCase) {
+    string s = "atb";
+    string p = "a.b";
+    bool expect = true;
+
+    EXPECT_EQ(test.isMatch(s, p), expect);
+}
+TEST(isMatch, PointFalseCase) {
+    string s = "ab";
+    string p = "a.b";
     bool expect = false;
 
-    EXPECT_EQ(test.isPalindrome(x), expect);
+    EXPECT_EQ(test.isMatch(s, p), expect);
 }
-TEST(isPalindrome, CaseFalse2) {
-    int x = 10;
+TEST(isMatch, CaseFalse1) {
+    string s = "aa";
+    string p = "a";
     bool expect = false;
 
-    EXPECT_EQ(test.isPalindrome(x), expect);
+    EXPECT_EQ(test.isMatch(s, p), expect);
 }
-TEST(isPalindrome, CaseFalse3) {
-    int x = 1021;
+TEST(isMatch, CaseFalse2) {
+    string s = "mississippi";
+    string p = "mis*is*p*.";
     bool expect = false;
 
-    EXPECT_EQ(test.isPalindrome(x), expect);
+    EXPECT_EQ(test.isMatch(s, p), expect);
 }
 
 int main(int argc, char *argv[]) {
