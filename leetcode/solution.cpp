@@ -265,15 +265,9 @@ class Solution {
     }
 };
 
-// int main () {
-//     Solution s;
-//     vector<int> nums1 = {1, 2};
-//     vector<int> nums2 = {3, 4};
-//     auto r = s.findMedianSortedArrays(nums1, nums2);
 
-//     std::cout << "res = " << r << "\n";
-
-//     for (auto &&i : nums1) {
-//         std::cout << i << " ";
-//     }
-// }
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        
+    }
+};
