@@ -361,4 +361,22 @@ class Solution {
         }
         return nums;
     }
+
+    // Rotate Array
+    void rotate(vector<int>& nums, int k) {
+        auto size = nums.size();
+        vector<int> rotate_vec(size, 0);
+        if (k > 0 && size > 0) {
+            if (k > size) k = k % size;
+            for (auto&& i : nums) {
+                if (k < size) {
+                    rotate_vec[k] = i;
+                } else {
+                    rotate_vec[k - size] = i;
+                }
+                ++k;
+            }
+            nums = rotate_vec;
+        }
+    }
 };

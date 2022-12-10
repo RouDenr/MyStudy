@@ -428,53 +428,93 @@ Solution test;
 
 //     EXPECT_EQ(test.searchInsert(nums, target), index_expect);
 // }
-TEST(SortedSquares, Case1) {
-    vector<int> nums = {-4, -1, 0, 3, 10};
-    vector<int> expect = {0, 1, 9, 16, 100};
+// TEST(SortedSquares, Case1) {
+//     vector<int> nums = {-4, -1, 0, 3, 10};
+//     vector<int> expect = {0, 1, 9, 16, 100};
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
-}
-TEST(SortedSquares, Case2) {
-    vector<int> nums = {-7, -3, 2, 3, 11};
-    vector<int> expect = {4, 9, 9, 49, 121};
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, Case2) {
+//     vector<int> nums = {-7, -3, 2, 3, 11};
+//     vector<int> expect = {4, 9, 9, 49, 121};
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseEmpty) {
+//     vector<int> nums = {};
+//     vector<int> expect = {};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseOnePos) {
+//     vector<int> nums = {1};
+//     vector<int> expect = {1};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseOneNeg) {
+//     vector<int> nums = {-1};
+//     vector<int> expect = {1};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseOnlyNegatives) {
+//     vector<int> nums = {-111, -77, -35, -6, -1};
+//     vector<int> expect = {1, 36, 1225, 5929, 12321};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseOnlyNegatives2) {
+//     vector<int> nums = {-5, -3, -2, -1};
+//     vector<int> expect = {1, 4, 9, 25};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+// TEST(SortedSquares, CaseOnlyPositives) {
+//     vector<int> nums = {1, 7, 35, 66, 111};
+//     vector<int> expect = {1, 49, 1225, 4356, 12321};
+
+//     EXPECT_EQ(test.sortedSquares(nums), expect);
+// }
+TEST(RotateArray, CaseDef) {
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
+    int k = 3;
+    vector<int> expect = {5, 6, 7, 1, 2, 3, 4};
+    test.rotate(nums, k);
+
+    EXPECT_EQ(nums, expect);
 }
-TEST(SortedSquares, CaseEmpty) {
+TEST(RotateArray, CaseEmptyArr) {
     vector<int> nums = {};
+    int k = 3;
     vector<int> expect = {};
+    test.rotate(nums, k);
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
+    EXPECT_EQ(nums, expect);
 }
-TEST(SortedSquares, CaseOnePos) {
-    vector<int> nums = {1};
-    vector<int> expect = {1};
-
-    EXPECT_EQ(test.sortedSquares(nums), expect);
-}
-TEST(SortedSquares, CaseOneNeg) {
+TEST(RotateArray, CaseOneArg) {
     vector<int> nums = {-1};
-    vector<int> expect = {1};
+    int k = 3;
+    vector<int> expect = {-1};
+    test.rotate(nums, k);
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
+    EXPECT_EQ(nums, expect);
 }
-TEST(SortedSquares, CaseOnlyNegatives) {
-    vector<int> nums = {-111, -77, -35, -6, -1};
-    vector<int> expect = {1, 36, 1225, 5929, 12321};
+TEST(RotateArray, CaseTwoArg) {
+    vector<int> nums = {-1, -2};
+    int k = 3;
+    vector<int> expect = {-2, -1};
+    test.rotate(nums, k);
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
+    EXPECT_EQ(nums, expect);
 }
-TEST(SortedSquares, CaseOnlyNegatives2) {
-    vector<int> nums = {-5, -3, -2, -1};
-    vector<int> expect = {1, 4, 9, 25};
+TEST(RotateArray, CaseEmptyK) {
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
+    int k = 0;
+    vector<int> expect = {1, 2, 3, 4, 5, 6, 7};
+    test.rotate(nums, k);
 
-    EXPECT_EQ(test.sortedSquares(nums), expect);
-}
-TEST(SortedSquares, CaseOnlyPositives) {
-    vector<int> nums = {1, 7, 35, 66, 111};
-    vector<int> expect = {1, 49, 1225, 4356, 12321};
-
-    EXPECT_EQ(test.sortedSquares(nums), expect);
+    EXPECT_EQ(nums, expect);
 }
 
 int main(int argc, char *argv[]) {
