@@ -397,36 +397,84 @@ Solution test;
 //     EXPECT_EQ(test.firstBadVersion(n), test.bad);
 // }
 
-TEST(SearchInsertPosition, Case1) {
-    vector<int> nums = {1, 3, 5, 6};
-    int target = 5;
-    int index_expect = 2;
+// TEST(SearchInsertPosition, Case1) {
+//     vector<int> nums = {1, 3, 5, 6};
+//     int target = 5;
+//     int index_expect = 2;
 
-    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+//     EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+// }
+
+// TEST(SearchInsertPosition, Case2) {
+//     vector<int> nums = {1, 3, 5, 6};
+//     int target = 7;
+//     int index_expect = 4;
+
+//     EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+// }
+
+// TEST(SearchInsertPosition, Case3) {
+//     vector<int> nums = {1, 3, 5, 6};
+//     int target = 2;
+//     int index_expect = 1;
+
+//     EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+// }
+
+// TEST(SearchInsertPosition, Case4) {
+//     vector<int> nums = {1, 3, 5, 6};
+//     int target = 0;
+//     int index_expect = 0;
+
+//     EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+// }
+TEST(SortedSquares, Case1) {
+    vector<int> nums = {-4, -1, 0, 3, 10};
+    vector<int> expect = {0, 1, 9, 16, 100};
+
+    EXPECT_EQ(test.sortedSquares(nums), expect);
 }
+TEST(SortedSquares, Case2) {
+    vector<int> nums = {-7, -3, 2, 3, 11};
+    vector<int> expect = {4, 9, 9, 49, 121};
 
-TEST(SearchInsertPosition, Case2) {
-    vector<int> nums = {1, 3, 5, 6};
-    int target = 7;
-    int index_expect = 4;
-
-    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+    EXPECT_EQ(test.sortedSquares(nums), expect);
 }
+TEST(SortedSquares, CaseEmpty) {
+    vector<int> nums = {};
+    vector<int> expect = {};
 
-TEST(SearchInsertPosition, Case3) {
-    vector<int> nums = {1, 3, 5, 6};
-    int target = 2;
-    int index_expect = 1;
-
-    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+    EXPECT_EQ(test.sortedSquares(nums), expect);
 }
+TEST(SortedSquares, CaseOnePos) {
+    vector<int> nums = {1};
+    vector<int> expect = {1};
 
-TEST(SearchInsertPosition, Case4) {
-    vector<int> nums = {1, 3, 5, 6};
-    int target = 0;
-    int index_expect = 0;
+    EXPECT_EQ(test.sortedSquares(nums), expect);
+}
+TEST(SortedSquares, CaseOneNeg) {
+    vector<int> nums = {-1};
+    vector<int> expect = {1};
 
-    EXPECT_EQ(test.searchInsert(nums, target), index_expect);
+    EXPECT_EQ(test.sortedSquares(nums), expect);
+}
+TEST(SortedSquares, CaseOnlyNegatives) {
+    vector<int> nums = {-111, -77, -35, -6, -1};
+    vector<int> expect = {1, 36, 1225, 5929, 12321};
+
+    EXPECT_EQ(test.sortedSquares(nums), expect);
+}
+TEST(SortedSquares, CaseOnlyNegatives2) {
+    vector<int> nums = {-5, -3, -2, -1};
+    vector<int> expect = {1, 4, 9, 25};
+
+    EXPECT_EQ(test.sortedSquares(nums), expect);
+}
+TEST(SortedSquares, CaseOnlyPositives) {
+    vector<int> nums = {1, 7, 35, 66, 111};
+    vector<int> expect = {1, 49, 1225, 4356, 12321};
+
+    EXPECT_EQ(test.sortedSquares(nums), expect);
 }
 
 int main(int argc, char *argv[]) {

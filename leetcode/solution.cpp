@@ -316,17 +316,13 @@ class Solution {
         return result;
     }
 
-
     int bad = 0;
-    bool isBadVersion(int version) {
-        return version >= bad;
-    }
+    bool isBadVersion(int version) { return version >= bad; }
 
     int firstBadVersion(int n) {
         if (!isBadVersion(n)) return n + 1;
         return firstBadVersion(n - 1);
     }
-
 
     int searchInsert(vector<int>& nums, int target) {
         // auto nums_begin = nums.begin(), nums_end = nums.end() - 1;
@@ -348,5 +344,21 @@ class Solution {
             result = nums_begin;
         }
         return result;
+    }
+
+    // Squares of a Sorted Array
+    vector<int> sortedSquares(vector<int>& nums) {
+        if (nums.size() == 0) return nums;
+        for (auto i = nums.end() - 1; i >= nums.begin(); --i) {
+            *i *= *i;
+            if (i + 1 != nums.end()) {
+                auto j = i;
+                while (j != nums.end() - 1 && *j > *(j + 1)) {
+                    swap(*j, *(j + 1));
+                    j++;
+                }
+            }
+        }
+        return nums;
     }
 };
