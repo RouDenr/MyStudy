@@ -379,4 +379,23 @@ class Solution {
             nums = rotate_vec;
         }
     }
+
+    // Move Zeroes
+    void moveZeroes(vector<int>& nums) {
+        if (nums.size() == 0) return;
+        for (auto i = nums.end() - 1; i >= nums.begin(); --i) {
+            if (*i == 0) {
+                auto j = i;
+                while (j + 1 != nums.end() && *(j + 1) != 0) {
+                    swap(*j, *(j + 1));
+                    ++j;
+                }
+            }
+        }
+    }
+
+    // Two Sum II - Input Array Is Sorted
+    vector<int> twoSum(vector<int>& numbers, int target) {
+
+    }
 };

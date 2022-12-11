@@ -476,43 +476,85 @@ Solution test;
 
 //     EXPECT_EQ(test.sortedSquares(nums), expect);
 // }
-TEST(RotateArray, CaseDef) {
-    vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
-    int k = 3;
-    vector<int> expect = {5, 6, 7, 1, 2, 3, 4};
-    test.rotate(nums, k);
+// TEST(RotateArray, CaseDef) {
+//     vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
+//     int k = 3;
+//     vector<int> expect = {5, 6, 7, 1, 2, 3, 4};
+//     test.rotate(nums, k);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(RotateArray, CaseEmptyArr) {
+//     vector<int> nums = {};
+//     int k = 3;
+//     vector<int> expect = {};
+//     test.rotate(nums, k);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(RotateArray, CaseOneArg) {
+//     vector<int> nums = {-1};
+//     int k = 3;
+//     vector<int> expect = {-1};
+//     test.rotate(nums, k);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(RotateArray, CaseTwoArg) {
+//     vector<int> nums = {-1, -2};
+//     int k = 3;
+//     vector<int> expect = {-2, -1};
+//     test.rotate(nums, k);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(RotateArray, CaseEmptyK) {
+//     vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
+//     int k = 0;
+//     vector<int> expect = {1, 2, 3, 4, 5, 6, 7};
+//     test.rotate(nums, k);
+
+//     EXPECT_EQ(nums, expect);
+// }
+TEST(MoveZeroes, CaseDef) {
+    vector<int> nums = {0, 1, 0, 3, 12};
+    vector<int> expect = {1, 3, 12, 0, 0};
+    test.moveZeroes(nums);
 
     EXPECT_EQ(nums, expect);
 }
-TEST(RotateArray, CaseEmptyArr) {
+TEST(MoveZeroes, CaseNonZeroes) {
+    vector<int> nums = {8, 1, 6, 3, 12};
+    vector<int> expect = {8, 1, 6, 3, 12};
+    test.moveZeroes(nums);
+
+    EXPECT_EQ(nums, expect);
+}
+TEST(MoveZeroes, CaseOnlyZeroes) {
+    vector<int> nums = {0, 0, 0, 0, 0};
+    vector<int> expect = {0, 0, 0, 0, 0};
+    test.moveZeroes(nums);
+
+    EXPECT_EQ(nums, expect);
+}
+TEST(MoveZeroes, CaseOneZero) {
+    vector<int> nums = {0};
+    vector<int> expect = {0};
+    test.moveZeroes(nums);
+
+    EXPECT_EQ(nums, expect);
+}
+TEST(MoveZeroes, CaseOneNonZero) {
+    vector<int> nums = {1};
+    vector<int> expect = {1};
+    test.moveZeroes(nums);
+
+    EXPECT_EQ(nums, expect);
+}
+TEST(MoveZeroes, CaseEmpty) {
     vector<int> nums = {};
-    int k = 3;
     vector<int> expect = {};
-    test.rotate(nums, k);
-
-    EXPECT_EQ(nums, expect);
-}
-TEST(RotateArray, CaseOneArg) {
-    vector<int> nums = {-1};
-    int k = 3;
-    vector<int> expect = {-1};
-    test.rotate(nums, k);
-
-    EXPECT_EQ(nums, expect);
-}
-TEST(RotateArray, CaseTwoArg) {
-    vector<int> nums = {-1, -2};
-    int k = 3;
-    vector<int> expect = {-2, -1};
-    test.rotate(nums, k);
-
-    EXPECT_EQ(nums, expect);
-}
-TEST(RotateArray, CaseEmptyK) {
-    vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
-    int k = 0;
-    vector<int> expect = {1, 2, 3, 4, 5, 6, 7};
-    test.rotate(nums, k);
+    test.moveZeroes(nums);
 
     EXPECT_EQ(nums, expect);
 }
