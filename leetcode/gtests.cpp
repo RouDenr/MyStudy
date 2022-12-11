@@ -617,36 +617,69 @@ Solution test;
 //     EXPECT_EQ(test.reverseWords(str), expect);
 // }
 
-TEST(MiddleOfTheLinkedList, Case) {
+// TEST(MiddleOfTheLinkedList, Case) {
+//     ListNode *head = new ListNode(
+//         1, new ListNode(2, new ListNode(3, new ListNode(4, new
+//         ListNode(5)))));
+//     auto expect = head->next->next;
+
+//     EXPECT_EQ(test.middleNode(head), expect);
+//     delete head;
+// }
+// TEST(MiddleOfTheLinkedList, Case2) {
+//     ListNode *head = new ListNode(
+//         1, new ListNode(
+//                2, new ListNode(
+//                       3, new ListNode(4, new ListNode(5, new
+//                       ListNode(6))))));
+//     auto expect = head->next->next->next;
+
+//     EXPECT_EQ(test.middleNode(head), expect);
+//     delete head;
+// }
+// TEST(MiddleOfTheLinkedList, Case3) {
+//     ListNode *head = new ListNode();
+//     auto expect = head;
+
+//     EXPECT_EQ(test.middleNode(head), expect);
+//     delete head;
+// }
+// TEST(MiddleOfTheLinkedList, Case4) {
+//     ListNode *head = nullptr;
+//     auto expect = head;
+
+//     EXPECT_EQ(test.middleNode(head), expect);
+// }
+
+TEST(RemoveNthNodeFromEndofList, Case) {
     ListNode *head = new ListNode(
         1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-    auto expect = head->next->next;
+    int n = 2;
+    auto expect =
+        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(5))));
 
-    EXPECT_EQ(test.middleNode(head), expect);
-    delete head;
+    head = test.removeNthFromEnd(head, n);
+    for (auto i = head, j = expect; i != nullptr || j != nullptr;
+         i = i->next, j = j->next) {
+        EXPECT_EQ(i->val, j->val);
+    }
 }
-TEST(MiddleOfTheLinkedList, Case2) {
-    ListNode *head = new ListNode(
-        1, new ListNode(
-               2, new ListNode(
-                      3, new ListNode(4, new ListNode(5, new ListNode(6))))));
-    auto expect = head->next->next->next;
 
-    EXPECT_EQ(test.middleNode(head), expect);
-    delete head;
-}
-TEST(MiddleOfTheLinkedList, Case3) {
+TEST(RemoveNthNodeFromEndofList, Case3) {
     ListNode *head = new ListNode();
-    auto expect = head;
+    int n = 1;
+    auto expect = nullptr;
+    head = test.removeNthFromEnd(head, n);
 
-    EXPECT_EQ(test.middleNode(head), expect);
-    delete head;
+    EXPECT_EQ(head, expect);
 }
-TEST(MiddleOfTheLinkedList, Case4) {
+TEST(RemoveNthNodeFromEndofList, Case4) {
     ListNode *head = nullptr;
-    auto expect = head;
+    int n = 1;
+    auto expect = nullptr;
+    head = test.removeNthFromEnd(head, n);
 
-    EXPECT_EQ(test.middleNode(head), expect);
+    EXPECT_EQ(head, expect);
 }
 
 int main(int argc, char *argv[]) {

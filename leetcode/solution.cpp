@@ -14,7 +14,7 @@ struct ListNode {
     explicit ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode* next) : val(x), next(next) {}
     ~ListNode() {
-        if (this->next != nullptr) delete this->next;
+        // if (this->next != nullptr) delete this->next;
     }
 };
 
@@ -96,6 +96,36 @@ class Solution {
     static bool setContains(const set<T>& set, const T& key) {
         auto fi = set.find(key);
         return fi != set.end();
+    }
+
+    // Remove Nth Node From End of List
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if (head) {
+            size_t size = 1;
+            {
+                auto tail = head;
+                while (tail->next) {
+                    ++size;
+                    tail = tail->next;
+                }
+            }
+            auto tmp_head = head, tmp_next = head;
+            if (size == n) {
+                head = head->next;
+                // delete tmp_head;
+            }
+            while (size != 0) {
+                if (size == n) {
+                    tmp_head->next = tmp_next->next;
+                    // delete tmp_next;
+                    break;
+                }
+                tmp_head = tmp_next;
+                tmp_next = tmp_next->next;
+                --size;
+            }
+        }
+        return head;
     }
 
     int lengthOfLongestSubstring(string s) {
