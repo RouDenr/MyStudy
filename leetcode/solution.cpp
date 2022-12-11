@@ -207,6 +207,34 @@ class Solution {
             --j;
         }
     }
+    // Reverse Words in a String III
+    void reverseString(string::iterator i, string::iterator j) {
+        while (i < j) {
+            swap(*i, *j);
+            ++i;
+            --j;
+        }
+    }
+
+    string reverseWords(string s) {
+        auto begin_word = s.begin();
+        bool start_word = false;
+
+        for (auto i = s.begin(); i != s.end(); ++i) {
+            if (isspace(*i)) {
+                if (start_word) {
+                    reverseString(begin_word, i - 1);
+                    start_word = false;
+                }
+
+            } else if (!start_word) {
+                start_word = true;
+                begin_word = i;
+            }
+        }
+        if (start_word) reverseString(begin_word, s.end() - 1);
+        return s;
+    }
 
     int myAtoi(string s) {
         typename string::size_type i = 0;

@@ -158,6 +158,7 @@ Solution test;
 //     int expect = 21;
 
 //     EXPECT_EQ(test.reverse(x), expect);
+// }
 // TEST(myAtoi, Case1) {
 //     string s = "42";
 //     int expect = 42;
@@ -220,7 +221,7 @@ Solution test;
 //     EXPECT_EQ(test.isPalindrome(x), expect);
 // }
 
-// ! ISMATCH
+// // //! ISMATCH
 // TEST(isMatch, CaseTrue1) {
 //     string s = "aa";
 //     string p = "a*";
@@ -284,14 +285,14 @@ Solution test;
 
 //     EXPECT_EQ(test.isMatch(s, p), expect);
 // }
-// TEST(isMatch, CaseFalse2) {
+// TEST(isMatch, CaseFalse3) {
 //     string s = "mississippi";
 //     string p = "mis*is*p*.";
 //     bool expect = false;
 
 //     EXPECT_EQ(test.isMatch(s, p), expect);
 // }
-// ! ISMATCH end>
+// // //! ISMATCH end>
 
 // TEST(longestCommonPrefix, Case1) {
 //     vector<string> strs = {"flower", "flow", "flight"};
@@ -557,6 +558,8 @@ Solution test;
 //     test.moveZeroes(nums);
 
 //     EXPECT_EQ(nums, expect);
+// }
+
 // TEST(TwoSumTwo, Case) {
 //     vector<int> nums = {2, 7, 11, 15};
 //     int target = 9;
@@ -585,22 +588,38 @@ Solution test;
 
 //     EXPECT_EQ(test.twoSumTwo(nums, target), expect);
 // }
-TEST(ReverseString, Case) {
-    vector<char> str = {'h', 'e', 'l', 'l', 'o'};
-    // int target = -1;
-    vector<char> expect = {'o', 'l', 'l', 'e', 'h'};
-    test.reverseString(str);
+// TEST(ReverseString, Case) {
+//     vector<char> str = {'h', 'e', 'l', 'l', 'o'};
+//     // int target = -1;
+//     vector<char> expect = {'o', 'l', 'l', 'e', 'h'};
+//     test.reverseString(str);
 
-    EXPECT_EQ(str, expect);
-}
-TEST(ReverseString, Case2) {
-    vector<char> str = {'h', 'e', 'e', 'l', 'l', 'o'};
-    // int target = -1;
-    vector<char> expect = {'o', 'l', 'l', 'e', 'e', 'h'};
-    test.reverseString(str);
+//     EXPECT_EQ(str, expect);
+// }
+// TEST(ReverseString, Case2) {
+//     vector<char> str = {'h', 'e', 'e', 'l', 'l', 'o'};
+//     // int target = -1;
+//     vector<char> expect = {'o', 'l', 'l', 'e', 'e', 'h'};
+//     test.reverseString(str);
 
-    EXPECT_EQ(str, expect);
+//     EXPECT_EQ(str, expect);
+// }
+
+TEST(ReverseWordsInString, CaseDef) {
+    string str = "Let's take LeetCode contest";
+    string expect = "s'teL ekat edoCteeL tsetnoc";
+
+
+    EXPECT_EQ(test.reverseWords(str), expect);
 }
+TEST(ReverseWordsInString, CaseEmpty) {
+    string str = "";
+    string expect = "";
+
+
+    EXPECT_EQ(test.reverseWords(str), expect);
+}
+
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);
