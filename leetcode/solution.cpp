@@ -198,6 +198,16 @@ class Solution {
         return isNegativ ? -result : result;
     }
 
+    // Reverse String
+    void reverseString(vector<char>& s) {
+        auto i = s.begin(), j = s.end() - 1;
+        while (i < j) {
+            swap(*i, *j);
+            ++i;
+            --j;
+        }
+    }
+
     int myAtoi(string s) {
         typename string::size_type i = 0;
         long result = 0;

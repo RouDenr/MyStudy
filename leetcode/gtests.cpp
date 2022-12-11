@@ -557,33 +557,49 @@ Solution test;
 //     test.moveZeroes(nums);
 
 //     EXPECT_EQ(nums, expect);
-TEST(TwoSumTwo, Case) {
-    vector<int> nums = {2, 7, 11, 15};
-    int target = 9;
-    vector<int> expect = {1, 2};
+// TEST(TwoSumTwo, Case) {
+//     vector<int> nums = {2, 7, 11, 15};
+//     int target = 9;
+//     vector<int> expect = {1, 2};
 
-    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+//     EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+// }
+// TEST(TwoSumTwo, Case2) {
+//     vector<int> nums = {-1, -3, 2, 5, 7, 11, 15};
+//     int target = 9;
+//     vector<int> expect = {3, 5};
+
+//     EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+// }
+// TEST(TwoSumTwo, Case3) {
+//     vector<int> nums = {2, 3, 4};
+//     int target = 6;
+//     vector<int> expect = {1, 3};
+
+//     EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+// }
+// TEST(TwoSumTwo, Case4) {
+//     vector<int> nums = {-1, 0};
+//     int target = -1;
+//     vector<int> expect = {1, 2};
+
+//     EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+// }
+TEST(ReverseString, Case) {
+    vector<char> str = {'h', 'e', 'l', 'l', 'o'};
+    // int target = -1;
+    vector<char> expect = {'o', 'l', 'l', 'e', 'h'};
+    test.reverseString(str);
+
+    EXPECT_EQ(str, expect);
 }
-TEST(TwoSumTwo, Case2) {
-    vector<int> nums = {-1, -3, 2, 5, 7, 11, 15};
-    int target = 9;
-    vector<int> expect = {3, 5};
+TEST(ReverseString, Case2) {
+    vector<char> str = {'h', 'e', 'e', 'l', 'l', 'o'};
+    // int target = -1;
+    vector<char> expect = {'o', 'l', 'l', 'e', 'e', 'h'};
+    test.reverseString(str);
 
-    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
-}
-TEST(TwoSumTwo, Case3) {
-    vector<int> nums = {2, 3, 4};
-    int target = 6;
-    vector<int> expect = {1, 3};
-
-    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
-}
-TEST(TwoSumTwo, Case4) {
-    vector<int> nums = {-1, 0};
-    int target = -1;
-    vector<int> expect = {1, 2};
-
-    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
+    EXPECT_EQ(str, expect);
 }
 
 int main(int argc, char *argv[]) {
