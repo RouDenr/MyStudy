@@ -28,6 +28,20 @@ class Solution {
         return vector<int>();
     }
 
+    // Two Sum II - Input Array Is Sorted
+    vector<int> twoSumTwo(vector<int>& numbers, int target) {
+        int i = 0ul, j = numbers.size() - 1;
+        while (numbers[i] + numbers[j] != target) {
+            while ((numbers[i] + numbers[j]) > target) {
+                j--;
+            }
+            while ((numbers[i] + numbers[j]) < target) {
+                i++;
+            }
+        }
+        return vector<int>({i + 1, j + 1});
+    }
+
     static void add_node(ListNode*& node, int sum) {
         ListNode* tmp = new ListNode(sum);
         node->next = tmp;
@@ -392,10 +406,5 @@ class Solution {
                 }
             }
         }
-    }
-
-    // Two Sum II - Input Array Is Sorted
-    vector<int> twoSum(vector<int>& numbers, int target) {
-
     }
 };

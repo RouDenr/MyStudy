@@ -516,47 +516,74 @@ Solution test;
 
 //     EXPECT_EQ(nums, expect);
 // }
-TEST(MoveZeroes, CaseDef) {
-    vector<int> nums = {0, 1, 0, 3, 12};
-    vector<int> expect = {1, 3, 12, 0, 0};
-    test.moveZeroes(nums);
+// TEST(MoveZeroes, CaseDef) {
+//     vector<int> nums = {0, 1, 0, 3, 12};
+//     vector<int> expect = {1, 3, 12, 0, 0};
+//     test.moveZeroes(nums);
 
-    EXPECT_EQ(nums, expect);
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(MoveZeroes, CaseNonZeroes) {
+//     vector<int> nums = {8, 1, 6, 3, 12};
+//     vector<int> expect = {8, 1, 6, 3, 12};
+//     test.moveZeroes(nums);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(MoveZeroes, CaseOnlyZeroes) {
+//     vector<int> nums = {0, 0, 0, 0, 0};
+//     vector<int> expect = {0, 0, 0, 0, 0};
+//     test.moveZeroes(nums);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(MoveZeroes, CaseOneZero) {
+//     vector<int> nums = {0};
+//     vector<int> expect = {0};
+//     test.moveZeroes(nums);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(MoveZeroes, CaseOneNonZero) {
+//     vector<int> nums = {1};
+//     vector<int> expect = {1};
+//     test.moveZeroes(nums);
+
+//     EXPECT_EQ(nums, expect);
+// }
+// TEST(MoveZeroes, CaseEmpty) {
+//     vector<int> nums = {};
+//     vector<int> expect = {};
+//     test.moveZeroes(nums);
+
+//     EXPECT_EQ(nums, expect);
+TEST(TwoSumTwo, Case) {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    vector<int> expect = {1, 2};
+
+    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
 }
-TEST(MoveZeroes, CaseNonZeroes) {
-    vector<int> nums = {8, 1, 6, 3, 12};
-    vector<int> expect = {8, 1, 6, 3, 12};
-    test.moveZeroes(nums);
+TEST(TwoSumTwo, Case2) {
+    vector<int> nums = {-1, -3, 2, 5, 7, 11, 15};
+    int target = 9;
+    vector<int> expect = {3, 5};
 
-    EXPECT_EQ(nums, expect);
+    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
 }
-TEST(MoveZeroes, CaseOnlyZeroes) {
-    vector<int> nums = {0, 0, 0, 0, 0};
-    vector<int> expect = {0, 0, 0, 0, 0};
-    test.moveZeroes(nums);
+TEST(TwoSumTwo, Case3) {
+    vector<int> nums = {2, 3, 4};
+    int target = 6;
+    vector<int> expect = {1, 3};
 
-    EXPECT_EQ(nums, expect);
+    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
 }
-TEST(MoveZeroes, CaseOneZero) {
-    vector<int> nums = {0};
-    vector<int> expect = {0};
-    test.moveZeroes(nums);
+TEST(TwoSumTwo, Case4) {
+    vector<int> nums = {-1, 0};
+    int target = -1;
+    vector<int> expect = {1, 2};
 
-    EXPECT_EQ(nums, expect);
-}
-TEST(MoveZeroes, CaseOneNonZero) {
-    vector<int> nums = {1};
-    vector<int> expect = {1};
-    test.moveZeroes(nums);
-
-    EXPECT_EQ(nums, expect);
-}
-TEST(MoveZeroes, CaseEmpty) {
-    vector<int> nums = {};
-    vector<int> expect = {};
-    test.moveZeroes(nums);
-
-    EXPECT_EQ(nums, expect);
+    EXPECT_EQ(test.twoSumTwo(nums, target), expect);
 }
 
 int main(int argc, char *argv[]) {
