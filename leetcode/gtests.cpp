@@ -605,21 +605,49 @@ Solution test;
 //     EXPECT_EQ(str, expect);
 // }
 
-TEST(ReverseWordsInString, CaseDef) {
-    string str = "Let's take LeetCode contest";
-    string expect = "s'teL ekat edoCteeL tsetnoc";
+// TEST(ReverseWordsInString, CaseDef) {
+//     string str = "Let's take LeetCode contest";
+//     string expect = "s'teL ekat edoCteeL tsetnoc";
 
+//     EXPECT_EQ(test.reverseWords(str), expect);
+// }
+// TEST(ReverseWordsInString, CaseEmpty) {
+//     string str = "";
+//     string expect = "";
+//     EXPECT_EQ(test.reverseWords(str), expect);
+// }
 
-    EXPECT_EQ(test.reverseWords(str), expect);
+TEST(MiddleOfTheLinkedList, Case) {
+    ListNode *head = new ListNode(
+        1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+    auto expect = head->next->next;
+
+    EXPECT_EQ(test.middleNode(head), expect);
+    delete head;
 }
-TEST(ReverseWordsInString, CaseEmpty) {
-    string str = "";
-    string expect = "";
+TEST(MiddleOfTheLinkedList, Case2) {
+    ListNode *head = new ListNode(
+        1, new ListNode(
+               2, new ListNode(
+                      3, new ListNode(4, new ListNode(5, new ListNode(6))))));
+    auto expect = head->next->next->next;
 
-
-    EXPECT_EQ(test.reverseWords(str), expect);
+    EXPECT_EQ(test.middleNode(head), expect);
+    delete head;
 }
+TEST(MiddleOfTheLinkedList, Case3) {
+    ListNode *head = new ListNode();
+    auto expect = head;
 
+    EXPECT_EQ(test.middleNode(head), expect);
+    delete head;
+}
+TEST(MiddleOfTheLinkedList, Case4) {
+    ListNode *head = nullptr;
+    auto expect = head;
+
+    EXPECT_EQ(test.middleNode(head), expect);
+}
 
 int main(int argc, char *argv[]) {
     testing::InitGoogleTest(&argc, argv);

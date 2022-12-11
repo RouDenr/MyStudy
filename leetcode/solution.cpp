@@ -13,6 +13,9 @@ struct ListNode {
     ListNode() : val(0), next(nullptr) {}
     explicit ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode* next) : val(x), next(next) {}
+    ~ListNode() {
+        if (this->next != nullptr) delete this->next;
+    }
 };
 
 class Solution {
@@ -67,6 +70,25 @@ class Solution {
             if (l2->next) l2 = l2->next;
         }
         if (plus_next) add_node(tail, plus_next);
+        return head;
+    }
+
+    // Middle of the Linked List
+    ListNode* middleNode(ListNode* head) {
+        if (head) {
+            size_t size = 1;
+            {
+                auto tail = head;
+                while (tail->next) {
+                    ++size;
+                    tail = tail->next;
+                }
+            }
+            auto mid_size = size % 2 == 0 ? size / 2 : size / 2 + 1;
+            while (size-- != mid_size) {
+                head = head->next;
+            }
+        }
         return head;
     }
 
