@@ -20,6 +20,38 @@ struct ListNode {
     }
 };
 
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode* left, TreeNode* right)
+        : val(x), left(left), right(right) {}
+
+    bool operator==(const TreeNode& other) {
+        bool result = true;
+
+        if (other.val != this->val) return false;
+        if (other.left && this->left)
+            result = *(this->left) == *(other.left);
+        else if (other.left == nullptr && this->left == nullptr)
+            result = true;
+        else
+            return false;
+
+        if (result) {
+            if (other.right && this->right)
+                result = *(this->right) == *(other.right);
+            else if (other.right == nullptr && this->right == nullptr)
+                result = true;
+            else
+                return false;
+        }
+        return result;
+    }
+};
+
 class Solution {
    public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -637,5 +669,28 @@ class Solution {
         }
 
         return max;
+    }
+
+
+    // Merge Two Binary Trees
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        TreeNode* newTree = nullptr;
+
+        if (root1 || root2) {
+            if (root1 && root2) {
+                newTree = new TreeNode(root1->val + root2->val,
+                                       mergeTrees(root1->left, root2->left),
+                                       mergeTrees(root1->right, root2->right));
+            } else if (root1) {
+                newTree =
+                    new TreeNode(root1->val, mergeTrees(root1->left, nullptr),
+                                 mergeTrees(root1->right, nullptr));
+            } else {
+                newTree =
+                    new TreeNode(root2->val, mergeTrees(nullptr, root2->left),
+                                 mergeTrees(nullptr, root2->right));
+            }
+        }
+        return newTree;
     }
 };

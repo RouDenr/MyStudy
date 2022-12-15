@@ -859,24 +859,42 @@ Solution test;
 //     EXPECT_EQ(test.floodFill(image, sr, sc, color), expect);
 // }
 
-TEST(MaxAreaOfIsland, CaseDef) {
-    vector<vector<int> > image = {{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-                                  {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
-                                  {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
-    int expect = 6;
+// TEST(MaxAreaOfIsland, CaseDef) {
+//     vector<vector<int> > image = {{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+//                                   {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+//                                   {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+//                                   {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+//                                   {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+//                                   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+//                                   {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+//                                   {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
+//     int expect = 6;
 
-    EXPECT_EQ(test.maxAreaOfIsland(image), expect);
+//     EXPECT_EQ(test.maxAreaOfIsland(image), expect);
+// }
+// TEST(MaxAreaOfIsland, CaseZero) {
+//     vector<vector<int> > image = {{0, 0, 0}, {0, 0, 0}};
+//     int expect = 0;
+
+//     EXPECT_EQ(test.maxAreaOfIsland(image), expect);
+// }
+
+TEST(MergeTwoBinaryTrees, CaseDef) {
+    TreeNode *root1 = new TreeNode(1, new TreeNode(3, new TreeNode(5), nullptr),
+                                   new TreeNode(2));
+    TreeNode *root2 = new TreeNode(2, new TreeNode(1, nullptr, new TreeNode(4)),
+                                   new TreeNode(3, nullptr, new TreeNode(7)));
+    TreeNode *expect =
+        new TreeNode(3, new TreeNode(4, new TreeNode(5), new TreeNode(4)),
+                     new TreeNode(5, nullptr, new TreeNode(7)));
+    EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
 }
-TEST(MaxAreaOfIsland, CaseZero) {
-    vector<vector<int> > image = {{0, 0, 0}, {0, 0, 0}};
-    int expect = 0;
 
-    EXPECT_EQ(test.maxAreaOfIsland(image), expect);
+TEST(MergeTwoBinaryTrees, CaseDef2) {
+    TreeNode *root1 = new TreeNode(1);
+    TreeNode *root2 = new TreeNode(1, new TreeNode(2), nullptr);
+    TreeNode *expect = new TreeNode(2, new TreeNode(2), nullptr);
+    EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
 }
 
 int main(int argc, char *argv[]) {
