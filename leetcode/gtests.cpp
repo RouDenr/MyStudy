@@ -844,19 +844,39 @@ Solution test;
 //     EXPECT_EQ(test.checkInclusion(s1, s2), expect);
 // }
 
-TEST(FloodFill, CaseDef) {
-    vector<vector<int> > image = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
-    int sr = 1, sc = 1, color = 2;
-    vector<vector<int> > expect = {{2, 2, 2}, {2, 2, 0}, {2, 0, 1}};
+// TEST(FloodFill, CaseDef) {
+//     vector<vector<int> > image = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
+//     int sr = 1, sc = 1, color = 2;
+//     vector<vector<int> > expect = {{2, 2, 2}, {2, 2, 0}, {2, 0, 1}};
 
-    EXPECT_EQ(test.floodFill(image, sr, sc, color), expect);
+//     EXPECT_EQ(test.floodFill(image, sr, sc, color), expect);
+// }
+// TEST(FloodFill, CaseZero) {
+//     vector<vector<int> > image = {{0, 0, 0}, {0, 0, 0}};
+//     int sr = 0, sc = 0, color = 0;
+//     vector<vector<int> > expect = {{0, 0, 0}, {0, 0, 0}};
+
+//     EXPECT_EQ(test.floodFill(image, sr, sc, color), expect);
+// }
+
+TEST(MaxAreaOfIsland, CaseDef) {
+    vector<vector<int> > image = {{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                                  {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                                  {0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+                                  {0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+                                  {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}};
+    int expect = 6;
+
+    EXPECT_EQ(test.maxAreaOfIsland(image), expect);
 }
-TEST(FloodFill, CaseZero) {
+TEST(MaxAreaOfIsland, CaseZero) {
     vector<vector<int> > image = {{0, 0, 0}, {0, 0, 0}};
-    int sr = 0, sc = 0, color = 0;
-    vector<vector<int> > expect = {{0, 0, 0}, {0, 0, 0}};
+    int expect = 0;
 
-    EXPECT_EQ(test.floodFill(image, sr, sc, color), expect);
+    EXPECT_EQ(test.maxAreaOfIsland(image), expect);
 }
 
 int main(int argc, char *argv[]) {

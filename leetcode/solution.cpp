@@ -604,4 +604,38 @@ class Solution {
             floodFill(image, sr, sc + 1, color);
         return image;
     }
+
+    int sizeIsland(set<pair<int, int>>& visited, int i, int j,
+                   vector<vector<int>>& grid) {
+        if (i < 0 || j < 0 || i == grid.size() || j == grid[i].size()) return 0;
+        if (grid[i][j] != 1) return 0;
+        if (visited.find({i, j}) != visited.end()) return 0;
+
+        visited.insert({i, j});
+        auto size = sizeIsland(visited, i + 1, j, grid);
+        size += sizeIsland(visited, i - 1, j, grid);
+        size += sizeIsland(visited, i, j + 1, grid);
+        size += sizeIsland(visited, i, j - 1, grid);
+        return size + 1;
+    }
+
+    // Max Area of Island
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int max = 0;
+        set<pair<int, int>> visited;
+
+        if ((grid.size() != 0 && grid[0].size() != 0)) {
+            for (size_t i = 0; i < grid.size(); ++i) {
+                for (size_t j = 0; j < grid[i].size(); ++j) {
+                    if (grid[i][j] == 1 &&
+                        visited.find({i, j}) == visited.end()) {
+                        auto tmp_size = sizeIsland(visited, i, j, grid);
+                        if (tmp_size > max) max = tmp_size;
+                    }
+                }
+            }
+        }
+
+        return max;
+    }
 };
