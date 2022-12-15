@@ -14,12 +14,12 @@ DEP		= ${OBJS:%.o=%.d}
 
 EXE		= ${BUILD}/${TEST_NAME}.out
 
-all	: ${TEST_NAME}
+all	: ${EXE}
 
 ${BUILD}	:
 	@mkdir $@
 
-${TEST_NAME}	: ${OBJS} ${BUILD}
+${EXE}	: ${OBJS} ${BUILD}
 	${CC} ${OBJS} ${TESTS_FLAGS} -o ${EXE}
 
 

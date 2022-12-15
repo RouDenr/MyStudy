@@ -3,6 +3,8 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 using namespace std;
@@ -126,6 +128,89 @@ class Solution {
             }
         }
         return head;
+    }
+
+    // auto ft_binary_search(string::iterator&& begin, string::iterator&& end,
+    //                       const char& target) {
+    //     // auto nums_begin = nums.begin(), nums_end = nums.end() - 1;
+    //     // long nums_begin = 0l, nums_end = nums.size() - 1;
+    //     string::iterator result = end + 1;
+
+    //     while (begin <= end) {
+    //         auto mid_index = begin + (end - begin) / 2;
+    //         // auto mid_val = nums[mid_index];
+
+    //         if (*mid_index < target) {
+    //             begin = mid_index + 1;
+    //         } else if (*mid_index > target) {
+    //             end = mid_index - 1;
+    //         } else {
+    //             result = mid_index;
+    //             break;
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    // bool charsContains(const unordered_multiset<char> &s, string::iterator i)
+    // {
+    //     unordered_multiset<char> comp;
+    //     while (s.size() != comp.size()) {
+    //         auto tmp = s.find(*i);
+    //         if (tmp == s.end()) {
+    //             return false;
+    //         }
+    //         ++i;
+    //         comp.insert(*i);
+    //     }
+    //     return s == comp;
+    // }
+
+    // // Permutation in String
+    // bool checkInclusion(string s1, string s2) {
+    //     unordered_multiset<char> set_s1(s1.begin(), s1.end());
+    //     auto s2_end = s2.end() - s1.size() + 1;
+    //     if (s1.size() <= s2.size()) {
+    //         for (auto i = s2.begin(); i < s2_end; ++i) {
+    //             if (s1.find(*i) != s1.npos) {
+    //                 if (charsContains(set_s1, i)) return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    bool checkInclusion(string s1, string s2) {
+        unordered_map<char, int> map_s1;
+        for (auto&& i : s1) {
+            ++map_s1[i];
+        }
+        auto count_uniq_char = map_s1.size();
+        size_t i = 0, j = 0;
+        while (j < s2.size()) {
+            auto j_char = map_s1.find(s2[j]);
+            if (j_char != map_s1.end()) {
+                --(j_char->second);
+                if ((j_char->second) == 0) {
+                    --count_uniq_char;
+                }
+            }
+            if (j - i + 1 < s1.size()) {
+                ++j;
+            } else {
+                if (count_uniq_char == 0) return true;
+                auto i_char = map_s1.find(s2[i]);
+                if (i_char != map_s1.end()) {
+                    ++(i_char->second);
+                    if (i_char->second == 1) {
+                        ++count_uniq_char;
+                    }
+                }
+                ++j;
+                ++i;
+            }
+        }
+        return false;
     }
 
     int lengthOfLongestSubstring(string s) {
