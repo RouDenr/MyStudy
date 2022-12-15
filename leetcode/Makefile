@@ -1,7 +1,7 @@
 CC = g++
 
 # TESTS_FLAGS	= -fprofile-arcs -ftest-coverage
-TESTS_FLAGS	= -lgtest -g
+TESTS_FLAGS	= -lgtest -g -fsanitize=address
 
 TEST_NAME	= test
 
@@ -34,3 +34,8 @@ run	: all
 
 lldb	:
 	lldb -- ./${EXE}
+
+clean	:
+	rm *.o
+
+re		: clean all

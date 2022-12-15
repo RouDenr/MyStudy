@@ -582,4 +582,26 @@ class Solution {
             }
         }
     }
+
+    // Flood Fill
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc,
+                                  int color) {
+        //
+        if ((image.size() == 0 && image[0].size() == 0) ||
+            (sr >= image.size() && sc >= image[0].size()))
+            return image;
+
+        auto orig_color = image[sr][sc];
+        if (orig_color == color) return image;
+        image[sr][sc] = color;
+        if (sr != 0 && image[sr - 1][sc] == orig_color)
+            floodFill(image, sr - 1, sc, color);
+        if (sc != 0 && image[sr][sc - 1] == orig_color)
+            floodFill(image, sr, sc - 1, color);
+        if (sr + 1 != image.size() && image[sr + 1][sc] == orig_color)
+            floodFill(image, sr + 1, sc, color);
+        if (sc + 1 != image[sr].size() && image[sr][sc + 1] == orig_color)
+            floodFill(image, sr, sc + 1, color);
+        return image;
+    }
 };
