@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <iostream>
+#include <list>
 #include <set>
 #include <string>
 #include <unordered_map>
@@ -18,6 +19,21 @@ struct ListNode {
     ~ListNode() {
         // if (this->next != nullptr) delete this->next;
     }
+};
+// Definition for a Node.
+class Node {
+   public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
+
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    explicit Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
 };
 
 struct TreeNode {
@@ -671,7 +687,6 @@ class Solution {
         return max;
     }
 
-
     // Merge Two Binary Trees
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
         TreeNode* newTree = nullptr;
@@ -692,5 +707,33 @@ class Solution {
             }
         }
         return newTree;
+    }
+
+    // Populating Next Right Pointers in Each Node
+    Node* connect(Node* root) {
+        list<Node*> nodes;
+        if (root) {
+            nodes.push_front(root);
+            while (nodes.size() != 0) {
+                auto i = nodes.begin();
+                while (i != nodes.end()) {
+                    if ((*i)->left) {
+                        nodes.insert(i, (*i)->left);
+                    }
+                    if ((*i)->right) {
+                        nodes.insert(i, (*i)->right);
+                    }
+
+                    auto tmp = i++;
+                    if (i != nodes.end()) {
+                        (*tmp)->next = *i;
+                    } else {
+                        (*tmp)->next = nullptr;
+                    }
+                    nodes.erase(tmp);
+                }
+            }
+        }
+        return root;
     }
 };
