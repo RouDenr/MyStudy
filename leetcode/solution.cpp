@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <iostream>
 #include <list>
+#include <queue>
 #include <set>
 #include <string>
 #include <unordered_map>
@@ -735,5 +736,56 @@ class Solution {
             }
         }
         return root;
+    }
+
+    queue<pair<int, int>> full_queue_vec(const vector<vector<int>>& mat,
+                                         vector<vector<int>>& dist_vec) {
+        queue<pair<int, int>> queue_vec;
+        int y = 0, x = 0;
+        while (y < mat.size()) {
+            x = 0;
+            while (x < mat[y].size()) {
+                if (mat[y][x] == 0) {
+                    dist_vec[y][x] = 0;
+                    queue_vec.push({y, x});
+                }
+                x += 1;
+            }
+            y += 1;
+        }
+        return queue_vec;
+    }
+
+    // 01 Matrix
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        if (mat.size() != 0 && mat[0].size() != 0) {
+            vector<vector<int>> dist_vec(
+                mat.size(),
+                vector<int>(mat[0].size(), numeric_limits<int>::max()));
+            queue<pair<int, int>> queue_vec = full_queue_vec(mat, dist_vec);
+
+            int dirs[4][2] = {{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
+            while (!queue_vec.empty()) {
+                auto curr = queue_vec.front();
+                queue_vec.pop();
+
+                for (int i = 0; i < 4; ++i) {
+                    int y = curr.first + dirs[i][0];
+                    int x = curr.second + dirs[i][1];
+
+                    if (y >= 0 && x >= 0 && y < mat.size() &&
+                        x < mat[0].size()) {
+                        if (dist_vec[y][x] >
+                            dist_vec[curr.first][curr.second] + 1) {
+                            dist_vec[y][x] =
+                                dist_vec[curr.first][curr.second] + 1;
+                            queue_vec.push({y, x});
+                        }
+                    }
+                }
+            }
+            return dist_vec;
+        }
+        return mat;
     }
 };

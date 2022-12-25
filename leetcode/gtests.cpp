@@ -879,22 +879,57 @@ Solution test;
 //     EXPECT_EQ(test.maxAreaOfIsland(image), expect);
 // }
 
-TEST(MergeTwoBinaryTrees, CaseDef) {
-    TreeNode *root1 = new TreeNode(1, new TreeNode(3, new TreeNode(5), nullptr),
-                                   new TreeNode(2));
-    TreeNode *root2 = new TreeNode(2, new TreeNode(1, nullptr, new TreeNode(4)),
-                                   new TreeNode(3, nullptr, new TreeNode(7)));
-    TreeNode *expect =
-        new TreeNode(3, new TreeNode(4, new TreeNode(5), new TreeNode(4)),
-                     new TreeNode(5, nullptr, new TreeNode(7)));
-    EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
-}
+// TEST(MergeTwoBinaryTrees, CaseDef) {
+//     TreeNode *root1 = new TreeNode(1, new TreeNode(3, new TreeNode(5), nullptr),
+//                                    new TreeNode(2));
+//     TreeNode *root2 = new TreeNode(2, new TreeNode(1, nullptr, new TreeNode(4)),
+//                                    new TreeNode(3, nullptr, new TreeNode(7)));
+//     TreeNode *expect =
+//         new TreeNode(3, new TreeNode(4, new TreeNode(5), new TreeNode(4)),
+//                      new TreeNode(5, nullptr, new TreeNode(7)));
+//     EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
+// }
 
-TEST(MergeTwoBinaryTrees, CaseDef2) {
-    TreeNode *root1 = new TreeNode(1);
-    TreeNode *root2 = new TreeNode(1, new TreeNode(2), nullptr);
-    TreeNode *expect = new TreeNode(2, new TreeNode(2), nullptr);
-    EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
+// TEST(MergeTwoBinaryTrees, CaseDef2) {
+//     TreeNode *root1 = new TreeNode(1);
+//     TreeNode *root2 = new TreeNode(1, new TreeNode(2), nullptr);
+//     TreeNode *expect = new TreeNode(2, new TreeNode(2), nullptr);
+//     EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
+// }
+
+TEST(Matrix01, CaseDef1) {
+    vector<vector<int> > mat = {
+        {0, 0, 0},
+        {0, 1, 0},
+        {0, 0, 0}
+    };
+    vector<vector<int> > expect = {
+        {0, 0, 0},
+        {0, 1, 0},
+        {0, 0, 0}
+    };
+
+    EXPECT_EQ(test.updateMatrix(mat), expect);
+}
+TEST(Matrix01, CaseDef2) {
+    vector<vector<int> > mat = {
+        {0, 0, 0},
+        {0, 1, 0},
+        {1, 1, 1}
+    };
+    vector<vector<int> > expect = {
+        {0, 0, 0},
+        {0, 1, 0},
+        {1, 2, 1}
+    };
+
+    EXPECT_EQ(test.updateMatrix(mat), expect);
+}
+TEST(Matrix01, CaseEmpty) {
+    vector<vector<int> > mat = {};
+    vector<vector<int> > expect = {};
+
+    EXPECT_EQ(test.updateMatrix(mat), expect);
 }
 
 int main(int argc, char *argv[]) {
