@@ -8,6 +8,7 @@
 projects*/.git
 !test*sh
 !test*py
+!leetcode/gtests.cpp
 testgit.sh
 Tin
 projects/cub3D/cub3d
