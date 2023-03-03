@@ -7,6 +7,32 @@
 
 Solution test;
 
+
+TEST(MyTestSuite, TestWithRedirectedIO) {
+  // Перенаправляем стандартный ввод
+  std::istringstream input_stream("Test Input\n");
+  std::streambuf* old_cin_buf = std::cin.rdbuf(input_stream.rdbuf());
+
+  // Перенаправляем стандартный вывод
+  std::ostringstream output_stream;
+  std::streambuf* old_cout_buf = std::cout.rdbuf(output_stream.rdbuf());
+
+  // Выполняем тестируемую функцию
+  std::cout << "Test Output" << std::endl;
+
+  // Получаем результаты перенаправления
+  std::string output = output_stream.str();
+  std::string input = input_stream.str();
+
+  // Восстанавливаем стандартный ввод-вывод
+  std::cin.rdbuf(old_cin_buf);
+  std::cout.rdbuf(old_cout_buf);
+
+  // Проверяем результаты перенаправления
+  EXPECT_EQ("Test Output\n", output);
+  EXPECT_EQ("Test Input\n", input);
+}
+
 // TEST(HelloTest, Basic) {
 //     std::string test1 = "abcabcbb";
 //     std::string test2 = "bbbbb";

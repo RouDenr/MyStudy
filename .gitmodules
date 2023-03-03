@@ -28,3 +28,6 @@
 [submodule "projects/GolangBoot-amp21"]
 	path = projects/GolangBoot-amp21
 	url = git@github.com:RouDenr/GolangBoot-amp21.git
+[submodule "projects/webserv42"]
+	path = projects/webserv42
+	url = git@github.com:RouDenr/webserv42.git
