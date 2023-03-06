@@ -1,54 +1,53 @@
+#!/bin/bash
 # Delete and reinstall Homebrew from Github repo
-rm -rf $HOME/goinfre/.brew
-git clone --depth=1 https://github.com/Homebrew/brew $HOME/goinfre/.brew
+BREW_PATH=$HOME/goinfre/.brew
+rm -rf "${BREW_PATH}/"
+git clone --depth=1 https://github.com/Homebrew/brew "${BREW_PATH}"
 
-# Create .brewconfig script in home directory 
-cat > $HOME/.brewconfig.zsh <<EOL
+# Create .brewconfig script in home directory
+cat <<EOL > "$HOME/.brewconfig.zsh"
 # HOMEBREW CONFIG
 
 # Add brew to path
-export PATH=\$HOME/goinfre/.brew/bin:\$PATH
+export PATH="\${BREW_PATH}/bin:\$PATH"
 
 # Set Homebrew temporary folders
 export HOMEBREW_CACHE=/tmp/\$USER/Homebrew/Caches
 export HOMEBREW_TEMP=/tmp/\$USER/Homebrew/Temp
 
-mkdir -p \$HOMEBREW_CACHE
-mkdir -p \$HOMEBREW_TEMP
+mkdir -p "\$HOMEBREW_CACHE"
+mkdir -p "\$HOMEBREW_TEMP"
 
 # If NFS session
 # Symlink Locks folder in /tmp
-if df -T autofs,nfs \$HOME 1>/dev/null
+if df -T autofs,nfs "\$HOME" &>/dev/null
 then
   HOMEBREW_LOCKS_TARGET=/tmp/\$USER/Homebrew/Locks
-  HOMEBREW_LOCKS_FOLDER=\$HOME/goinfre/.brew/var/homebrew
+  HOMEBREW_LOCKS_FOLDER="\${BREW_PATH}/var/homebrew"
 
-  mkdir -p \$HOMEBREW_LOCKS_TARGET
-  mkdir -p \$HOMEBREW_LOCKS_FOLDER
+  mkdir -p "\$HOMEBREW_LOCKS_TARGET"
+  mkdir -p "\$HOMEBREW_LOCKS_FOLDER"
 
   # Symlink to Locks target folders
   # If not already a symlink
-  if ! [[ -L \$HOMEBREW_LOCKS_FOLDER && -d \$HOMEBREW_LOCKS_FOLDER ]]
+  if ! [[ -L "\$HOMEBREW_LOCKS_FOLDER" && -d "\$HOMEBREW_LOCKS_FOLDER" ]]
   then
      echo "Creating symlink for Locks folder"
-     rm -rf \$HOMEBREW_LOCKS_FOLDER
-     ln -s \$HOMEBREW_LOCKS_TARGET \$HOMEBREW_LOCKS_FOLDER
+     rm -rf "\$HOMEBREW_LOCKS_FOLDER/"
+     ln -s "\$HOMEBREW_LOCKS_TARGET" "\$HOMEBREW_LOCKS_FOLDER"
   fi
 fi
 EOL
 
 # Add .brewconfig sourcing in your .zshrc if not already present
-if ! grep -q "# Load Homebrew config script" $HOME/.zshrc
+if ! grep -sq "# Load Homebrew config script" "$HOME/.zshrc"
 then
-cat >> $HOME/.zshrc <<EOL
-
-# Load Homebrew config script
-source \$HOME/.brewconfig.zsh
-EOL
+  echo '# Load Homebrew config script' >> "$HOME/.zshrc"
+  echo '. $HOME/.brewconfig.zsh' >> "$HOME/.zshrc"
 fi
 
-source $HOME/.brewconfig.zsh
+. "$HOME/.brewconfig.zsh"
 rehash
 brew update
 
-echo "\nPlease open a new shell to finish installation"
+echo -e "\nPlease open a new shell to finish installation"

@@ -6,8 +6,7 @@
 *test*
 *.DS_Store
 projects*/.git
-!test*sh
-!test*py
+!projects/push_swap/testing.sh
 !leetcode/gtests.cpp
 testgit.sh
 Tin

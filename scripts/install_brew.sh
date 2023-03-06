@@ -12,7 +12,7 @@
 rm -rf $HOME/.brew
 git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew
 
-# Create .brewconfig script in home directory 
+# Create .brewconfig script in home directory
 cat > $HOME/.brewconfig.zsh <<EOL
 # HOMEBREW CONFIG
 
