@@ -2,35 +2,36 @@
 #include <gtest/gtest.h>
 
 #include <vector>
+// #include <time>
 
 #include "solution.cpp"
+#include "bigtests.h"
 
 Solution test;
 
-
 TEST(MyTestSuite, TestWithRedirectedIO) {
-  // Перенаправляем стандартный ввод
-  std::istringstream input_stream("Test Input\n");
-  std::streambuf* old_cin_buf = std::cin.rdbuf(input_stream.rdbuf());
+    // Перенаправляем стандартный ввод
+    std::istringstream input_stream("Test Input\n");
+    std::streambuf* old_cin_buf = std::cin.rdbuf(input_stream.rdbuf());
 
-  // Перенаправляем стандартный вывод
-  std::ostringstream output_stream;
-  std::streambuf* old_cout_buf = std::cout.rdbuf(output_stream.rdbuf());
+    // Перенаправляем стандартный вывод
+    std::ostringstream output_stream;
+    std::streambuf* old_cout_buf = std::cout.rdbuf(output_stream.rdbuf());
 
-  // Выполняем тестируемую функцию
-  std::cout << "Test Output" << std::endl;
+    // Выполняем тестируемую функцию
+    std::cout << "Test Output" << std::endl;
 
-  // Получаем результаты перенаправления
-  std::string output = output_stream.str();
-  std::string input = input_stream.str();
+    // Получаем результаты перенаправления
+    std::string output = output_stream.str();
+    std::string input = input_stream.str();
 
-  // Восстанавливаем стандартный ввод-вывод
-  std::cin.rdbuf(old_cin_buf);
-  std::cout.rdbuf(old_cout_buf);
+    // Восстанавливаем стандартный ввод-вывод
+    std::cin.rdbuf(old_cin_buf);
+    std::cout.rdbuf(old_cout_buf);
 
-  // Проверяем результаты перенаправления
-  EXPECT_EQ("Test Output\n", output);
-  EXPECT_EQ("Test Input\n", input);
+    // Проверяем результаты перенаправления
+    EXPECT_EQ("Test Output\n", output);
+    EXPECT_EQ("Test Input\n", input);
 }
 
 // TEST(HelloTest, Basic) {
@@ -906,10 +907,13 @@ TEST(MyTestSuite, TestWithRedirectedIO) {
 // }
 
 // TEST(MergeTwoBinaryTrees, CaseDef) {
-//     TreeNode *root1 = new TreeNode(1, new TreeNode(3, new TreeNode(5), nullptr),
+//     TreeNode *root1 = new TreeNode(1, new TreeNode(3, new TreeNode(5),
+//     nullptr),
 //                                    new TreeNode(2));
-//     TreeNode *root2 = new TreeNode(2, new TreeNode(1, nullptr, new TreeNode(4)),
-//                                    new TreeNode(3, nullptr, new TreeNode(7)));
+//     TreeNode *root2 = new TreeNode(2, new TreeNode(1, nullptr, new
+//     TreeNode(4)),
+//                                    new TreeNode(3, nullptr, new
+//                                    TreeNode(7)));
 //     TreeNode *expect =
 //         new TreeNode(3, new TreeNode(4, new TreeNode(5), new TreeNode(4)),
 //                      new TreeNode(5, nullptr, new TreeNode(7)));
@@ -923,42 +927,77 @@ TEST(MyTestSuite, TestWithRedirectedIO) {
 //     EXPECT_EQ(*(test.mergeTrees(root1, root2)) == *expect, true);
 // }
 
-TEST(Matrix01, CaseDef1) {
-    vector<vector<int> > mat = {
-        {0, 0, 0},
-        {0, 1, 0},
-        {0, 0, 0}
-    };
-    vector<vector<int> > expect = {
-        {0, 0, 0},
-        {0, 1, 0},
-        {0, 0, 0}
-    };
+// TEST(Matrix01, CaseDef1) {
+//     vector<vector<int> > mat = {
+//         {0, 0, 0},
+//         {0, 1, 0},
+//         {0, 0, 0}
+//     };
+//     vector<vector<int> > expect = {
+//         {0, 0, 0},
+//         {0, 1, 0},
+//         {0, 0, 0}
+//     };
 
-    EXPECT_EQ(test.updateMatrix(mat), expect);
+//     EXPECT_EQ(test.updateMatrix(mat), expect);
+// }
+// TEST(Matrix01, CaseDef2) {
+//     vector<vector<int> > mat = {
+//         {0, 0, 0},
+//         {0, 1, 0},
+//         {1, 1, 1}
+//     };
+//     vector<vector<int> > expect = {
+//         {0, 0, 0},
+//         {0, 1, 0},
+//         {1, 2, 1}
+//     };
+
+//     EXPECT_EQ(test.updateMatrix(mat), expect);
+// }
+// TEST(Matrix01, CaseEmpty) {
+//     vector<vector<int> > mat = {};
+//     vector<vector<int> > expect = {};
+
+//     EXPECT_EQ(test.updateMatrix(mat), expect);
+// }
+
+TEST(ContainerWMW, CaseDef) {
+    vector<int> heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    int expect = 49;
+
+    EXPECT_EQ(test.maxArea(heights), expect);
 }
-TEST(Matrix01, CaseDef2) {
-    vector<vector<int> > mat = {
-        {0, 0, 0},
-        {0, 1, 0},
-        {1, 1, 1}
-    };
-    vector<vector<int> > expect = {
-        {0, 0, 0},
-        {0, 1, 0},
-        {1, 2, 1}
-    };
+TEST(ContainerWMW, CaseLowBig) {
+    vector<int> heights = {2, 1, 2, 6, 3, 6, 1, 1, 2, 1};
+    int expect = 16;
 
-    EXPECT_EQ(test.updateMatrix(mat), expect);
-}
-TEST(Matrix01, CaseEmpty) {
-    vector<vector<int> > mat = {};
-    vector<vector<int> > expect = {};
-
-    EXPECT_EQ(test.updateMatrix(mat), expect);
+    EXPECT_EQ(test.maxArea(heights), expect);
 }
 
-int main(int argc, char *argv[]) {
+TEST(ContainerWMW, CaseSimple) {
+    vector<int> heights = {1, 1};
+    int expect = 1;
+
+    EXPECT_EQ(test.maxArea(heights), expect);
+}
+
+TEST(ContainerWMW, CaseEmpty) {
+    vector<int> heights = {};
+    int expect = 0;
+
+    EXPECT_EQ(test.maxArea(heights), expect);
+}
+TEST(ContainerWMW, CaseBigData) {
+    vector<int> heights = ContainerWMWBIG;
+    int expect = 705634720;
+    // auto start_time
+
+
+    EXPECT_EQ(test.maxArea(heights), expect);
+}
+
+int main(int argc, char* argv[]) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

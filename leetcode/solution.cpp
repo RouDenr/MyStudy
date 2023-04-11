@@ -788,4 +788,23 @@ class Solution {
         }
         return mat;
     }
+
+    // Container With Most Water
+    int maxArea(vector<int>& height) {
+        int max_area = 0;
+
+        if (height.empty()) return 0;
+
+        auto i = height.begin();
+        auto j = height.end() - 1;
+        while (i != j) {
+            int area = min(*i, *j) * (j - i);
+            max_area = max(max_area, area);
+            if (*i > *j)
+                --j;
+            else
+                ++i;
+        }
+        return max_area;
+    }
 };
