@@ -4,34 +4,50 @@
 #include <vector>
 // #include <time>
 
-#include "solution.cpp"
 #include "bigtests.h"
+#include "solution.cpp"
 
 Solution test;
 
+void reiostream(int swcase, const std::istringstream& in,
+                const std::ostringstream& out) {
+    static std::streambuf* orig_cin_buf;
+    static std::streambuf* orig_cout_buf;
+    switch (swcase) {
+        case 0:
+            // Перенаправляем стандартный ввод
+            orig_cin_buf = std::cin.rdbuf(in.rdbuf());
+            // Перенаправляем стандартный вывод
+            orig_cout_buf = std::cout.rdbuf(out.rdbuf());
+            break;
+        case 1:
+            // Восстанавливаем стандартный ввод-вывод
+            std::cin.rdbuf(orig_cin_buf);
+            std::cout.rdbuf(orig_cout_buf);
+            break;
+        default:
+            break;
+    }
+}
+
 TEST(MyTestSuite, TestWithRedirectedIO) {
-    // Перенаправляем стандартный ввод
     std::istringstream input_stream("Test Input\n");
-    std::streambuf* old_cin_buf = std::cin.rdbuf(input_stream.rdbuf());
-
-    // Перенаправляем стандартный вывод
     std::ostringstream output_stream;
-    std::streambuf* old_cout_buf = std::cout.rdbuf(output_stream.rdbuf());
 
+    reiostream(0, input_stream, output_stream);
     // Выполняем тестируемую функцию
     std::cout << "Test Output" << std::endl;
 
     // Получаем результаты перенаправления
+    std::string instr;
+    std::getline(std::cin, instr);
     std::string output = output_stream.str();
-    std::string input = input_stream.str();
 
     // Восстанавливаем стандартный ввод-вывод
-    std::cin.rdbuf(old_cin_buf);
-    std::cout.rdbuf(old_cout_buf);
-
+    reiostream(1, input_stream, output_stream);
     // Проверяем результаты перенаправления
     EXPECT_EQ("Test Output\n", output);
-    EXPECT_EQ("Test Input\n", input);
+    EXPECT_EQ("Test Input", instr);
 }
 
 // TEST(HelloTest, Basic) {
@@ -962,39 +978,78 @@ TEST(MyTestSuite, TestWithRedirectedIO) {
 //     EXPECT_EQ(test.updateMatrix(mat), expect);
 // }
 
-TEST(ContainerWMW, CaseDef) {
-    vector<int> heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    int expect = 49;
+// TEST(ContainerWMW, CaseDef) {
+//     vector<int> heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+//     int expect = 49;
 
-    EXPECT_EQ(test.maxArea(heights), expect);
+//     EXPECT_EQ(test.maxArea(heights), expect);
+// }
+// TEST(ContainerWMW, CaseLowBig) {
+//     vector<int> heights = {2, 1, 2, 6, 3, 6, 1, 1, 2, 1};
+//     int expect = 16;
+
+//     EXPECT_EQ(test.maxArea(heights), expect);
+// }
+
+// TEST(ContainerWMW, CaseSimple) {
+//     vector<int> heights = {1, 1};
+//     int expect = 1;
+
+//     EXPECT_EQ(test.maxArea(heights), expect);
+// }
+
+// TEST(ContainerWMW, CaseEmpty) {
+//     vector<int> heights = {};
+//     int expect = 0;
+
+//     EXPECT_EQ(test.maxArea(heights), expect);
+// }
+// TEST(ContainerWMW, CaseBigData) {
+//     vector<int> heights = ContainerWMWBIG;
+//     int expect = 705634720;
+//     // auto start_time
+
+//     EXPECT_EQ(test.maxArea(heights), expect);
+// }
+
+// TEST(KaspChangeCheck, CaseDef) {
+//     const int n = 5;
+//     int arr[n] = {5, 5, 5, 10, 20};
+//     int expect = true;
+
+//     EXPECT_EQ(test.change_check(n, arr), expect);
+// }
+// TEST(KaspChangeCheck, CaseEmpty) {
+//     const int n = 0;
+//     int arr[n] = {};
+//     int expect = true;
+
+//     EXPECT_EQ(test.change_check(n, arr), expect);
+// }
+// TEST(KaspChangeCheck, CaseFalse) {
+//     const int n = 2;
+//     int arr[n] = {5, 20};
+//     int expect = false;
+
+//     EXPECT_EQ(test.change_check(n, arr), expect);
+// }
+TEST(KaspIsData, CaseTrue) {
+    string data = "2011/11/11";
+    int expect = true;
+
+    EXPECT_EQ(test.is_data(data), expect);
 }
-TEST(ContainerWMW, CaseLowBig) {
-    vector<int> heights = {2, 1, 2, 6, 3, 6, 1, 1, 2, 1};
-    int expect = 16;
+TEST(KaspIsData, CaseTrue2) {
+    string data = "0202/03/03";
+    int expect = true;
 
-    EXPECT_EQ(test.maxArea(heights), expect);
+    EXPECT_EQ(test.is_data(data), expect);
 }
+TEST(KaspIsData, CaseFalse) {
+    string data = "201O/11/IV";
+    int expect = false;
 
-TEST(ContainerWMW, CaseSimple) {
-    vector<int> heights = {1, 1};
-    int expect = 1;
-
-    EXPECT_EQ(test.maxArea(heights), expect);
-}
-
-TEST(ContainerWMW, CaseEmpty) {
-    vector<int> heights = {};
-    int expect = 0;
-
-    EXPECT_EQ(test.maxArea(heights), expect);
-}
-TEST(ContainerWMW, CaseBigData) {
-    vector<int> heights = ContainerWMWBIG;
-    int expect = 705634720;
-    // auto start_time
-
-
-    EXPECT_EQ(test.maxArea(heights), expect);
+    EXPECT_EQ(test.is_data(data), expect);
 }
 
 int main(int argc, char* argv[]) {

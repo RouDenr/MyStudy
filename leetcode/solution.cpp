@@ -807,4 +807,89 @@ class Solution {
         }
         return max_area;
     }
+
+    // bool need_change(int sum) {
+    // }
+
+    std::multiset<int>::iterator bigger_sum(const multiset<int>& bank,
+                                            int sum) {
+        auto j = bank.end();
+        --j;
+        while (*j >= sum) {
+            if (j == bank.begin()) return bank.end();
+            --j;
+        }
+        return j;
+    }
+
+    //
+    bool change_check(const int n, int arr[]) {
+        std::multiset<int> bank;
+        for (int i = 0; i < n; ++i) {
+            if (arr[i] > 5) {
+                int tmp = arr[i];
+                while (tmp != 5) {
+                    if (bank.empty()) return false;
+
+                    auto j = bigger_sum(bank, tmp);
+                    if (j == bank.end()) return false;
+                    tmp -= *j;
+                    bank.erase(j);
+                }
+            }
+            bank.insert(arr[i]);
+        }
+        return true;
+    }
+
+    bool is_leap_year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    }
+
+    bool is_valid_month(int month) { return month >= 1 && month <= 12; }
+
+    bool is_valid_day(int day, int month, int year) {
+        switch (month) {
+            case 1:
+                return day <= 31;
+            case 2:
+                return day <= 28 || (day <= 29 && is_leap_year(year));
+            case 3:
+                return day <= 31;
+            case 4:
+                return day <= 30;
+            case 5:
+                return day <= 31;
+            case 6:
+                return day <= 30;
+            case 7:
+                return day <= 31;
+            case 8:
+                return day <= 31;
+            case 9:
+                return day <= 30;
+            case 10:
+                return day <= 31;
+            case 11:
+                return day <= 30;
+            case 12:
+                return day <= 31;
+            default:
+                return false;
+        }
+    }
+
+    bool is_data(const std::string& data) {
+        if (data.size() != 10 || data[4] != '/' || data[7] != '/') return false;
+
+        for (int i = 0; i < 10; ++i) {
+            if (i != 4 && i != 7) {
+                if (!isdigit(data[i])) return false;
+            }
+        }
+        auto year = stoi(data);
+        auto month = stoi(data.c_str() + 5);
+        auto day = stoi(data.c_str() + 8);
+        return is_valid_month(month) && is_valid_day(day, month, year);
+    }
 };
